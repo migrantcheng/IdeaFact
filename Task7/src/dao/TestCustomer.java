@@ -16,6 +16,7 @@ public class TestCustomer {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
+        
 
         createPerson(session);
 
@@ -41,10 +42,12 @@ public class TestCustomer {
     public static void createPerson(Session session) {
         Customer person = new Customer();
         
-        person.setUsername("Barack");
+        person.setUsername("barack");
+        person.setPassword("123");
         person.setCity("DC");
         person.setCash(100);
 
         session.save(person);
+        
     }
 }

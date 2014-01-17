@@ -8,7 +8,7 @@
     <class name="databean.Customer" table="Customer">
 
         <id name="customer_id" column="customer_id">
-            <generator class="native" />
+            
         </id>
 
         <property name="username">
