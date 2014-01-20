@@ -50,6 +50,10 @@
         <property name="cash">
             <column name="cash"   />
         </property>
+        
+        <property name="available">
+            <column name="available"   />
+        </property>
 
 
     </class>

@@ -13,7 +13,8 @@ public class Customer {
 	private String city;
 	private String state;
 	private int zip;
-	private int cash;
+	private long cash;
+	private long available;
 	
 	
 	public int getCustomer_id() {
@@ -76,12 +77,17 @@ public class Customer {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	public int getCash() {
+	public long getCash() {
 		return cash;
 	}
-	public void setCash(int cash) {
+	public void setCash(long cash) {
 		this.cash = cash;
 	}
-	
+	public long getAvailable() {
+		return available;
+	}
+	public void setAvailable(long available) {
+		this.available = available;
+	}
 	
 }
