@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="databean.Position" table="Position">
+
+
+		<composite-id>
+			<key-property name="customer_id" column="customer_id" />
+			<key-property name="fund_id" column="fund_id" />
+		</composite-id>
+
+		<property name="shares">
+			<column name="shares" />
+		</property>
+
+        
+    </class>
+</hibernate-mapping>
