@@ -66,15 +66,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="span3">
-            <ul class="nav nav-list bs-docs-sidenav">
-              <li class="active"><a href="#"><i class="icon-chevron-right"></i>Buy Fund</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Sell Fund</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Request Check</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Transaction History</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Research Fund</a></li>
-            </ul>
-        </div><!--/span-->
+        <jsp:include page="employeeNav.jsp" />
         <div class="span9">
           <div class="page-header">
             <h1>View Account</h1>

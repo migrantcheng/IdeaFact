@@ -65,17 +65,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="span3">
-            <ul class="nav nav-list bs-docs-sidenav">
-              <li><a href="#"><i class="icon-chevron-right"></i>Create Employee Account</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Manage Employee Account</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Create Customer Account</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Manage Customer Account</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Deposit Check</a></li>
-              <li class="active"><a href="#"><i class="icon-chevron-right"></i>Create Fund</a></li>
-              <li><a href="#"><i class="icon-chevron-right"></i>Transition Day</a></li>
-            </ul>
-        </div><!--/span-->
+        <jsp:include page="employeeNav.jsp" />
         <div class="span9">
           <div class="page-header">
             <h1>Create Fund</h1>
