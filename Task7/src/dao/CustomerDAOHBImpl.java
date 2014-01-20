@@ -5,13 +5,13 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import dao.interfaces.CustomerDAO;
 import databean.Customer;
 
-public class CustomerDAO {
+public class CustomerDAOHBImpl implements CustomerDAO {
+private Session session;
 	
-	private Session session;
-	
-	public CustomerDAO(){
+	public CustomerDAOHBImpl(){
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 	
@@ -34,5 +34,6 @@ public class CustomerDAO {
         
         return customer;
 	}
+
 
 }

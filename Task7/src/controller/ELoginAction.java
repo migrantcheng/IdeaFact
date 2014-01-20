@@ -8,24 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dao.interfaces.CustomerDAO;
+import dao.interfaces.EmployeeDAO;
 import dao.Model;
 import databean.Customer;
+import databean.Employee;
 import formbean.LoginForm;
 
-public class LoginAction extends Action {
-
-
-//	private FormBeanFactory<LoginForm> formBeanFactory = FormBeanFactory.getInstance(LoginForm.class);
+public class ELoginAction extends Action {
 	
-	private CustomerDAO customerDAO;
+	private EmployeeDAO employeeDAO;
 	
-	public LoginAction(Model model){
-		customerDAO = model.getCustomerDAO();
+	public ELoginAction(Model model){
+		employeeDAO = model.getEmployeeDAO();
 	}
 	
 	@Override
 	public String getName() {
-		return "login.do";
+		return "employeeLogin.do";
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class LoginAction extends Action {
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
-	            return "login.jsp";
+	            return "employeeLogin.jsp";
 	        }
 
 	        // Any validation errors?
@@ -52,22 +51,22 @@ public class LoginAction extends Action {
 	        }
 
 	        // Look up the user
-	        Customer user = customerDAO.read(form.getUsername());
+	        Employee employee = employeeDAO.read(form.getUsername());
 	        
-	        if (user == null) {
+	        if (employee == null) {
 	            errors.add("Username not found");
 	            return "error.jsp";
 	        }
 
 	        // Check the password
-	        if (!(user.getPassword()).equals(form.getPassword())) {
+	        if (!(employee.getPassword()).equals(form.getPassword())) {
 	            errors.add("Incorrect password");
 	            return "error.jsp";
 	        }
 	
 	        // Attach (this copy of) the user bean to the session
 	        HttpSession session = request.getSession();
-	        session.setAttribute("user",user);
+	        session.setAttribute("employee",employee);
 
 	        return "after-login.jsp";
         } catch (Exception e) {

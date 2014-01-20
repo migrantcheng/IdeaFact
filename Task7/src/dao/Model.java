@@ -1,12 +1,16 @@
 package dao;
 
+import dao.interfaces.CustomerDAO;
+import dao.interfaces.EmployeeDAO;
+import dao.interfaces.FundDAO;
+
 public class Model {
 	private CustomerDAO customerDAO;
 	private EmployeeDAO employeeDAO;
 	private FundDAO fundDAO;
 	
 	public Model(){
-		customerDAO = new CustomerDAO();
+		customerDAO = new CustomerDAOHBImpl();
 		employeeDAO = new EmployeeDAOHBImpl();
 		fundDAO = new FundDAOHBImpl();
 	}
