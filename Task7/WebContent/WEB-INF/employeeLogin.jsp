@@ -74,7 +74,7 @@
          <h1 class="title"><br>Carnegie Financial Services<br>&nbsp;</h1>
         </div>
       </div>
-      <form class="form-signin">
+      <form class="form-signin" method="POST">
         <h2 class="form-signin-heading">Sign in</h2>
         <input type="text" class="input-block-level" placeholder="User Name" name="username">
         <input type="password" class="input-block-level" placeholder="Password" name="password">
