@@ -75,7 +75,7 @@
         </div>
       </div>
       <form class="form-signin" method="POST">
-        <h2 class="form-signin-heading">Sign in</h2>
+        <h2 class="form-signin-heading">Employee sign in</h2>
         <input type="text" class="input-block-level" placeholder="User Name" name="username">
         <input type="password" class="input-block-level" placeholder="Password" name="password">
         <button class="btn btn-large btn-primary" type="submit" name="button">Sign in</button>
