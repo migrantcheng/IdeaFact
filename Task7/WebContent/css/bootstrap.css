@@ -6171,7 +6171,7 @@ a.badge:focus {
 
 .bs-docs-sidenav {
   width: 100%;
-  margin: 0px 0 0;
+  margin: 25px 0 0;
   padding: 0;
   background-color: #fff;
   -webkit-border-radius: 6px;
