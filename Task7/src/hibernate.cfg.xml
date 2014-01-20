@@ -29,6 +29,9 @@
         <!-- ############################################ -->
 
         <mapping resource="databean/Customer.hbm.xml" />
+        <mapping resource="databean/Employee.hbm.xml" />
+        <mapping resource="databean/Fund.hbm.xml" />
+        <mapping resource="databean/FundPriceHistory.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

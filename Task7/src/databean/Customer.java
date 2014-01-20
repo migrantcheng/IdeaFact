@@ -2,6 +2,7 @@ package databean;
 
 public class Customer {
 
+
 	private int customer_id;
 	private String username;
 	private String password;
