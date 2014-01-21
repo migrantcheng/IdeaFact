@@ -67,5 +67,17 @@ private Session session;
 		
 	}
 
+	@Override
+	public List<Customer> getCustomerList() {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Customer");
+        List <Customer> list = query.list();
+
+        session.getTransaction().commit();
+        
+        return list;
+	}
+
 
 }
