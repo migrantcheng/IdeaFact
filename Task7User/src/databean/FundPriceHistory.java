@@ -1,12 +1,14 @@
 package databean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class FundPriceHistory {
+public class FundPriceHistory implements Serializable{
 
 	private int fund_id;
 	private Date price_date;
 	private long price;
+	
 	public int getFund_id() {
 		return fund_id;
 	}

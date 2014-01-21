@@ -34,8 +34,6 @@ public class LoginAction extends Action {
         request.setAttribute("errors",errors);
         
         try {
-//        	request.setAttribute("userList",userDAO.getAllUsers());
-        	
         	LoginForm form = new LoginForm(request);
 	        request.setAttribute("form",form);
 
@@ -48,7 +46,7 @@ public class LoginAction extends Action {
 	        // Any validation errors?
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	            return "login.jsp";
 	        }
 
 	        // Look up the user
@@ -56,23 +54,23 @@ public class LoginAction extends Action {
 	        
 	        if (user == null) {
 	            errors.add("Username not found");
-	            return "error.jsp";
+	            return "login.jsp";
 	        }
 
 	        // Check the password
 	        if (!(user.getPassword()).equals(form.getPassword())) {
 	            errors.add("Incorrect password");
-	            return "error.jsp";
+	            return "login.jsp";
 	        }
 	
 	        // Attach (this copy of) the user bean to the session
 	        HttpSession session = request.getSession();
-	        session.setAttribute("user",user);
+	        session.setAttribute("customer",user);
 
-	        return "after-login.jsp";
+	        return "changePwd.do";
         } catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+			return "login.jsp";
 		}
 	}
 

@@ -1,6 +1,8 @@
 package databean;
 
-public class Position {
+import java.io.Serializable;
+
+public class Position  implements Serializable{
 	private int customer_id;
 	private int fund_id;
 	private int shares;

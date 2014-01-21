@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import databean.Customer;
-import databean.Employee;
 import databean.Fund;
 import databean.FundPriceHistory;
 
@@ -46,16 +45,13 @@ public class TestCustomer {
     public static void createPerson(Session session) {
         Customer person = new Customer();
         
-        person.setUsername("barack");
-        person.setPassword("123");
-        person.setCity("DC");
+        person.setUsername("yiyezeng");
+        person.setPassword("900824");
+        person.setCity("Pittsburgh");
         person.setCash(100);
-        
-        Employee employee = new Employee();
-        employee.setUsername("emp1");
-        employee.setFirstname("Haoran");
-        employee.setLastname("Cheng");
-        employee.setPassword("123");
+        person.setAvailable(100);
+        person.setAddr_line1("250 Melwood Ave");
+        person.setAddr_line2("Apt 12");
         
         Fund fund = new Fund();
         fund.setName("Adobe");
@@ -68,7 +64,6 @@ public class TestCustomer {
         price.setPrice_date(date);
 
         session.save(person);
-//        session.save(employee);
         session.save(fund);
         session.save(price);
         

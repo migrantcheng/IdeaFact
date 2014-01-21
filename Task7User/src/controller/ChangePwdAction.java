@@ -6,21 +6,21 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.Model;
-import dao.interfaces.EmployeeDAO;
-import databean.Employee;
+import dao.interfaces.CustomerDAO;
+import databean.Customer;
 import formbean.ChangePwdFormBean;
 
-public class ChangeEPwdAction extends Action {
+public class ChangePwdAction extends Action {
 	
-	private EmployeeDAO employeeDAO;
+	private CustomerDAO customerDAO;
 	
-	public ChangeEPwdAction(Model model){
-		employeeDAO = model.getEmployeeDAO();
+	public ChangePwdAction(Model model){
+		customerDAO = model.getCustomerDAO();
 	}
 
 	@Override
 	public String getName() {
-		return "changeEPwd.do";
+		return "changePwd.do";
 	}
 
 	@Override
@@ -36,29 +36,30 @@ public class ChangeEPwdAction extends Action {
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
-	            return "changeEmployeePassword.jsp";
+	            return "changeCustomerPassword.jsp";
 	        }
 	
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	            return "changeCustomerPassword.jsp";
 	        }
 	
-			Employee employee = (Employee) request.getSession().getAttribute("employee");
-			if(!employee.getPassword().equals(form.getOldPwd())){
+			Customer customer = (Customer) request.getSession().getAttribute("customer");
+			if(!customer.getPassword().equals(form.getOldPwd())){
 				errors.add("Old Password not correct!");
-				return "error.jsp";
+				return "changeCustomerPassword.jsp";
 			}
 	
 			// Change the password
-        	employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
+			customer.setPassword(form.getNewPassword());
+			customerDAO.update(customer);
 	
-			request.setAttribute("message","Password changed for "+employee.getUsername());
-	        return "success.jsp";
+			request.setAttribute("messages","Password changed for "+customer.getUsername());
+	        return "changeCustomerPassword.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+			return "changeCustomerPassword.jsp";
 		}
 	}
 

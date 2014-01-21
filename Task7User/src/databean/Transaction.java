@@ -4,13 +4,18 @@ import java.util.Date;
 
 public class Transaction {
 	
+	public static final String SELL = "SELL";
+	public static final String BUY = "BUY";
+	public static final String DEPOSIT = "DEPOSIT";
+	public static final String WITHDRAWAL = "WITHDRAWAL";
+	
 	private int transaction_id;
 	private int customer_id;
 	private int fund_id;
 	private Date execute_date;
 	private int shares;
 	private String transaction_type;
-	private int amount;
+	private long amount;
 	public int getTransaction_id() {
 		return transaction_id;
 	}
@@ -47,10 +52,10 @@ public class Transaction {
 	public void setTransaction_type(String transaction_type) {
 		this.transaction_type = transaction_type;
 	}
-	public int getAmount() {
+	public long getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 	

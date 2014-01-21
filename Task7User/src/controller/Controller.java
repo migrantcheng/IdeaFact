@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.Model;
 import databean.Customer;
-import databean.Employee;
 
 
 @SuppressWarnings("serial")
@@ -22,10 +21,14 @@ public class Controller extends HttpServlet {
 		Model model = new Model();
 		
 		Action.add(new LoginAction(model));
-		Action.add(new ELoginAction(model));
-		Action.add(new ChangeEPwdAction(model));
-		Action.add(new CreateEAccountAction(model));
-		Action.add(new CreateFundAction(model));
+		Action.add(new ChangePwdAction(model));
+//		Action.add(new BuyFundAction(model));
+//		Action.add(new SellFundAction(model));
+//		Action.add(new ViewAccountAction(model));
+		Action.add(new LogoutAction(model));
+//		Action.add(new RequestCheckAction(model));
+//		Action.add(new TransactionHistoryAction(model));
+//		Action.add(new ResearchFundAction(model));
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,21 +43,20 @@ public class Controller extends HttpServlet {
     private String performTheAction(HttpServletRequest request) {
     	HttpSession session     = request.getSession(true);
         String      servletPath = request.getServletPath();
-        Customer    user = (Customer) session.getAttribute("customer");
-        Employee employee = (Employee) session.getAttribute("employee");
+        Customer    customer = (Customer) session.getAttribute("customer");
         String      action = getActionName(servletPath);
 
         // System.out.println("servletPath="+servletPath+" requestURI="+request.getRequestURI()+"  user="+user);
 
-        if (action.equals("register.do") || action.equals("employeeLogin.do") || action.equals("click.do")) {
-        	// Allow these actions without logging in
-			return Action.perform(action,request);
-        }
+//        if (action.equals("register.do") || action.equals("employeeLogin.do") || action.equals("click.do")) {
+//        	// Allow these actions without logging in
+//			return Action.perform(action,request);
+//        }
         
         
-        if (employee == null) {
+        if (customer == null) {
         	// If the user hasn't logged in, direct him to the login page
-			return Action.perform("employeeLogin.do",request);
+			return Action.perform("login.do",request);
         }
         
         return Action.perform(action,request);

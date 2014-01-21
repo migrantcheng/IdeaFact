@@ -5,16 +5,16 @@
 
 <hibernate-mapping>
 
-	<class name="databean.FundPriceHistory" table="FundPriceHistory">
+	<class name="databean.Position" table="Position">
 
 
 		<composite-id>
+			<key-property name="customer_id" column="customer_id" />
 			<key-property name="fund_id" column="fund_id" />
-			<key-property name="price_date" type="timestamp" column="price_date" />
 		</composite-id>
 
-		<property name="price">
-			<column name="price" />
+		<property name="shares">
+			<column name="shares" />
 		</property>
 
         
