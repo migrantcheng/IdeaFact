@@ -1,10 +1,14 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import dao.interfaces.FundDAO;
+import databean.Customer;
 import databean.Fund;
 
 public class FundDAOHBImpl implements FundDAO {
@@ -29,6 +33,18 @@ public class FundDAOHBImpl implements FundDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<Fund> getFundList() {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Fund");
+        List <Fund> list = query.list();
+
+        session.getTransaction().commit();
+        
+        return list;
 	}
 
 }
