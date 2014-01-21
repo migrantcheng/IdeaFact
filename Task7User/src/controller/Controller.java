@@ -22,7 +22,7 @@ public class Controller extends HttpServlet {
 		
 		Action.add(new LoginAction(model));
 		Action.add(new ChangePwdAction(model));
-//		Action.add(new BuyFundAction(model));
+		Action.add(new BuyFundAction(model));
 //		Action.add(new SellFundAction(model));
 //		Action.add(new ViewAccountAction(model));
 		Action.add(new LogoutAction(model));
