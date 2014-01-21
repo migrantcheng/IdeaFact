@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="databean.FundPriceHistory" table="FundPriceHistory">
+
+        <id name="fund_id" column="fund_id">
+        </id>
+        
+       
+
+        <property name="price_date" type="timestamp" column="price_date"/>
+        
+        <property name="price">
+            <column name="price"   />
+        </property>
+
+        
+    </class>
+</hibernate-mapping>
