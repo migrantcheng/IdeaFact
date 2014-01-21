@@ -52,10 +52,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Carnegie Financial Services</a>
+          <a class="brand" style="color:white;" href="#">Carnegie Financial Services</a>
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
-              <li class="active"><a href="#">My Account</a></li>
+              <li><a href="#">My Account</a></li>
               <li><a href="#about">Change Password</a></li>
               <li><a href="employeeLogout.do">Logout</a></li>
             </ul>

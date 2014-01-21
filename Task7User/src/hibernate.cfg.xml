@@ -32,8 +32,6 @@
         <mapping resource="databean/Employee.hbm.xml" />
         <mapping resource="databean/Fund.hbm.xml" />
         <mapping resource="databean/FundPriceHistory.hbm.xml" />
-        <mapping resource="databean/Position.hbm.xml" />
-        <mapping resource="databean/Transaction.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>
