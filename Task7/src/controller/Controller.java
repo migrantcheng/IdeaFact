@@ -26,6 +26,9 @@ public class Controller extends HttpServlet {
 		Action.add(new ChangeEPwdAction(model));
 		Action.add(new CreateEAccountAction(model));
 		Action.add(new CreateFundAction(model));
+		Action.add(new ELogoutAction(model));
+		Action.add(new CreateCAccountAction(model));
+		Action.add(new DepositCheckAction(model));
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -2,11 +2,14 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import dao.interfaces.CustomerDAO;
 import databean.Customer;
+import databean.Employee;
 
 public class CustomerDAOHBImpl implements CustomerDAO {
 private Session session;
@@ -16,6 +19,7 @@ private Session session;
 	}
 	
 	public Customer read(String username){
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Customer where username = :username");
 		query.setParameter("username", username);
@@ -24,15 +28,43 @@ private Session session;
         List <Customer> list = query.list();
         java.util.Iterator<Customer> iter = list.iterator();
         if (iter.hasNext()) {
-
         	customer = iter.next();
-            System.out.println("Person: \"" + customer.getUsername() +"\", " + customer.getCity() +"\", " +customer.getCash());
-
         }
 
         session.getTransaction().commit();
         
         return customer;
+	}
+
+	@Override
+	public void create(Customer customer) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+
+			session.save(customer);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void update(Customer customer) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+	      Transaction tx = null;
+	      try{
+	         tx = session.beginTransaction();
+			 session.update(customer); 
+	         tx.commit();
+	      }catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }
+		
 	}
 
 

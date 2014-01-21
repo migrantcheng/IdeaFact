@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="databean.Transaction" table="Transaction">
+
+        <id name="transaction_id" column="transaction_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="customer_id">
+            <column name="customer_id"  />
+        </property>
+        
+        <property name="fund_id">
+            <column name="fund_id" />
+        </property>
+
+        <property name="execute_date" type="timestamp">
+            <column name="execute_date" />
+        </property>
+        
+        <property name="shares">
+            <column name="shares"/>
+        </property>
+        
+        <property name="transaction_type">
+            <column name="transaction_type"  />
+        </property>
+        
+        <property name="amount">
+            <column name="amount" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

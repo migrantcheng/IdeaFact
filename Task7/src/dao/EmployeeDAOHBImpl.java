@@ -21,6 +21,7 @@ public class EmployeeDAOHBImpl implements EmployeeDAO {
 
 	@Override
 	public Employee read(String username) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Employee where username = :username");
 		query.setParameter("username", username);

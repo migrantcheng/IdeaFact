@@ -28,15 +28,15 @@
         </property>
         
         <property name="addr_line1">
-            <column name="addr_line1" length="16"  />
+            <column name="addr_line1" length="100"  />
         </property>
         
         <property name="addr_line2">
-            <column name="addr_line2" length="16"  />
+            <column name="addr_line2" length="100"  />
         </property>
         
         <property name="city">
-            <column name="city" length="16" />
+            <column name="city" length="50" />
         </property>
         
         <property name="state">
