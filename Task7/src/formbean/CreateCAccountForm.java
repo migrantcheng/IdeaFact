@@ -15,7 +15,7 @@ public class CreateCAccountForm {
 	private String addr_line2;
 	private String city;
 	private String state;
-	private int zip;
+	private String zip;
 	private String button;
 	
 	public CreateCAccountForm(HttpServletRequest request){
@@ -28,11 +28,7 @@ public class CreateCAccountForm {
 		addr_line2 = request.getParameter("addrline2");
 		city = request.getParameter("city");
 		state = request.getParameter("state");
-		try{
-		zip = Integer.parseInt(request.getParameter("zip"));
-		}catch(Exception e){
-			zip = -1;
-		}
+		zip = request.getParameter("zip");
 		button = request.getParameter("button");
 		
 	}
@@ -128,12 +124,12 @@ public class CreateCAccountForm {
 	}
 
 
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
 
 
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
@@ -183,7 +179,7 @@ public class CreateCAccountForm {
 			errors.add("State is required");
 		}
 		
-		if (zip<0) {
+		if (zip==null || zip.length()==0) {
 			errors.add("Zip is required");
 		}
 		

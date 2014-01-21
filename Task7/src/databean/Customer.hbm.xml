@@ -44,7 +44,7 @@
         </property>
         
         <property name="zip">
-            <column name="zip"  />
+            <column name="zip"  length="5"/>
         </property>
         
         <property name="cash">
