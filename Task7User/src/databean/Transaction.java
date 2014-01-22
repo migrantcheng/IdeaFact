@@ -7,7 +7,7 @@ public class Transaction {
 	public static final String SELL = "SELL";
 	public static final String BUY = "BUY";
 	public static final String DEPOSIT = "DEPOSIT";
-	public static final String WITHDRAWAL = "WITHDRAWAL";
+	public static final String WITHDRAW = "WITHDRAW";
 	
 	private int transaction_id;
 	private int customer_id;
