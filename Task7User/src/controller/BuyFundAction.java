@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,15 @@ public class BuyFundAction extends Action {
 	private FundDAO fundDAO;
 	private TransactionDAO transactionDAO;
 	private FundPriceHistoryDAO fundPriceHistoryDAO;
+
+	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
+	private DecimalFormat dfNumberFund = new DecimalFormat("#,##0.000");
+
+	private double available;
+	private double amount;
+	
+	private String stringAvailable;
+	private String stringAmount;
 	
 	public BuyFundAction(Model model){
 		customerDAO = model.getCustomerDAO();
@@ -39,10 +49,23 @@ public class BuyFundAction extends Action {
 		// Set up error list
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors",errors);
+        request.setAttribute("stringAvailable",stringAvailable);
+        Customer customer = (Customer) request.getSession().getAttribute("customer");
+    	customer = customerDAO.read(customer.getUsername());
+    	request.getSession().setAttribute("customer", customer);
+        
+        available = (double)((Customer)request.getSession().getAttribute("customer")).getAvailable() / 100;
+        stringAvailable = dfNumberCash.format(available);
 
         try {
 	        // Load the form parameters into a form bean
 	        BuyFundFormBean form = new BuyFundFormBean(request);
+	        System.out.println(form.getAmount());
+	        request.setAttribute("form", form);
+	        
+	        amount = (double)form.getAmount() / 100;
+	        stringAmount = dfNumberCash.format(amount);
+	        request.setAttribute("stringAmount",stringAmount);
 	        
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
@@ -58,24 +81,36 @@ public class BuyFundAction extends Action {
 	        	errors.add("Ticker does not exist.");
 	        } else {
 	        	request.setAttribute("fund", fund);
+	        	
 	        	long price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
 	        	String latestPrice;
 	        	if (price == -1) {
 	        		latestPrice = "N/A";
 	        	} else {
-	        		latestPrice = Double.toString(((double)price) / 1000);
+	        		latestPrice = dfNumberCash.format((double)price / 100);
 	        	}
 	        	request.setAttribute("latestPrice", latestPrice);
 	        }
 	        
+	        if (errors.size() != 0) {
+		        if (form.getButton().equals("query")) {
+		        	return "buy.jsp";
+		        }
+	        }
+	        
+	        if (form.getButton().equals("query")) {
+	        	return "buyNext.jsp";
+	        }
+	        
+	        
 	        if (form.isPresent()) {
 	        	//update customer session
-	        	Customer customer = (Customer) request.getSession().getAttribute("customer");
+	        	customer = (Customer) request.getSession().getAttribute("customer");
 	        	customer = customerDAO.read(customer.getUsername());
 	        	request.getSession().setAttribute("customer", customer);
 	        	if (form.getButton().equals("next") || form.getButton().equals("buy")) {
 	        		//check for balance
-	        		if (form.getAmount() > customer.getAvailable()) {
+	        		if (form.getAmount() > (customer.getAvailable())) {
 	        			errors.add("Insufficient fund.");
 	        		}
 	        	}
@@ -92,6 +127,10 @@ public class BuyFundAction extends Action {
 		        	return "buy.jsp";
 		        }
 	        }
+	        
+	        if (form.getButton().equals("next")) {
+	        	return "buyConfirm.jsp";
+	        }
 	
 	        //deduct balance
 	        errors.addAll(customerDAO.spend((Customer)request.getSession().getAttribute("customer"),form.getAmount()));
@@ -103,9 +142,20 @@ public class BuyFundAction extends Action {
 	        
 	        //add transaction to queue
 			Transaction transaction = new Transaction();
-	
+			transaction.setAmount(form.getAmount());
+			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
+			transaction.setFund_id(fund.getFund_id());
+			transaction.setExecute_date(null);
+			transaction.setTransaction_type("BUY");
+			transaction.setShares(0);
+			transactionDAO.create(transaction);
+			
+			Customer user = (Customer) request.getSession().getAttribute("customer");
+        	user = customerDAO.read(user.getUsername());
+        	request.getSession().setAttribute("customer", user);
+			
 			request.setAttribute("messages","Your transaction for buying " + fund.getName() + " has been successfully placed.");
-	        return "transaction.jsp";
+	        return "buy.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "buy.jsp";

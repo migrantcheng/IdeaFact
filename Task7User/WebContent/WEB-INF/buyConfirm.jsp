@@ -12,7 +12,7 @@
         </div><!--/span-->
         <div class="span9">
           <div class="page-header">
-            <h1>Buy Fund - Confirmation</h1>
+            <h1>Buy Fund</h1>
           </div>
 
           <c:if test="${fn:length(errors) gt 0}">
@@ -42,41 +42,38 @@
           </c:if>
 		  
     	  <form class="form-horizontal" method="POST">
-  		    <div class="control-group">
-  		      <label class="control-label" for="ticker">Ticker</label>
-  		      <div class="controls">
-  		        <input type="text" id="ticker" placeholder="ticker" name="ticker" value="${form.ticker}" disabled>
-  		      </div>
-  		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="fundName">Fund Name</label>
-		      <div class="controls">
-		      	<input type="text" id="name" placeholder="Input ticker to check" name="fundName" value="${form.fundName}" disabled>
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="fundName">Latest Price</label>
-		      <div class="controls">
-		      	<input type="text" id="price" placeholder="Input ticker to check" name="fundPrice" value="${form.fundPrice}" disabled>
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="fundName">Available Balance</label>
-		      <div class="controls">
-		      	<input type="text" id="balance" name="balance" value="${user.available}" disabled>
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="amount">Amount of Money</label>
-		      <div class="controls">
-		        <input type="text" id="amount" placeholder="example: 29.50" name="amount" value="${form.amount}" disabled>
-		      </div>
-		    </div>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Ticker</dt>
+			  <dd>${fund.symbol}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Fund Name</dt>
+			  <dd>${fund.name}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Latest Price</dt>
+			  <dd>$${latestPrice}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Available Balance</dt>
+			  <dd>$${stringAvailable}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Amount</dt>
+			  <dd>$${stringAmount}</dd>
+			</dl>
+			
+  		    <input type="hidden" id="ticker" name="ticker" value="${fund.symbol}">
+		    <input type="hidden" id="name" name="fundName" value="${fund.name}">
+		    <input type="hidden" id="price" name="fundPrice" value="${latestPrice}">
+		    <input type="hidden" id="balance" name="balance" value="${customer.available}">
+		    <input type="hidden" id="amount" name="amount" value="${form.amount / 100}">
+		      	
 		    <div class="control-group">
 		      <div class="controls">
 		        <button type="submit" class="btn btn-primary" name="button" value="buy">Buy</button>
 		        <a href="javascript:history.back()">
-		        	<button type="button" class="btn" name="button" value="buy">Return</button>
+		        	<button type="button" class="btn" name="button">Return</button>
 		        </a>
 		      </div>
 		    </div>

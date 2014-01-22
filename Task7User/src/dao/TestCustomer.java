@@ -21,7 +21,7 @@ public class TestCustomer {
         session.beginTransaction();
         
 
-        createPerson(session);
+        //createPerson(session);
 
         queryPerson(session);
 

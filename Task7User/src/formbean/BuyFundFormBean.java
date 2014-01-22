@@ -21,7 +21,7 @@ public class BuyFundFormBean {
 		fundPrice = request.getParameter("fundPrice");
 		
 		try {
-			amount = (long)(Double.parseDouble(request.getParameter("amount")) * 100);
+			amount = (long)((Double.parseDouble(request.getParameter("amount")) * 100));
 		} catch(Exception e) {
 			amount = - 1;
 		}
@@ -52,12 +52,8 @@ public class BuyFundFormBean {
 			errors.add("Amount is not correct.");
 		}
 		
-		if (ticker.length() == 0) {
+		if (ticker == null || ticker.length() == 0) {
 			errors.add("Ticker cannot be empty.");
-		}
-		
-		if (errors.size() > 0) {
-			return errors;
 		}
 
 		return errors;

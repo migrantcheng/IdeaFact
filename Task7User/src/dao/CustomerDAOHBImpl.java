@@ -39,38 +39,44 @@ public class CustomerDAOHBImpl implements CustomerDAO {
 
 	@Override
 	public void create(Customer customer) {
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-
-			session.save(customer);
-			tx.commit();
-		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		}
+//		session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Transaction tx = null;
+//		try {
+//			tx = session.beginTransaction();
+//
+//			session.save(customer);
+//			tx.commit();
+//		} catch (HibernateException e) {
+//			if (tx != null)
+//				tx.rollback();
+//			e.printStackTrace();
+//		}
 	}
 	
 	public ArrayList<String> spend(Customer customer, long amount) {
 		ArrayList<String> errors = new ArrayList<String>();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			if (read(customer.getUsername()).getAvailable() < amount) {
-				errors.add("Insufficient fund.");
-				return errors;
-			} else {
-				customer.setAvailable(read(customer.getUsername()).getAvailable() - amount);
-				session.save(customer);
-			}
-			tx.commit();
-		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Customer where username = :username");
+		query.setParameter("username", customer.getUsername());
+
+        List <Customer> list = query.list();
+        java.util.Iterator<Customer> iter = list.iterator();
+        if (iter.hasNext()) {
+        	customer = iter.next();
+        }
+
+        
+		if (customer.getAvailable() < amount) {
+			errors.add("Insufficient fund.");
+		} else {
+			customer.setAvailable(customer.getAvailable() - amount);
+			session.update(customer);
 		}
+		
+        session.getTransaction().commit();
+
+
 		return errors;
 	}
 
