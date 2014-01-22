@@ -1,8 +1,9 @@
 package dao;
 
-import org.hibernate.HibernateException;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import dao.interfaces.FundDAO;
 import databean.Fund;
@@ -14,21 +15,21 @@ public class FundDAOHBImpl implements FundDAO {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 
-	@Override
-	public void createFund(Fund fund) {
+	public Fund read(String ticker){
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
+		session.beginTransaction();
+		Query query = session.createQuery("from Fund where symbol = :ticker");
+		query.setParameter("ticker", ticker);
+		Fund fund = null;
+        List <Fund> list = query.list();
+        java.util.Iterator<Fund> iter = list.iterator();
+        if (iter.hasNext()) {
+        	fund = iter.next();
+        }
 
-			session.save(fund);
-			tx.commit();
-		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		}
-		
+        session.getTransaction().commit();
+        
+        return fund;
 	}
 
 }

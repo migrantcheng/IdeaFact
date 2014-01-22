@@ -45,7 +45,7 @@
   		    <div class="control-group">
   		      <label class="control-label" for="ticker">Ticker</label>
   		      <div class="controls">
-  		        <input type="text" id="ticker" placeholder="ticker" name="ticker">
+  		        <input type="text" id="ticker" placeholder="ticker" name="ticker" value="${fund.symbol}" disabled>
   		      </div>
   		    </div>
 		    <div class="control-group">
@@ -57,13 +57,13 @@
 		    <div class="control-group">
 		      <label class="control-label" for="fundName">Latest Price</label>
 		      <div class="controls">
-		      	<input type="text" id="price" placeholder="Input ticker to check" name="fundPrice" value="${fundhistory.price}" disabled>
+		      	<input type="text" id="price" placeholder="Input ticker to check" name="fundPrice" value="${latestPrice}" disabled>
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label" for="fundName">Available Balance</label>
 		      <div class="controls">
-		      	<input type="text" id="balance" name="balance" value="${user.available}" disabled>
+		      	<input type="text" id="balance" name="balance" value="${customer.available}" disabled>
 		      </div>
 		    </div>
 		    <div class="control-group">

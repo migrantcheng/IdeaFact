@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -11,7 +12,8 @@ import dao.interfaces.CustomerDAO;
 import databean.Customer;
 
 public class CustomerDAOHBImpl implements CustomerDAO {
-private Session session;
+
+	private Session session;
 	
 	public CustomerDAOHBImpl(){
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -49,6 +51,27 @@ private Session session;
 				tx.rollback();
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<String> spend(Customer customer, long amount) {
+		ArrayList<String> errors = new ArrayList<String>();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			if (read(customer.getUsername()).getAvailable() < amount) {
+				errors.add("Insufficient fund.");
+				return errors;
+			} else {
+				customer.setAvailable(read(customer.getUsername()).getAvailable() - amount);
+				session.save(customer);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		return errors;
 	}
 
 	@Override

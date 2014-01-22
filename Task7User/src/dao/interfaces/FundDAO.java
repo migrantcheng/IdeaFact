@@ -4,6 +4,6 @@ import databean.Fund;
 
 public interface FundDAO {
 
-	void createFund(Fund fund);
+	Fund read(String ticker);
 
 }
