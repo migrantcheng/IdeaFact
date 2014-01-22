@@ -61,6 +61,10 @@ public class LoginForm {
     public List<String> getValidationErrors() {
         List<String> errors = new ArrayList<String>();
 
+        if (button != null && !button.equals("signin")) {
+        	errors.add("Session expired, please login again.");
+        	return errors;
+        }
         if (username == null || username.length() == 0) errors.add("Username is required");
         if (password == null || password.length() == 0) errors.add("Password is required");
 //        if (button == null) errors.add("Button is required");

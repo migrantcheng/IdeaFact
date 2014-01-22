@@ -12,7 +12,7 @@
         </div><!--/span-->
         <div class="span9">
           <div class="page-header">
-            <h1>Buy Fund</h1>
+            <h1>Sell Fund</h1>
           </div>
 
           <c:if test="${fn:length(errors) gt 0}">
@@ -41,20 +41,35 @@
             </div>
           </c:if>
 		  
-    	  <form class="form-horizontal" method="POST">
-  		    <div class="control-group">
-  		      <label class="control-label" for="ticker">Ticker</label>
-  		      <div class="controls">
-  		        <input type="text" id="ticker" placeholder="Enter ticker to query" name="ticker">
-  		        <input type="hidden" id="amount" name="amount" value="1">
-  		      </div>
-  		    </div>
-		    <div class="control-group">
-		      <div class="controls">
-		        <button type="submit" class="btn btn-primary" name="button" value="query">Next</button>
-		      </div>
-		    </div>
-		  </form>
+	<table class="table table-striped">
+      <thead>
+        <tr>
+            <hr>
+          <th>Ticker</th>
+          <th>Fund Name</th>
+          <th>Amount of Position</th>
+          <th>Latest Price</th>
+          <th>Sell</th>
+        </tr>
+      </thead>
+      <tbody>
+      <c:if test="${fn:length(positionList) gt 0}">
+      <c:forEach var="position" items="${positionList}">
+      <form class="form-horizontal" method="POST">
+      <input type="hidden" id="ticker" name="ticker" value="${position.fund.symbol}">
+      <input type="hidden" id="ticker" name="amount" value="1">
+      <tr>
+        <td>${position.fund.symbol}</td>
+        <td>${position.fund.name}</td>
+        <td>${position.shares}</td>
+        <td>$${position.latestPrice}</td>
+        <td><button type="submit" class="btn btn-primary" name="button" value="query">Sell Fund</button></td>
+      </tr>
+      </form>
+      </c:forEach>
+      </c:if>
+      <tbody>
+	</table>
 		  
         </div><!--/span-->
       </div><!--/row-->

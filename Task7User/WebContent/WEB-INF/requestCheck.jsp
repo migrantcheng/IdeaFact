@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <jsp:include page="customerHeader.jsp" />
 
     <div class="container">
@@ -12,7 +9,7 @@
         </div><!--/span-->
         <div class="span9">
           <div class="page-header">
-            <h1>Buy Fund</h1>
+            <h1>Request Check</h1>
           </div>
 
           <c:if test="${fn:length(errors) gt 0}">
@@ -42,16 +39,20 @@
           </c:if>
 		  
     	  <form class="form-horizontal" method="POST">
-  		    <div class="control-group">
-  		      <label class="control-label" for="ticker">Ticker</label>
-  		      <div class="controls">
-  		        <input type="text" id="ticker" placeholder="Enter ticker to query" name="ticker">
-  		        <input type="hidden" id="amount" name="amount" value="1">
-  		      </div>
-  		    </div>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Available Cash</dt>
+			  <dd>${customer.available}</dd>
+			</dl>
+		      	
+		    <div class="control-group">
+		      <label class="control-label" for="amount">Amount of Check</label>
+		      <div class="controls">
+		        <input type="text" id="amount" placeholder="example: 13.55" name="amount">
+		      </div>
+		    </div>
 		    <div class="control-group">
 		      <div class="controls">
-		        <button type="submit" class="btn btn-primary" name="button" value="query">Next</button>
+		        <button type="submit" class="btn btn-primary" name="button" value="next">Next</button>
 		      </div>
 		    </div>
 		  </form>

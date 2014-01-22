@@ -12,7 +12,7 @@
         </div><!--/span-->
         <div class="span9">
           <div class="page-header">
-            <h1>Buy Fund</h1>
+            <h1>Sell Fund</h1>
           </div>
 
           <c:if test="${fn:length(errors) gt 0}">
@@ -42,16 +42,40 @@
           </c:if>
 		  
     	  <form class="form-horizontal" method="POST">
-  		    <div class="control-group">
-  		      <label class="control-label" for="ticker">Ticker</label>
-  		      <div class="controls">
-  		        <input type="text" id="ticker" placeholder="Enter ticker to query" name="ticker">
-  		        <input type="hidden" id="amount" name="amount" value="1">
-  		      </div>
-  		    </div>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Ticker</dt>
+			  <dd>${fund.symbol}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Fund Name</dt>
+			  <dd>${fund.name}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Latest Price</dt>
+			  <dd>$${latestPrice}</dd>
+			</dl>
+  		    <dl class="dl-horizontal">
+			  <dt style="font-weight:normal">Available Shares</dt>
+			  <dd>${stringAvailable}</dd>
+			</dl>
+			
+  		    <input type="hidden" id="ticker" name="ticker" value="${fund.symbol}">
+		    <input type="hidden" id="name" name="fundName" value="${fund.name}">
+		    <input type="hidden" id="price" name="fundPrice" value="${latestPrice}">
+		    <input type="hidden" id="balance" name="balance" value="${position.shares}">
+		      	
+		    <div class="control-group">
+		      <label class="control-label" for="amount">Amount of Shares</label>
+		      <div class="controls">
+		        <input type="text" id="amount" placeholder="example: 10.505" name="amount">
+		      </div>
+		    </div>
 		    <div class="control-group">
 		      <div class="controls">
-		        <button type="submit" class="btn btn-primary" name="button" value="query">Next</button>
+		        <button type="submit" class="btn btn-primary" name="button" value="next">Next</button>
+		        <a href="javascript:history.back()">
+		        	<button type="button" class="btn" name="button">Return</button>
+		        </a>
 		      </div>
 		    </div>
 		  </form>
