@@ -79,5 +79,24 @@ private Session session;
         return list;
 	}
 
+	@Override
+	public Customer readById(int customer_id) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Customer where customer_id = :customer_id");
+		query.setParameter("customer_id", customer_id);
+		Customer customer = null;
+
+        List <Customer> list = query.list();
+        java.util.Iterator<Customer> iter = list.iterator();
+        if (iter.hasNext()) {
+        	customer = iter.next();
+        }
+
+        session.getTransaction().commit();
+        
+        return customer;
+	}
+
 
 }

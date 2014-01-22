@@ -13,6 +13,8 @@ public interface CustomerDAO {
 	public void update(Customer customer);
 
 	public List<Customer> getCustomerList();
+
+	public Customer readById(int customer_id);
 	
 
 }

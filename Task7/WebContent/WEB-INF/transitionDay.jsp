@@ -11,7 +11,10 @@
 		<div class="page-header">
             <h1>Transition Day</h1>
           </div>
-          <p>Date: <input type="text" id="datepicker"></p>
+          
+                
+                <form class="form-signin" method="POST">
+                <p>Date: <input type="text" id="datepicker" name="currDate"></p>
           <tr>
             <tr>
               <tr>
@@ -31,14 +34,14 @@
     		<tr>
     		  <td>${fund.symbol}</td>
               <td>${fund.name}</td>
-              <td>$<input type="text" name="textfield" id="price"></td> 
+              <td>$<input type="text" name="${fund.fund_id}" id="price"></td> 
               </tr>
    			</c:forEach>
   
    </tbody>
  </table>
- <tr><a href="#"><button class="btn btn-info" name="button"> Submit </button></a></tr>
-
+ <tr><button type="submit" class="btn btn-primary" name="button">Submit</button></tr>
+</form>
 
         </div><!--/span-->
       </div><!--/row-->
