@@ -49,13 +49,13 @@ public class BuyFundAction extends Action {
 		// Set up error list
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors",errors);
-        request.setAttribute("stringAvailable",stringAvailable);
         Customer customer = (Customer) request.getSession().getAttribute("customer");
     	customer = customerDAO.read(customer.getUsername());
     	request.getSession().setAttribute("customer", customer);
         
         available = (double)((Customer)request.getSession().getAttribute("customer")).getAvailable() / 100;
         stringAvailable = dfNumberCash.format(available);
+        request.setAttribute("stringAvailable",stringAvailable);
 
         try {
 	        // Load the form parameters into a form bean

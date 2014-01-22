@@ -41,12 +41,12 @@
     	  <form class="form-horizontal" method="POST">
   		    <dl class="dl-horizontal">
 			  <dt style="font-weight:normal">Available Cash</dt>
-			  <dd>${customer.available}</dd>
+			  <dd>$${stringAvailable}</dd>
 			</dl>
 		      	
   		    <dl class="dl-horizontal">
 			  <dt style="font-weight:normal">Amount of Check</dt>
-			  <dd>${stringAmount}</dd>
+			  <dd>$${stringAmount}</dd>
 			</dl>
 		    
 		    <input type="hidden" id="ticker" name="amount" value="${form.amount / 100}">

@@ -41,7 +41,7 @@
     	  <form class="form-horizontal" method="POST">
   		    <dl class="dl-horizontal">
 			  <dt style="font-weight:normal">Available Cash</dt>
-			  <dd>${customer.available}</dd>
+			  <dd>$${stringAvailable}</dd>
 			</dl>
 		      	
 		    <div class="control-group">
