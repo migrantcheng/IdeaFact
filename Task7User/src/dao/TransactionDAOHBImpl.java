@@ -7,8 +7,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import dao.interfaces.TransactionDAO;
-import databean.FundPriceHistory;
-import databean.Position;
 import databean.Transaction;
 
 public class TransactionDAOHBImpl implements TransactionDAO {
@@ -57,7 +55,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	public List<Transaction> getAll(int customer_id) {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from Transaction where customer_id = :customer_id");
+		Query query = session.createQuery("from Transaction where customer_id = :customer_id order by transaction_id DESC");
 		query.setParameter("customer_id", customer_id);
 		List<Transaction> transactions = query.list();
 

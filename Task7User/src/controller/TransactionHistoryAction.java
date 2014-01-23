@@ -37,24 +37,36 @@ public class TransactionHistoryAction extends Action {
     	public TransactionList(Transaction transaction, Fund fund) {
     		this.transaction = transaction;
     		this.fund = fund;
-    		
-    		switch (transaction.getTransaction_type()) {
-    		case "BUY":
+    		String transactionType = transaction.getTransaction_type();
+    		if (transactionType.equals("BUY")) {
     			operation = "Buy";
-    			break;
-    		case "SELL":
+    		} else if (transactionType.equals("SELL")) {
     			operation = "Sell";
-    			break;
-    		case "DEPOSIT":
+    		} else if (transactionType.equals("DEPOSIT")) {
     			operation = "Deposit Check";
-    			break;
-    		case "WITHDRAWAL":
+    		} else if (transactionType.equals("WITHDRAWAL")) {
     			operation = "Request Check";
-    			break;
-    		default:
+    		} else {
     			operation = "N/A";
-    			break;
     		}
+    		
+//    		switch (transaction.getTransaction_type()) {
+//    		case "BUY":
+//    			operation = "Buy";
+//    			break;
+//    		case "SELL":
+//    			operation = "Sell";
+//    			break;
+//    		case "DEPOSIT":
+//    			operation = "Deposit Check";
+//    			break;
+//    		case "WITHDRAWAL":
+//    			operation = "Request Check";
+//    			break;
+//    		default:
+//    			operation = "N/A";
+//    			break;
+//    		}
     		if (transaction.getShares() == 0) {
     			stringShares = "-";
     		} else {

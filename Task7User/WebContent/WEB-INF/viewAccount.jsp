@@ -44,7 +44,7 @@
           </dl>
           <dl class="dl-horizontal">
             <dt>Address:</dt>
-            <dd>${customer.addr_line1}&nbsp;&nbsp;${customer.addr_line2}&nbsp;&nbsp;${customer.city}&nbsp;&nbsp;${customer.state}&nbsp;&nbsp;${customer.zip}</dd>
+            <dd>${customer.addr_line1}<br>${customer.addr_line2}<br>${customer.city}<br>${customer.state} ${customer.zip}</dd>
           </dl>
           <dl class="dl-horizontal">
             <dt>Last Trading Date:</dt>
