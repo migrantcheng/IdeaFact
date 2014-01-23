@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import dao.interfaces.FundDAO;
 import databean.Fund;
+import databean.Position;
 
 public class FundDAOHBImpl implements FundDAO {
 	private Session session;
@@ -47,5 +48,14 @@ public class FundDAOHBImpl implements FundDAO {
         session.getTransaction().commit();
         
         return fund;
+	}
+	
+	public List<Fund> getAllFunds() {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Fund");
+		List<Fund> funds = query.list();
+        session.getTransaction().commit();
+        return funds;
 	}
 }
