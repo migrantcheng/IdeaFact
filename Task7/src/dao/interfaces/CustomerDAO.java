@@ -15,6 +15,8 @@ public interface CustomerDAO {
 	public List<Customer> getCustomerList();
 
 	public Customer readById(int customer_id);
+
+	public void testNewFunction(String string);
 	
 
 }

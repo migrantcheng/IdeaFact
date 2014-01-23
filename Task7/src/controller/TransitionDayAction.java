@@ -147,6 +147,8 @@ public class TransitionDayAction extends Action {
         			}
         		}
         		
+        		customerDAO.testNewFunction("123");
+        		
         		request.setAttribute("message","Transition Day: "+date+" successfully submitted.");
         		return "success.jsp";
         	}

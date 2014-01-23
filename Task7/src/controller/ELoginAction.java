@@ -68,7 +68,7 @@ public class ELoginAction extends Action {
 	        HttpSession session = request.getSession();
 	        session.setAttribute("employee",employee);
 
-	        return "after-login.jsp";
+	        return "manageCustomerAccount.do";
         } catch (Exception e) {
         	errors.add(e.getMessage());
 			return "error.jsp";
