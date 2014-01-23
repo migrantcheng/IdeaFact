@@ -67,7 +67,7 @@ public class LoginAction extends Action {
 	        HttpSession session = request.getSession();
 	        session.setAttribute("customer",user);
 
-	        return "changePwd.do";
+	        return "myaccount.do";
         } catch (Exception e) {
         	errors.add(e.getMessage());
 			return "login.jsp";

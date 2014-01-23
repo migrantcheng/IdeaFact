@@ -51,14 +51,14 @@
             </thead>
             <tbody>
             
-            <c:forEach var="transaction" items="${transactions}">
+            <c:forEach var="transaction" items="${transactionList}">
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>${transaction.stringDate}</td>
+              <td>${transaction.operation}</td>
+              <td>${transaction.fund.name}</td>
+              <td>${transaction.stringShares}</td>
+              <td>${transaction.stringUnitPrice}</td>
+              <td>${transaction.stringAmount}</td>
             </tr>
             </c:forEach>
             

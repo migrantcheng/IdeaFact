@@ -77,13 +77,14 @@ public class SellFundAction extends Action {
 		// Set up error list
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors",errors);
-        Customer customer = (Customer) request.getSession().getAttribute("customer");
-    	customer = customerDAO.read(customer.getUsername());
-    	request.getSession().setAttribute("customer", customer);
         
         
 
         try {
+            Customer customer = (Customer) request.getSession().getAttribute("customer");
+        	customer = customerDAO.read(customer.getUsername());
+        	request.getSession().setAttribute("customer", customer);
+        	
 	        // Load the form parameters into a form bean
 	        SellFundFormBean form = new SellFundFormBean(request);
 	        request.setAttribute("form", form);
@@ -106,9 +107,14 @@ public class SellFundAction extends Action {
 	        	tempPosition = iter.next();
 	        	tempFund = fundDAO.read(tempPosition.getFund_id());
 	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
-	        	
+	        	String latestPrice;
+	        	if (tempLatestPrice == -1) {
+	        		latestPrice = "-";
+	        	} else {
+	        		latestPrice = dfNumberCash.format((double)tempLatestPrice / 100);
+	        	}
 	        	if (tempPosition.getShares() > 0) {
-	        		positionList.add(new PositionList(dfNumberFund.format((double)tempPosition.getShares()/1000),tempFund,dfNumberCash.format((double)tempLatestPrice/100)));
+	        		positionList.add(new PositionList(dfNumberFund.format((double)tempPosition.getShares()/1000),tempFund,latestPrice));
 	        	}
 	        }
 	        
@@ -133,7 +139,7 @@ public class SellFundAction extends Action {
 	        	long price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
 	        	String latestPrice;
 	        	if (price == -1) {
-	        		latestPrice = "N/A";
+	        		latestPrice = "-";
 	        	} else {
 	        		latestPrice = dfNumberCash.format((double)price / 100);
 	        	}
@@ -198,7 +204,7 @@ public class SellFundAction extends Action {
 			transactionDAO.create(transaction);
 			
 			request.setAttribute("messages","Your transaction for selling " + fund.getName() + " has been successfully placed.");
-	        return "sell.do";
+	        return "sell.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "sell.jsp";

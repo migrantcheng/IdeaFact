@@ -72,8 +72,13 @@ public class ResearchFundAction extends Action {
 	        while (iter.hasNext()) {
 	        	tempFund = iter.next();
 	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempFund.getFund_id());
-	        	System.out.println(tempFund.getFund_id());
-	        	fundList.add(new FundList(tempFund,dfNumberCash.format((double)tempLatestPrice/100)));
+	        	String tempPrice = null;
+	        	if (tempLatestPrice <= 0) {
+	        		tempPrice = "-";
+	        	} else {
+	        		tempPrice = dfNumberCash.format((double)tempLatestPrice/100);
+	        	}
+	        	fundList.add(new FundList(tempFund,tempPrice));
 	        }
 	        
 	        request.setAttribute("fundList", fundList);
