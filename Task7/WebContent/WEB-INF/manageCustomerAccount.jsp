@@ -47,6 +47,7 @@
               <th>First Name</th>
               <th>Last Name</th>
               <th>Cash</th>
+              <th>Available</th>
               <th>Operation</th>
     </tr>
     </thead>
@@ -56,7 +57,8 @@
     		  <td>${customer.username}</td>
               <td>${customer.firstname}</td>
               <td>${customer.lastname}</td> 
-              <td>${customer.cash/100}</td>
+              <td><p class="text-right">${customer.cash/100}</p></td>
+              <td><p class="text-right">${customer.available/100}</p></td>
               <td><a href="#"><button class="btn btn-info">Reset Passwrod</button></a>&nbsp;<a href="#"><button class="btn btn-primary">View Customer Account</button></a>&nbsp;<a href="#"><button class="btn btn-inverse">View Customer History</button></a></td>
    			</tr>
    			</c:forEach>
