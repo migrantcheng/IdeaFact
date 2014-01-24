@@ -12,7 +12,31 @@
             <h1>Transition Day</h1>
           </div>
           
-                
+                <c:if test="${fn:length(errors) gt 0}">
+            <div class="row">
+              <div class="span9">
+                <div class="alert alert-error">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <c:forEach var="error" items="${errors}">
+                  <li>${error}</li>
+                  </c:forEach>
+                </div>
+              </div>
+            </div>
+          </c:if>
+           
+          <c:if test="${fn:length(messages) gt 0}">
+            <div class="row">
+              <div class="span9">
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <c:forEach var="message" items="${messages}">
+                  <li>${message}</li>
+                  </c:forEach>
+                </div>
+              </div>
+            </div>
+          </c:if>
                 <form class="form-signin" method="POST">
                 <p>Date: <input type="text" id="datepicker" name="currDate"></p>
           <tr>

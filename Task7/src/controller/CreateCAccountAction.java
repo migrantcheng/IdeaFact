@@ -42,7 +42,7 @@ public class CreateCAccountAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	        	return "createCustomerAccount.jsp";
 	        }
 	
 			Customer customer = new Customer();
@@ -65,10 +65,10 @@ public class CreateCAccountAction extends Action {
 			customerDAO.create(customer);
 	
 			request.setAttribute("message","Created Account for "+customer.getUsername());
-	        return "success.jsp";
+			return "createCustomerAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "createCustomerAccount.jsp";
 		}
 	}
 

@@ -43,7 +43,7 @@ public class CreateEAccountAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	        	return "createCustomerAccount.jsp";
 	        }
 	
 			Employee employee = new Employee();
@@ -56,10 +56,10 @@ public class CreateEAccountAction extends Action {
         	employeeDAO.createAccount(employee);
 	
 			request.setAttribute("message","Created Account for "+employee.getUsername());
-	        return "success.jsp";
+			return "createCustomerAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "createCustomerAccount.jsp";
 		}
 	}
 

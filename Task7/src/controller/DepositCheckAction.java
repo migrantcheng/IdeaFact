@@ -47,7 +47,7 @@ public class DepositCheckAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	        	return "depositCheck.jsp";
 	        }
 	
 	        //get customer from db
@@ -55,7 +55,7 @@ public class DepositCheckAction extends Action {
 	        if(customer==null){
 	        	//if not found, return error.jsp
 	        	errors.add("Username not found in DB");
-	        	return "error.jsp";
+	        	return "depositCheck.jsp";
 	        }
 	        
 	        Transaction transaction = new Transaction();
@@ -73,10 +73,10 @@ public class DepositCheckAction extends Action {
 	        customerDAO.update(customer);
 	
 			request.setAttribute("message","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
-	        return "success.jsp";
+			return "depositCheck.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "depositCheck.jsp";
 		}
 	}
 

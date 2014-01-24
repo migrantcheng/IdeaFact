@@ -38,7 +38,7 @@ public class ManageCustomerAccountAction extends Action {
 	        return "manageCustomerAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "manageCustomerAccount.do";
 		}
 	}
 

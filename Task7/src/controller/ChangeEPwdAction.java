@@ -42,23 +42,23 @@ public class ChangeEPwdAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	            return "changeEmployeePassword.jsp";
 	        }
 	
 			Employee employee = (Employee) request.getSession().getAttribute("employee");
 			if(!employee.getPassword().equals(form.getOldPwd())){
 				errors.add("Old Password not correct!");
-				return "error.jsp";
+				return "changeEmployeePassword.jsp";
 			}
 	
 			// Change the password
         	employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
 	
 			request.setAttribute("message","Password changed for "+employee.getUsername());
-	        return "success.jsp";
+	        return "changeEmployeePassword.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+			return "changeEmployeePassword.jsp";
 		}
 	}
 
