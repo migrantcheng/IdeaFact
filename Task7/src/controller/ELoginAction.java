@@ -47,7 +47,7 @@ public class ELoginAction extends Action {
 	        // Any validation errors?
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	        	return "employeeLogin.jsp";
 	        }
 
 	        // Look up the user
@@ -55,23 +55,23 @@ public class ELoginAction extends Action {
 	        
 	        if (employee == null) {
 	            errors.add("Username not found");
-	            return "error.jsp";
+	            return "employeeLogin.jsp";
 	        }
 
 	        // Check the password
 	        if (!(employee.getPassword()).equals(form.getPassword())) {
 	            errors.add("Incorrect password");
-	            return "error.jsp";
+	            return "employeeLogin.jsp";
 	        }
 	
 	        // Attach (this copy of) the user bean to the session
 	        HttpSession session = request.getSession();
 	        session.setAttribute("employee",employee);
 
-	        return "after-login.jsp";
+	        return "manageCustomerAccount.do";
         } catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "employeeLogin.jsp";
 		}
 	}
 

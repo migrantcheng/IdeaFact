@@ -98,5 +98,11 @@ private Session session;
         return customer;
 	}
 
+	@Override
+	public void testNewFunction(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

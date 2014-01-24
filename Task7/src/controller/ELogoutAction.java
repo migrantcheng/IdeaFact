@@ -22,7 +22,7 @@ public class ELogoutAction extends Action {
 		HttpSession session = request.getSession(false);
         session.setAttribute("employee",null);
         
-        return "employeeLogin.jsp";
+        return "employeeLogin.do";
 	}
 
 }

@@ -105,6 +105,7 @@ public class TransitionDayAction extends Action {
         					positionDAO.update(position);
         				}
         				
+        				pendingItem.setShares((int)(shares*1000));
         				pendingItem.setExecute_date(date);			
         				transactionDAO.update(pendingItem);
         				
@@ -126,6 +127,7 @@ public class TransitionDayAction extends Action {
 //        					positionDAO.update(position);
 //        				}
         				
+        				pendingItem.setAmount(today.getPrice()*pendingItem.getShares()/1000);
         				pendingItem.setExecute_date(date);			
         				transactionDAO.update(pendingItem);
         				
@@ -147,12 +149,14 @@ public class TransitionDayAction extends Action {
         			}
         		}
         		
+        		customerDAO.testNewFunction("123");
+        		
         		request.setAttribute("message","Transition Day: "+date+" successfully submitted.");
-        		return "success.jsp";
+        		return "transitionDay.jsp";
         	}
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "transitionDay.jsp";
 		}
 	}
 

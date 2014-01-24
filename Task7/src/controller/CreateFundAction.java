@@ -44,7 +44,7 @@ public class CreateFundAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
-	            return "error.jsp";
+	        	return "createFund.jsp";
 	        }
 	
 	        Fund fund = new Fund();
@@ -54,10 +54,10 @@ public class CreateFundAction extends Action {
 	        fundDAO.createFund(fund);
 	
 			request.setAttribute("message","Created Fund : "+fund.getName()+" Symbol: "+fund.getSymbol());
-	        return "success.jsp";
+			return "createFund.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-			return "error.jsp";
+        	return "createFund.jsp";
 		}
 	}
 
