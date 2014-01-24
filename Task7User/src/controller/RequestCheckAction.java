@@ -129,7 +129,7 @@ public class RequestCheckAction extends Action {
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
 			transaction.setFund_id(0);
 			transaction.setExecute_date(null);
-			transaction.setTransaction_type("WITHDRAWAL");
+			transaction.setTransaction_type(Transaction.WITHDRAW);
 			transaction.setShares(0);
 			transactionDAO.create(transaction);
 			
