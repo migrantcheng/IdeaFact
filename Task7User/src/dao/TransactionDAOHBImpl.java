@@ -65,6 +65,19 @@ public class TransactionDAOHBImpl implements TransactionDAO {
         
         return transactions;
 	}
+
+	@Override
+	public List<Transaction> getPending(int customer_id) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Transaction where customer_id = :customer_id and execute_date is NULL order by transaction_id DESC");
+		query.setParameter("customer_id", customer_id);
+		List<Transaction> transactions = query.list();
+
+        session.getTransaction().commit();
+        
+        return transactions;
+	}
 	
 
 }

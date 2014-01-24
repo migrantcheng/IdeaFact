@@ -203,32 +203,9 @@ public class SellFundAction extends Action {
 			transaction.setShares((int)form.getAmount());
 			transactionDAO.create(transaction);
 			
-			request.setAttribute("messages","Your transaction for selling " + fund.getName() + " has been successfully placed.");
+			request.getSession().setAttribute("messages","Your transaction for selling " + fund.getName() + " has been successfully placed.");
 			
-			//renew position list
-			positions = positionDAO.getAllPositions(customer.getCustomer_id());
-	        
-	        
-	        // store all position information along with other information;
-	        positionList = new ArrayList<PositionList>();
-	        iter = positions.iterator();
-	        while (iter.hasNext()) {
-	        	tempPosition = iter.next();
-	        	tempFund = fundDAO.read(tempPosition.getFund_id());
-	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
-	        	String latestPrice;
-	        	if (tempLatestPrice == -1) {
-	        		latestPrice = "-";
-	        	} else {
-	        		latestPrice = dfNumberCash.format((double)tempLatestPrice / 100);
-	        	}
-	        	if (tempPosition.getShares() > 0) {
-	        		positionList.add(new PositionList(dfNumberFund.format((double)tempPosition.getShares()/1000),tempFund,latestPrice));
-	        	}
-	        }
-	        
-	        request.setAttribute("positionList", positionList);
-	        return "sell.jsp";
+	        return "myaccount.do";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "sell.jsp";

@@ -55,8 +55,8 @@ public class ChangePwdAction extends Action {
 			customer.setPassword(form.getNewPassword());
 			customerDAO.update(customer);
 	
-			request.setAttribute("messages","Password changed for "+customer.getUsername());
-	        return "changeCustomerPassword.jsp";
+			request.getSession().setAttribute("messages","Password changed for "+customer.getUsername());
+	        return "myaccount.do";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "changeCustomerPassword.jsp";

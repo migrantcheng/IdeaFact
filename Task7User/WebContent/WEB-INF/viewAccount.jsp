@@ -59,11 +59,12 @@
             <dd>$${stringAvailable}</dd>
           </dl>
           
+		  <hr>
+		  
           <h4>Position Information</h4>
 		    <table class="table table-striped">
 		      <thead>
 		        <tr>
-		            <hr>
 		          <th>Ticker</th>
 		          <th>Fund Name</th>
 		          <th>Amount of Position</th>
@@ -89,6 +90,36 @@
 		      </c:if>
 		      <tbody>
 			</table>
+			
+		  <hr>
+		  
+		  <h4>Pending Transactions</h4>
+		  <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Operation</th>
+                <th>Fund Name</th>
+                <th>Number of Shares</th>
+                <th>Share Prices</th>
+                <th>Dollar Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            <c:forEach var="transaction" items="${transactionList}">
+            <tr>
+              <td>${transaction.stringDate}</td>
+              <td>${transaction.operation}</td>
+              <td>${transaction.fund.name}</td>
+              <td>${transaction.stringShares}</td>
+              <td>${transaction.stringUnitPrice}</td>
+              <td>${transaction.stringAmount}</td>
+            </tr>
+            </c:forEach>
+            
+            <tbody>
+          </table>
 		  
         </div><!--/span-->
       </div><!--/row-->

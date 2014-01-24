@@ -12,4 +12,6 @@ public interface TransactionDAO {
 
 	List<Transaction> getAll(int customer_id);
 
+	List<Transaction> getPending(int customer_id);
+
 }

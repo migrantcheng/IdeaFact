@@ -51,7 +51,7 @@
             <c:if test="${fn:length(fundPriceList) gt 0}">
             <c:forEach var="fundPrice" items="${fundPriceList}">
               <tr>
-                <td>${fundPrice.price_date}</td>
+                <td>${fundPrice.date}</td>
                 <td>${fundPrice.price}</td>
               </tr>
             </c:forEach>

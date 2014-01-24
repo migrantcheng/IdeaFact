@@ -154,8 +154,8 @@ public class BuyFundAction extends Action {
         	user = customerDAO.read(user.getUsername());
         	request.getSession().setAttribute("customer", user);
 			
-			request.setAttribute("messages","Your transaction for buying " + fund.getName() + " has been successfully placed.");
-	        return "buy.jsp";
+			request.getSession().setAttribute("messages","Your transaction for buying " + fund.getName() + " has been successfully placed.");
+	        return "myaccount.do";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "buy.jsp";

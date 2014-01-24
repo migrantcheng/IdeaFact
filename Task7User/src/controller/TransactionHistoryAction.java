@@ -50,23 +50,6 @@ public class TransactionHistoryAction extends Action {
     			operation = "N/A";
     		}
     		
-//    		switch (transaction.getTransaction_type()) {
-//    		case "BUY":
-//    			operation = "Buy";
-//    			break;
-//    		case "SELL":
-//    			operation = "Sell";
-//    			break;
-//    		case "DEPOSIT":
-//    			operation = "Deposit Check";
-//    			break;
-//    		case "WITHDRAWAL":
-//    			operation = "Request Check";
-//    			break;
-//    		default:
-//    			operation = "N/A";
-//    			break;
-//    		}
     		if (transaction.getShares() == 0) {
     			stringShares = "-";
     		} else {
@@ -157,7 +140,6 @@ public class TransactionHistoryAction extends Action {
 	        
 	        request.setAttribute("transactionList", transactionList);
 	        
-	        // get last transaction day
 	        
 	        return "transactionHistory.jsp";
         }catch (Exception e) {

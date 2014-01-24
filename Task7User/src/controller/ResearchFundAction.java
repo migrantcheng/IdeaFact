@@ -1,23 +1,18 @@
 package controller;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import dao.Model;
-import dao.interfaces.CustomerDAO;
 import dao.interfaces.FundDAO;
 import dao.interfaces.FundPriceHistoryDAO;
-import dao.interfaces.PositionDAO;
-import dao.interfaces.TransactionDAO;
-import databean.Customer;
 import databean.Fund;
 import databean.FundPriceHistory;
-import databean.Position;
-import databean.Transaction;
-import formbean.SellFundFormBean;
 
 public class ResearchFundAction extends Action {
 	
@@ -25,6 +20,7 @@ public class ResearchFundAction extends Action {
 	private FundPriceHistoryDAO fundPriceHistoryDAO;
 
 	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
+	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 	
 	public static class FundList {
     	public Fund fund;
@@ -41,6 +37,24 @@ public class ResearchFundAction extends Action {
     	
     	public String getLatestPrice() {
     		return latestPrice;
+    	}
+    }
+	
+	public class FundPriceList {
+    	public String date;
+    	public String price;
+    	
+    	public FundPriceList(FundPriceHistory fundPriceHistory) {
+    		date = sdf.format(fundPriceHistory.getPrice_date());
+    		price = dfNumberCash.format((double)fundPriceHistory.getPrice() / 100);
+    	}
+    	
+    	public String getDate() {
+    		return date;
+    	}
+    	
+    	public String getPrice() {
+    		return price;
     	}
     }
 	
@@ -111,7 +125,12 @@ public class ResearchFundAction extends Action {
 		        return "researchFund.jsp";
 	        }
 	        
-	        List<FundPriceHistory> fundPriceList = fundPriceHistoryDAO.read(id);
+	        List<FundPriceHistory> fundPriceHistory = fundPriceHistoryDAO.read(id);
+	        ArrayList<FundPriceList> fundPriceList = new ArrayList<FundPriceList>();
+	        Iterator<FundPriceHistory> iter2 = fundPriceHistory.iterator();
+	        while (iter2.hasNext()) {
+	        	fundPriceList.add(new FundPriceList(iter2.next()));
+	        }
 	        request.setAttribute("fundPriceList", fundPriceList);
 	        
         	return "researchFundDetail.jsp";
