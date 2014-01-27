@@ -151,12 +151,16 @@ public class TransitionDayAction extends Action {
         		
         		customerDAO.testNewFunction("123");
         		
-        		request.setAttribute("message","Transition Day: "+date+" successfully submitted.");
+//        		request.setAttribute("messages","Transition Day: "+date+" successfully submitted.");
+        		
+        		List<String> messages = new ArrayList<String>();
+    			messages.add("Transition Day: "+date+" successfully submitted.");
+    			request.setAttribute("messages",messages);
         		return "transitionDay.jsp";
         	}
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "transitionDay.jsp";
+        	return "transitionDay.do";
 		}
 	}
 

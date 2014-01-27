@@ -37,7 +37,7 @@
             </div>
           </c:if>
           
-           <form>
+           <form method="POST">
       <table>
         <tr>
           <td>Fund Name: </td>

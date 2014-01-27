@@ -72,7 +72,11 @@ public class DepositCheckAction extends Action {
 	        customer.setCash(customer.getCash() + form.getAmount());
 	        customerDAO.update(customer);
 	
-			request.setAttribute("message","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
+//			request.setAttribute("messages","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
+			
+			List<String> messages = new ArrayList<String>();
+			messages.add("Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
+			request.setAttribute("messages",messages);
 			return "depositCheck.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());

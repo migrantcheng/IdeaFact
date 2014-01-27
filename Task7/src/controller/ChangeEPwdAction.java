@@ -54,8 +54,11 @@ public class ChangeEPwdAction extends Action {
 			// Change the password
         	employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
 	
-			request.setAttribute("message","Password changed for "+employee.getUsername());
-	        return "changeEmployeePassword.jsp";
+//			request.setAttribute("message","Password changed for "+employee.getUsername());
+			List<String> messages = new ArrayList<String>();
+			messages.add("Password changed for "+employee.getUsername());
+			request.setAttribute("messages",messages);
+			return "changeEmployeePassword.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
 			return "changeEmployeePassword.jsp";

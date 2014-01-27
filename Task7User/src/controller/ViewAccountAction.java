@@ -82,7 +82,7 @@ public class ViewAccountAction extends Action {
     			operation = "Sell";
     		} else if (transactionType.equals("DEPOSIT")) {
     			operation = "Deposit Check";
-    		} else if (transactionType.equals("WITHDRAWAL")) {
+    		} else if (transactionType.equals("WITHDRAW")) {
     			operation = "Request Check";
     		} else {
     			operation = "N/A";

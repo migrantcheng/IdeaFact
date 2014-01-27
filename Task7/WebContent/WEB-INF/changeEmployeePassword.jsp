@@ -37,7 +37,7 @@
             </div>
           </c:if>
 		  
-		  <form class="form-horizontal">
+		  <form class="form-horizontal" method="POST">
   		    <div class="control-group">
   		      <label class="control-label" for="oldPwd">Old Password</label>
   		      <div class="controls">

@@ -54,11 +54,11 @@
            <td width="327">Deposit Amount:</td>
            </tr>
            <tr>
-           <td><input type="text" name="amount" id="amount" value="xxx.xx"></td>
+           <td><input type="text" name="amount" id="amount" ></td>
            </tr>
            </table>
            <p>
-           <input type="submit" name="button" id="submit" value="Submit">
+           <input class="btn btn-primary" type="submit" name="button" value="Submit"/>
            </p>
 	         </form>
           
