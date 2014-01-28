@@ -68,6 +68,17 @@ public class TransitionDayAction extends Action {
         		Iterator<Fund> iter = fundList.iterator();
         		while(iter.hasNext()){
         			Fund fund = iter.next();
+        			String priceStr = request.getParameter(""+fund.getFund_id());
+        			Double price = Double.parseDouble(priceStr);
+        			if(!(price>=0.01 && price<=9999.99)){
+        				errors.add("Fund price should be 0.01 ~ 9999.99.");
+        				return "transitionDay.do";
+        			}
+        		}
+        		
+        		iter = fundList.iterator();
+        		while(iter.hasNext()){
+        			Fund fund = iter.next();
         			FundPriceHistory temp = new FundPriceHistory();
         			temp.setFund_id(fund.getFund_id());
         			temp.setPrice_date(date);
@@ -149,7 +160,6 @@ public class TransitionDayAction extends Action {
         			}
         		}
         		
-        		customerDAO.testNewFunction("123");
         		
 //        		request.setAttribute("messages","Transition Day: "+date+" successfully submitted.");
         		
