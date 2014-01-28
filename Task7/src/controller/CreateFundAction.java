@@ -55,7 +55,7 @@ public class CreateFundAction extends Action {
 	
 //			request.setAttribute("messages","Created Fund : "+fund.getName()+" Symbol: "+fund.getSymbol());
 			List<String> messages = new ArrayList<String>();
-			messages.add("Created Fund : "+fund.getName()+" Symbol: "+fund.getSymbol());
+			messages.add("Created Fund : "+fund.getName()+" Ticker: "+fund.getSymbol());
 			request.setAttribute("messages",messages);
 			return "createFund.jsp";
         }catch (Exception e) {

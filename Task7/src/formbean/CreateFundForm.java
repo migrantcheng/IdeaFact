@@ -13,6 +13,7 @@ public class CreateFundForm {
 	public CreateFundForm(HttpServletRequest request){
 		fundName = request.getParameter("fundName");
 		ticker = request.getParameter("ticker");
+		ticker = ticker.toUpperCase();
 		button = request.getParameter("button");
 	}
 
@@ -48,7 +49,11 @@ public class CreateFundForm {
 		}
 		
 		if (ticker == null || ticker.length() == 0) {
-			errors.add("Fund Symbol is required");
+			errors.add("Fund Ticker is required");
+		}
+		
+		if(ticker.length()!=4){
+			errors.add("The length of ticker should be 4!");
 		}
 
 		return errors;
