@@ -7,7 +7,7 @@
 
     <class name="databean.Employee" table="Employee">
 
-        <id name="username" column="username">
+        <id name="username" column="username" length="16">
         </id>
 
         
@@ -16,11 +16,11 @@
         </property>
 
         <property name="firstname">
-            <column name="firstname" length="16"  />
+            <column name="firstname" length="30"  />
         </property>
         
         <property name="lastname">
-            <column name="lastname" length="16"  />
+            <column name="lastname" length="30"  />
         </property>
         
     </class>

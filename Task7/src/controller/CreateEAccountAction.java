@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.interfaces.CustomerDAO;
 import dao.interfaces.EmployeeDAO;
 import dao.Model;
 import databean.Employee;
@@ -14,9 +15,11 @@ import formbean.CreateEAccountForm;
 public class CreateEAccountAction extends Action {
 
 	private EmployeeDAO employeeDAO;
+	private CustomerDAO customerDAO;
 	
 	public CreateEAccountAction(Model model){
 		employeeDAO = model.getEmployeeDAO();
+		customerDAO = model.getCustomerDAO();
 	}
 	
 	@Override
@@ -45,6 +48,11 @@ public class CreateEAccountAction extends Action {
 	        if (errors.size() != 0) {
 	        	return "createEmployeeAccount.jsp";
 	        }
+	        
+	        if(employeeDAO.read(form.getUsername())!=null || customerDAO.read(form.getUsername())!=null){
+	        	errors.add("Username exists, please choose another one!");
+	        	return "createEmployeeAccount.jsp";
+	        }
 	
 			Employee employee = new Employee();
 			employee.setUsername(form.getUsername());
@@ -52,7 +60,7 @@ public class CreateEAccountAction extends Action {
 			employee.setFirstname(form.getFirstName());
 			employee.setLastname(form.getLastName());
 	
-			// Change the password
+			
         	employeeDAO.createAccount(employee);
 	
 //			request.setAttribute("messages","Created Account for "+employee.getUsername());
