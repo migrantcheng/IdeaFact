@@ -53,7 +53,11 @@ public class ChangePwdFormBean {
 		}
 		
 		if (confirmPassword == null || confirmPassword.length() == 0) {
-			errors.add("Confirm Pwd is required");
+			errors.add("Confirm Password is required");
+		}
+		
+		if(!(newPassword.length()>=6 && newPassword.length()<=16)){
+			errors.add("The length of password should be 6 ~ 16.");
 		}
 		
 		if (errors.size() > 0) {
