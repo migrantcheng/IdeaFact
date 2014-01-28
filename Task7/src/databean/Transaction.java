@@ -7,15 +7,17 @@ public class Transaction {
 	public static final String SELL = "SELL";
 	public static final String BUY = "BUY";
 	public static final String DEPOSIT = "DEPOSIT";
-	public static final String WITHDRAWAL = "WITHDRAW";
+	public static final String WITHDRAW = "WITHDRAW";
 	
 	private int transaction_id;
 	private int customer_id;
 	private int fund_id;
 	private Date execute_date;
-	private int shares;
+	private long shares;
 	private String transaction_type;
 	private long amount;
+	private long shareprice;
+	
 	public int getTransaction_id() {
 		return transaction_id;
 	}
@@ -40,10 +42,10 @@ public class Transaction {
 	public void setExecute_date(Date execute_date) {
 		this.execute_date = execute_date;
 	}
-	public int getShares() {
+	public long getShares() {
 		return shares;
 	}
-	public void setShares(int shares) {
+	public void setShares(long shares) {
 		this.shares = shares;
 	}
 	public String getTransaction_type() {
@@ -58,7 +60,11 @@ public class Transaction {
 	public void setAmount(long amount) {
 		this.amount = amount;
 	}
+	public long getShareprice() {
+		return shareprice;
+	}
+	public void setShareprice(long shareprice) {
+		this.shareprice = shareprice;
+	}
 	
-	
-
 }

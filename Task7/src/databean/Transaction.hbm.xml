@@ -35,5 +35,9 @@
             <column name="amount" />
         </property>
         
+        <property name="shareprice">
+            <column name="shareprice"/>
+        </property>
+        
     </class>
 </hibernate-mapping>

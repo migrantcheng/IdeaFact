@@ -138,7 +138,7 @@ public class TransitionDayAction extends Action {
         				customerDAO.update(customer);
         				pendingItem.setExecute_date(date);			
         				transactionDAO.update(pendingItem);
-        			}else if(pendingItem.getTransaction_type().equals(Transaction.WITHDRAWAL)){
+        			}else if(pendingItem.getTransaction_type().equals(Transaction.WITHDRAW)){
         				
         				Customer customer = customerDAO.readById(pendingItem.getCustomer_id());
         				customer.setCash(customer.getCash() - pendingItem.getAmount());
