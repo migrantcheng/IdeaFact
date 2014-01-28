@@ -183,6 +183,10 @@ public class CreateCAccountForm {
 			errors.add("Zip is required");
 		}
 		
+		if (zip.length()!=5) {
+			errors.add("The length of zip should be 5.");
+		}
+		
 		if (errors.size() > 0) {
 			return errors;
 		}
