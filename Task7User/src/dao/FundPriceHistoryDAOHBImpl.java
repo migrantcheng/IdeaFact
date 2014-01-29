@@ -20,7 +20,7 @@ public class FundPriceHistoryDAOHBImpl implements FundPriceHistoryDAO{
 	public long getLatestPrice(int id) {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from FundPriceHistory where fund_id = :id");
+		Query query = session.createQuery("from FundPriceHistory where fund_id = :id order by price_date desc");
 		query.setParameter("id", id);
 		long price = 0;
 
@@ -40,7 +40,7 @@ public class FundPriceHistoryDAOHBImpl implements FundPriceHistoryDAO{
 	public List<FundPriceHistory> read(int fundId){
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from FundPriceHistory where fund_id = :fundId");
+		Query query = session.createQuery("from FundPriceHistory where fund_id = :fundId order by price_date asc");
 		query.setParameter("fundId", fundId);
         List <FundPriceHistory> list = query.list();
         session.getTransaction().commit();
