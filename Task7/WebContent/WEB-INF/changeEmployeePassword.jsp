@@ -37,32 +37,32 @@
             </div>
           </c:if>
 		  
-		  <form class="form-horizontal" method="POST">
-  		    <div class="control-group">
-  		      <label class="control-label" for="oldPwd">Old Password</label>
-  		      <div class="controls">
-  		        <input type="password" name="oldPwd" placeholder="OldPassword">
-  		      </div>
-  		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="newPwd">NewPassword</label>
-		      <div class="controls">
-		        <input type="password" name="newPwd" placeholder="NewPassword">
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label" for="confirmPwd">Confirm Password</label>
-		      <div class="controls">
-		        <input type="password" name="confirmPwd" placeholder="Confirm Password">
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <div class="controls">
-		    
-		        <button type="submit" class="btn" name="button">Change Password</button>
-		      </div>
-		    </div>
-		  </form>
+    		  <form class="form-horizontal" method="POST">
+      		    <div class="control-group">
+      		      <label class="control-label" for="oldPwd">Old Password</label>
+      		      <div class="controls">
+      		        <input type="password" id="oldPwd" placeholder="" name="oldPwd">
+      		      </div>
+      		    </div>
+    		    <div class="control-group">
+    		      <label class="control-label" for="newPwd">New Password</label>
+    		      <div class="controls">
+    		        <input type="password" id="newPwd" placeholder="6 - 16 characters long" name="newPwd">
+    		      </div>
+    		    </div>
+    		    <div class="control-group">
+    		      <label class="control-label" for="confirmPwd">Confirm Password</label>
+    		      <div class="controls">
+    		        <input type="password" id="confirmPwd" placeholder="" name="confirmPwd">
+    		      </div>
+    		    </div>
+    		    
+    		    <div class="control-group">
+    		      <div class="controls">
+    		        <button type="submit" class="btn btn-primary" name="button" value="submit">Change Password</button>
+    		      </div>
+    		    </div>
+    		  </form>
 		  
         </div><!--/span-->
       </div><!--/row-->

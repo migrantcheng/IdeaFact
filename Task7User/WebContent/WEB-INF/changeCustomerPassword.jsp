@@ -59,9 +59,9 @@
     		        <input type="password" id="confirmPwd" placeholder="" name="confirmPwd">
     		      </div>
     		    </div>
+    		    
     		    <div class="control-group">
     		      <div class="controls">
-    		    
     		        <button type="submit" class="btn btn-primary" name="button" value="submit">Change Password</button>
     		      </div>
     		    </div>

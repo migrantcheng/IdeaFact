@@ -37,36 +37,45 @@
             </div>
           </c:if>
           
-          <form method="POST">
-    <table>
-      <tr>
-        <td>Username: </td>
-        <td><input type="text" name="username" value="${form.userName}"/></td>
-      </tr>
-      <tr>
-        <td>Password: </td>
-        <td><input type="password" name="password" value=""/></td>
-      </tr>
-      <tr>
-        <td>Confirm Password: </td>
-        <td><input type="password" name="confirmPassword" value=""/></td>
-      </tr>
-      <tr>
-        <td>First Name: </td>
-        <td><input type="text" name="firstName" value="${form.firstName}"/></td>
-      </tr>
-      <tr>
-        <td>Last Name: </td>
-        <td><input type="text" name="lastName" value="${form.lastName}"/></td>
-      </tr>
-      
-      <tr>
-        <td colspan="2" align="center">
-          <input class="btn btn-primary" type="submit" name="button" value="Create"/>
-        </td>
-      </tr>
-    </table>
-  </form>
+  		  <form class="form-horizontal" method="POST">
+  		    <div class="control-group">
+  		      <label class="control-label">Username</label>
+  		      <div class="controls">
+  		        <input type="text" name="username">
+  		      </div>
+  		    </div>
+		    <div class="control-group">
+		      <label class="control-label">Password</label>
+		      <div class="controls">
+		        <input type="password" name="password">
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <label class="control-label">Confirm Password</label>
+		      <div class="controls">
+		        <input type="password" name="confirmPassword">
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <label class="control-label">First Name</label>
+		      <div class="controls">
+		        <input type="text" name="firstName">
+		      </div>
+		    </div>
+		    <div class="control-group">
+		      <label class="control-label">Last Name</label>
+		      <div class="controls">
+		        <input type="text" name="lastName">
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <div class="controls">
+		        <button type="submit" class="btn btn-primary" name="button">Create</button>
+		      </div>
+		    </div>
+		  </form>
+		  
         </div><!--/span-->
       </div><!--/row-->
 
