@@ -76,7 +76,7 @@
   		      </div>
   		    </div>
   		    <div class="control-group">
-  		      <label class="control-label">State</label>
+  		      <label class="control-label">City</label>
   		      <div class="controls">
   		        <select class="form-control" name="state">
 					<option value="AL">Alabama</option>

@@ -41,8 +41,11 @@ public class CreateCAccountAction extends Action {
 	
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
+	        for (String error : errors) {
+	        	System.out.println(error);
+	        }
 	        if (errors.size() != 0) {
-	        	return "createCAccount.do";
+	        	return "createCustomerAccount.jsp";
 	        }
 	
 			Customer customer = new Customer();
@@ -70,7 +73,7 @@ public class CreateCAccountAction extends Action {
 			return "createCustomerAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "createCAccount.do";
+        	return "createCustomerAccount.jsp";
 		}
 	}
 
