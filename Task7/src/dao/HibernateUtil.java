@@ -1,5 +1,9 @@
 package dao;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -21,6 +25,25 @@ public class HibernateUtil {
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    
+    public static String getMD5(String str){
+    	
+		try {
+			MessageDigest m;
+			m = MessageDigest.getInstance("MD5");
+	    	m.reset();
+	    	m.update(str.getBytes());
+	    	byte[] digest = m.digest();
+	    	BigInteger bigInt = new BigInteger(1,digest);
+	    	String hashtext = bigInt.toString(16);
+	    	return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
     }
 
 }

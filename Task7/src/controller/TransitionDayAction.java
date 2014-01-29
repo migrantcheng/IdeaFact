@@ -29,6 +29,8 @@ public class TransitionDayAction extends Action {
 	private CustomerDAO customerDAO;
 	private PositionDAO positionDAO;
 	
+	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	
 	public TransitionDayAction(Model model){
 		fundDAO = model.getFundDAO();
 		fundPriceHistoryDAO = model.getFundPriceHistoryDAO();
@@ -56,10 +58,12 @@ public class TransitionDayAction extends Action {
         		request.setAttribute("funds", funds);
         		
         		Date date = transactionDAO.getLastTransitionDay();
+        		if(date!=null){
         		date.setDate(date.getDate()+1);
         		String dateStr = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(date);
         		
         		request.setAttribute("startDate", dateStr);
+        		}
         		return "transitionDay.jsp";
         		
         	}else{
@@ -68,6 +72,13 @@ public class TransitionDayAction extends Action {
         		Date date = null;
         		
         		date = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).parse(dateStr);
+        		
+        		Date lastDate = transactionDAO.getLastTransitionDay();
+        		if(lastDate!=null){
+        			if(lastDate.after(date)){
+        				throw new Exception("invalid date");
+        			}
+        		}
         		
         		List<Fund> fundList = fundDAO.getFundList();
         		Iterator<Fund> iter = fundList.iterator();
@@ -122,7 +133,8 @@ public class TransitionDayAction extends Action {
         				}
         				
         				pendingItem.setShares((int)(shares*1000));
-        				pendingItem.setExecute_date(date);			
+        				pendingItem.setExecute_date(date);		
+        				pendingItem.setShareprice(today.getPrice());
         				transactionDAO.update(pendingItem);
         				
         			}else if(pendingItem.getTransaction_type().equals(Transaction.SELL)){
@@ -145,6 +157,7 @@ public class TransitionDayAction extends Action {
         				
         				pendingItem.setAmount(today.getPrice()*pendingItem.getShares()/1000);
         				pendingItem.setExecute_date(date);			
+        				pendingItem.setShareprice(today.getPrice());
         				transactionDAO.update(pendingItem);
         				
         			}else if(pendingItem.getTransaction_type().equals(Transaction.DEPOSIT)){
@@ -169,13 +182,13 @@ public class TransitionDayAction extends Action {
 //        		request.setAttribute("messages","Transition Day: "+date+" successfully submitted.");
         		
         		List<String> messages = new ArrayList<String>();
-    			messages.add("Transition Day: "+date+" successfully submitted.");
+    			messages.add("Transition Day: "+sdf.format(date)+" successfully submitted.");
     			request.setAttribute("messages",messages);
-        		return "transitionDay.jsp";
+        		return "transitionDaySuccess.jsp";
         	}
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "transitionDay.jsp";
+        	return "transitionDayFail.jsp";
 		}
 	}
 	

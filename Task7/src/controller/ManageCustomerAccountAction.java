@@ -11,19 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 
 import dao.Model;
 import dao.interfaces.CustomerDAO;
+import dao.interfaces.TransactionDAO;
 import databean.Customer;
 import databean.CustomerData;
 import databean.Fund;
+import databean.Transaction;
 import formbean.CreateFundForm;
 
 public class ManageCustomerAccountAction extends Action {
 	private CustomerDAO customerDAO;
+	private TransactionDAO transactionDAO;
 	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
 	private DecimalFormat dfNumberFund = new DecimalFormat("#,##0.000");
 	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 	
 	public ManageCustomerAccountAction(Model model){
 		customerDAO = model.getCustomerDAO();
+		transactionDAO = model.getTransactionDAO();
 	}
 
 	@Override
@@ -51,7 +55,12 @@ public class ManageCustomerAccountAction extends Action {
 	        	data.setCash(dfNumberCash.format((double)customer.getCash()/100));
 	        	data.setAvailable(dfNumberCash.format((double)customer.getAvailable()/100));
 	        	
-	        	data.setLastTransactionDay(sdf.format(new Date()));
+	        	Transaction transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
+	        	if(transaction!=null){
+	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
+	        	}else{
+	        		data.setLastTransactionDay("-");
+	        	}
 	        	customerData.add(data);
 	        }
 	        
