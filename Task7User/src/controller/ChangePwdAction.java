@@ -46,6 +46,7 @@ public class ChangePwdAction extends Action {
 	        }
 	
 			Customer customer = (Customer) request.getSession().getAttribute("customer");
+			customer = customerDAO.read(customer.getUsername());
 			if(!customer.getPassword().equals(form.getOldPwd())){
 				errors.add("Old Password is not correct!");
 				return "changeCustomerPassword.jsp";
