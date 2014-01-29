@@ -14,11 +14,11 @@ public class PositionDAOHBImpl implements PositionDAO{
 	private Session session;
 	
 	public PositionDAOHBImpl() {
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 	}
 	
 	public List<Position> getAllPositions(int customer_id){
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Position where customer_id = :customer_id");
 		query.setParameter("customer_id", customer_id);
@@ -32,7 +32,7 @@ public class PositionDAOHBImpl implements PositionDAO{
 	}
 	
 	public Position read(int fund_id, int customer_id) {
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Position where fund_id = :fund_id and customer_id = :customer_id");
 		query.setParameter("fund_id", fund_id);
@@ -51,7 +51,7 @@ public class PositionDAOHBImpl implements PositionDAO{
 	
 	public ArrayList<String> spend(Position position, long amount) {
 		ArrayList<String> errors = new ArrayList<String>();
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Position where fund_id = :fund_id and customer_id = :customer_id");
 		query.setParameter("fund_id", position.getFund_id());

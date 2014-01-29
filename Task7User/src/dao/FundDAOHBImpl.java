@@ -13,11 +13,11 @@ public class FundDAOHBImpl implements FundDAO {
 	private Session session;
 	
 	public FundDAOHBImpl(){
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	public Fund read(String ticker){
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Fund where symbol = :ticker");
 		query.setParameter("ticker", ticker);
@@ -34,7 +34,7 @@ public class FundDAOHBImpl implements FundDAO {
 	}
 	
 	public Fund read(int fund_id) {
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Fund where fund_id = :fund_id");
 		query.setParameter("fund_id", fund_id);
@@ -51,7 +51,7 @@ public class FundDAOHBImpl implements FundDAO {
 	}
 	
 	public List<Fund> getAllFunds() {
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Fund");
 		List<Fund> funds = query.list();
