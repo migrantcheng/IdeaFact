@@ -4,7 +4,6 @@
               <li><a href="createEAccount.do"><i class="icon-chevron-right"></i>Create Employee Account</a></li>
               <li><a href="createCAccount.do"><i class="icon-chevron-right"></i>Create Customer Account</a></li>
               <li><a href="manageCustomerAccount.do"><i class="icon-chevron-right"></i>Manage Customer Account</a></li>
-              <li><a href="depositCheck.do"><i class="icon-chevron-right"></i>Deposit Check</a></li>
               <li><a href="createFund.do"><i class="icon-chevron-right"></i>Create Fund</a></li>
               <li><a href="transitionDay.do"><i class="icon-chevron-right"></i>Transition Day</a></li>
             </ul>

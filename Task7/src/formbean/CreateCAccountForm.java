@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.HibernateUtil;
+
 public class CreateCAccountForm {
 	private String username;
 	private String password;
@@ -194,6 +196,8 @@ public class CreateCAccountForm {
 		if (!password.equals(confirmPassword)) {
 			errors.add("Passwords do not match");
 		}
+		
+		password = HibernateUtil.getMD5(password);
 
 		return errors;
 	}
