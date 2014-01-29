@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.HibernateUtil;
+
 public class ChangePwdFormBean {
 
 	private String oldPwd;
@@ -67,7 +69,11 @@ public class ChangePwdFormBean {
 		if (!newPassword.equals(confirmPassword)) {
 			errors.add("Passwords do not match");
 		}
-
+		
+		oldPwd = HibernateUtil.getMD5(oldPwd);
+		newPassword = HibernateUtil.getMD5(newPassword);
+		confirmPassword = HibernateUtil.getMD5(confirmPassword);
+		
 		return errors;
 	}
 	

@@ -15,6 +15,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.HibernateUtil;
+
 
 public class LoginForm {
 	private String username;
@@ -69,6 +71,7 @@ public class LoginForm {
         if (password == null || password.length() == 0) errors.add("Password is required");
 //        if (button == null) errors.add("Button is required");
 
+        password = HibernateUtil.getMD5(password);
         if (errors.size() > 0) return errors;
 
 //        if (!button.equals("Login") && !button.equals("Register")) errors.add("Invalid button");
