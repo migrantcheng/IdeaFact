@@ -58,7 +58,7 @@
                 <td><a href="research.do?id=${fund.fund.fund_id}"><button class="btn btn-info">View Details</button></a></td>
                 <form class="form-horizontal" method="POST" action="buy.do">
 	          	<input type="hidden" id="ticker" name="ticker" value="${fund.fund.symbol}">
-	          	<input type="hidden" id="ticker" name="amount" value="1">
+	          	<input type="hidden" id="ticker" name="amount" value="10">
                 <td><button type="submit" class="btn btn-success" value="query" name="button">Buy</button></td>
                 </form>
               </tr>

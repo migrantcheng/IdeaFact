@@ -44,7 +44,7 @@
           </dl>
           <dl class="dl-horizontal">
             <dt>Address:</dt>
-            <dd>${customer.addr_line1}<br>${customer.addr_line2}<br>${customer.city}<br>${customer.state} ${customer.zip}</dd>
+            <dd>${customer.addr_line1}<c:if test="${fn:length(customer.addr_line2) gt 0}"><br></c:if>${customer.addr_line2}<br>${customer.city}<br>${customer.state} ${customer.zip}</dd>
           </dl>
           <dl class="dl-horizontal">
             <dt>Last Trading Date:</dt>
@@ -100,9 +100,9 @@
                 <th>Date</th>
                 <th>Operation</th>
                 <th>Fund Name</th>
-                <th>Number of Shares</th>
-                <th>Share Prices</th>
-                <th>Dollar Amount</th>
+                <th style="text-align:right;">Number of Shares</th>
+                <th style="text-align:right;">Share Price</th>
+                <th style="text-align:right;">Dollar Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -112,9 +112,9 @@
               <td>${transaction.stringDate}</td>
               <td>${transaction.operation}</td>
               <td>${transaction.fund.name}</td>
-              <td>${transaction.stringShares}</td>
-              <td>${transaction.stringUnitPrice}</td>
-              <td>${transaction.stringAmount}</td>
+              <td style="text-align:right;">${transaction.stringShares}</td>
+              <td style="text-align:right;">${transaction.stringUnitPrice}</td>
+              <td style="text-align:right;">${transaction.stringAmount}</td>
             </tr>
             </c:forEach>
             

@@ -56,6 +56,10 @@ public class ChangePwdFormBean {
 			errors.add("Confirm Pwd is required");
 		}
 		
+		if (newPassword.length() < 6 || newPassword.length() > 16) {
+			errors.add("Password must be 6 to 16 characters long");
+		}
+		
 		if (errors.size() > 0) {
 			return errors;
 		}

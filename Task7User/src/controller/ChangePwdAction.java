@@ -47,7 +47,7 @@ public class ChangePwdAction extends Action {
 	
 			Customer customer = (Customer) request.getSession().getAttribute("customer");
 			if(!customer.getPassword().equals(form.getOldPwd())){
-				errors.add("Old Password not correct!");
+				errors.add("Old Password is not correct!");
 				return "changeCustomerPassword.jsp";
 			}
 	

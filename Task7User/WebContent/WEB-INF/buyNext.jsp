@@ -67,14 +67,14 @@
 		    <div class="control-group">
 		      <label class="control-label" for="amount">Amount of Money</label>
 		      <div class="controls">
-		        <input type="text" id="amount" placeholder="example: 29.50" name="amount">
+		        <input type="text" id="amount" placeholder="minimum amount is 10.00" name="amount">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <div class="controls">
 		        <button type="submit" class="btn btn-primary" name="button" value="next">Next</button>
-		        <a href="javascript:history.back()">
-		        	<button type="button" class="btn" name="button">Return</button>
+		        <a href="research.do">
+		        	<button type="button" class="btn" name="button">Cancel</button>
 		        </a>
 		      </div>
 		    </div>

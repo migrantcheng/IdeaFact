@@ -88,7 +88,7 @@ public class ViewAccountAction extends Action {
     			operation = "N/A";
     		}
     		
-    		if (transaction.getShares() == 0) {
+    		if (transaction.getShares() <= 0) {
     			stringShares = "-";
     		} else {
     			stringShares = dfNumberFund.format((double)transaction.getShares()/1000);
@@ -100,16 +100,16 @@ public class ViewAccountAction extends Action {
     			stringDate = sdf.format(transaction.getExecute_date());
     		}
     		
-    		if (transaction.getAmount() == 0) {
+    		if (transaction.getAmount() <= 0) {
     			stringAmount = "-";
     		} else {
     			stringAmount = dfNumberCash.format((double)transaction.getAmount()/100);
     		}
     		
-    		if (transaction.getAmount() == 0 || transaction.getShares() == 0) {
+    		if (transaction.getAmount() <= 0 || transaction.getShares() <= 0) {
     			stringUnitPrice = "-";
     		} else {
-	    		unitPrice = ((double)transaction.getAmount()/100) / ((double)transaction.getShares()/1000);
+	    		unitPrice = (double)transaction.getShareprice()/100;
 	    		stringUnitPrice = dfNumberCash.format(unitPrice);
     		}
     	}
@@ -192,7 +192,7 @@ public class ViewAccountAction extends Action {
 	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
 	        	// calculate latest price to be total value
 	        	String tempValue = null;
-	        	if (tempLatestPrice <= 0) {
+	        	if (tempLatestPrice < 0) {
 	        		tempValue = "-";
 	        	} else {
 	        		tempValue = dfNumberCash.format((double)(tempLatestPrice*tempPosition.getShares())/100000);

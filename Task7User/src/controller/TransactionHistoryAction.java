@@ -50,7 +50,7 @@ public class TransactionHistoryAction extends Action {
     			operation = "N/A";
     		}
     		
-    		if (transaction.getShares() == 0) {
+    		if (transaction.getShares() <= 0) {
     			stringShares = "-";
     		} else {
     			stringShares = dfNumberFund.format((double)transaction.getShares()/1000);
@@ -62,16 +62,16 @@ public class TransactionHistoryAction extends Action {
     			stringDate = sdf.format(transaction.getExecute_date());
     		}
     		
-    		if (transaction.getAmount() == 0) {
+    		if (transaction.getAmount() <= 0) {
     			stringAmount = "-";
     		} else {
     			stringAmount = dfNumberCash.format((double)transaction.getAmount()/100);
     		}
     		
-    		if (transaction.getAmount() == 0 || transaction.getShares() == 0) {
+    		if (transaction.getAmount() <= 0 || transaction.getShares() <= 0) {
     			stringUnitPrice = "-";
     		} else {
-	    		unitPrice = ((double)transaction.getAmount()/100) / ((double)transaction.getShares()/1000);
+	    		unitPrice = (double)transaction.getShareprice()/100;
 	    		stringUnitPrice = dfNumberCash.format(unitPrice);
     		}
     	}

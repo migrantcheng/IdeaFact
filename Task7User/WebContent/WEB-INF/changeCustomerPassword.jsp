@@ -44,25 +44,25 @@
       		    <div class="control-group">
       		      <label class="control-label" for="oldPwd">Old Password</label>
       		      <div class="controls">
-      		        <input type="password" id="oldPwd" placeholder="Old Password" name="oldPwd">
+      		        <input type="password" id="oldPwd" placeholder="" name="oldPwd">
       		      </div>
       		    </div>
     		    <div class="control-group">
     		      <label class="control-label" for="newPwd">New Password</label>
     		      <div class="controls">
-    		        <input type="password" id="newPwd" placeholder="New Password" name="newPwd">
+    		        <input type="password" id="newPwd" placeholder="6 - 16 characters long" name="newPwd">
     		      </div>
     		    </div>
     		    <div class="control-group">
     		      <label class="control-label" for="confirmPwd">Confirm Password</label>
     		      <div class="controls">
-    		        <input type="password" id="confirmPwd" placeholder="Confirm Password" name="confirmPwd">
+    		        <input type="password" id="confirmPwd" placeholder="" name="confirmPwd">
     		      </div>
     		    </div>
     		    <div class="control-group">
     		      <div class="controls">
     		    
-    		        <button type="submit" class="btn" name="button" value="submit">Change Password</button>
+    		        <button type="submit" class="btn btn-primary" name="button" value="submit">Change Password</button>
     		      </div>
     		    </div>
     		  </form>

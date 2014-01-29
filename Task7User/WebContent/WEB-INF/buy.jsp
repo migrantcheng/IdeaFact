@@ -46,7 +46,7 @@
   		      <label class="control-label" for="ticker">Ticker</label>
   		      <div class="controls">
   		        <input type="text" id="ticker" placeholder="Enter ticker to query" name="ticker">
-  		        <input type="hidden" id="amount" name="amount" value="1">
+  		        <input type="hidden" id="amount" name="amount" value="10">
   		      </div>
   		    </div>
 		    <div class="control-group">

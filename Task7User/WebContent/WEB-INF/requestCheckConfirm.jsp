@@ -53,8 +53,8 @@
 		    <div class="control-group">
 		      <div class="controls">
 		        <button type="submit" class="btn btn-primary" name="button" value="confirm">Request Check</button>
-		        <a href="javascript:history.back()">
-		        	<button type="button" class="btn" name="button">Return</button>
+		        <a href="check.do">
+		        	<button type="button" class="btn" name="button">Cancel</button>
 		        </a>
 		      </div>
 		    </div>

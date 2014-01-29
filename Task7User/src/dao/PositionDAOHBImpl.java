@@ -69,7 +69,7 @@ public class PositionDAOHBImpl implements PositionDAO{
 			if (tempPosition.getShares() < amount) {
 				errors.add("Not enough shares.");
 			} else {
-				tempPosition.setShares((int)(tempPosition.getShares() - amount));
+				tempPosition.setShares(tempPosition.getShares() - amount);
 				session.update(tempPosition);
 			}
         }

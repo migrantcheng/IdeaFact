@@ -127,10 +127,10 @@ public class RequestCheckAction extends Action {
 			Transaction transaction = new Transaction();
 			transaction.setAmount(form.getAmount());
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
-			transaction.setFund_id(0);
+			transaction.setFund_id(-1);
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type(Transaction.WITHDRAW);
-			transaction.setShares(0);
+			transaction.setShares(-1);
 			transactionDAO.create(transaction);
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");

@@ -62,7 +62,7 @@
           <div align="center">
           	<form class="form-horizontal" method="POST" action="buy.do">
           	<input type="hidden" id="ticker" name="ticker" value="${fund.symbol}">
-          	<input type="hidden" id="ticker" name="amount" value="1">
+          	<input type="hidden" id="ticker" name="amount" value="10">
             <button type="submit" class="btn btn-success inline" value="query" name="button">Buy</button>
             </form>
             <a href="research.do"><button class="btn inline">Return</button></a>

@@ -195,12 +195,12 @@ public class SellFundAction extends Action {
 	        
 	        //add transaction to queue
 			Transaction transaction = new Transaction();
-			transaction.setAmount(0);
+			transaction.setAmount(-1);
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
 			transaction.setFund_id(fund.getFund_id());
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type("SELL");
-			transaction.setShares((int)form.getAmount());
+			transaction.setShares(form.getAmount());
 			transactionDAO.create(transaction);
 			
 			request.getSession().setAttribute("messages","Your transaction for selling " + fund.getName() + " has been successfully placed.");

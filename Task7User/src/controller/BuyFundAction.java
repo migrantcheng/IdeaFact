@@ -99,6 +99,7 @@ public class BuyFundAction extends Action {
 	        }
 	        
 	        if (form.getButton().equals("query")) {
+	        	request.setAttribute("messages", "Amount must be between 10.00 and 1000000.00 (one million).");
 	        	return "buyNext.jsp";
 	        }
 	        
@@ -147,7 +148,7 @@ public class BuyFundAction extends Action {
 			transaction.setFund_id(fund.getFund_id());
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type("BUY");
-			transaction.setShares(0);
+			transaction.setShares(-1);
 			transactionDAO.create(transaction);
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");
