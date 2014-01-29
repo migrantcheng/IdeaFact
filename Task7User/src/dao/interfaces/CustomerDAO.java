@@ -12,6 +12,4 @@ public interface CustomerDAO {
 
 	public void update(Customer customer);
 	
-	public ArrayList<String> spend(Customer customer, long amount);
-	
 }

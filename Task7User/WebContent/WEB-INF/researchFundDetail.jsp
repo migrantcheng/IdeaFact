@@ -60,11 +60,9 @@
             </tbody>
           </table>
           <div align="center">
-          	<form class="form-horizontal" method="POST" action="buy.do">
-          	<input type="hidden" id="ticker" name="ticker" value="${fund.symbol}">
-          	<input type="hidden" id="ticker" name="amount" value="10">
-            <button type="submit" class="btn btn-success inline" value="query" name="button">Buy</button>
-            </form>
+          	<a href="buy.do?ticker=${fund.symbol}&amount=10&button=query">
+            	<button type="submit" class="btn btn-success" value="query" name="button">Buy</button>
+            </a>
             <a href="research.do"><button class="btn inline">Return</button></a>
           </div>
         </div>

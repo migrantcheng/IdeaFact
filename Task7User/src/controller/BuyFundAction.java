@@ -133,15 +133,10 @@ public class BuyFundAction extends Action {
 	        	return "buyConfirm.jsp";
 	        }
 	
-	        //deduct balance
-	        errors.addAll(customerDAO.spend((Customer)request.getSession().getAttribute("customer"),form.getAmount()));
+	       
 	        
-	        //return errors if balance is not enough
-	        if (errors.size() != 0) {
-	        	return "buyNext.jsp";
-	        }
 	        
-	        //add transaction to queue
+	        //deduct balance && add transaction to queue
 			Transaction transaction = new Transaction();
 			transaction.setAmount(form.getAmount());
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
@@ -149,7 +144,14 @@ public class BuyFundAction extends Action {
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type("BUY");
 			transaction.setShares(-1);
-			transactionDAO.create(transaction);
+			
+	        errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
+
+			
+	        //return errors if balance is not enough
+	        if (errors.size() != 0) {
+	        	return "buyNext.jsp";
+	        }
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");
         	user = customerDAO.read(user.getUsername());

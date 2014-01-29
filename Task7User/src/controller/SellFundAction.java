@@ -185,15 +185,9 @@ public class SellFundAction extends Action {
 	        	return "sellConfirm.jsp";
 	        }
 	
-	        //deduct balance
-	        errors.addAll(positionDAO.spend(position,form.getAmount()));
 	        
-	        //return errors if balance is not enough
-	        if (errors.size() != 0) {
-	        	return "sellNext.jsp";
-	        }
 	        
-	        //add transaction to queue
+	        //deduct balance and add transaction to queue
 			Transaction transaction = new Transaction();
 			transaction.setAmount(-1);
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
@@ -201,7 +195,13 @@ public class SellFundAction extends Action {
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type("SELL");
 			transaction.setShares(form.getAmount());
-			transactionDAO.create(transaction);
+			
+	        errors.addAll(transactionDAO.sellFund(position, transaction, form.getAmount()));
+	        
+	        //return errors if balance is not enough
+	        if (errors.size() != 0) {
+	        	return "sellNext.jsp";
+	        }
 			
 			request.getSession().setAttribute("messages","Your transaction for selling " + fund.getName() + " has been successfully placed.");
 			
