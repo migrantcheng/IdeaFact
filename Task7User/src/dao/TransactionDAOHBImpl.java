@@ -118,7 +118,6 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 		Query query = session.createQuery("from Transaction where customer_id =:customer_id order by transaction_id desc");
 		query.setParameter("customer_id", customer_id);
 		Transaction lastTransaction = null;
-
         List <Transaction> list = query.list();
         java.util.Iterator<Transaction> iter = list.iterator();
         if (iter.hasNext()) {
