@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.List;
+
 import databean.Position;
 
 
@@ -12,6 +14,8 @@ public interface PositionDAO {
 	void update(Position position);
 
 	void create(Position position);
+
+	List<Position> getAllPositions(int customer_id);
 
 
 }

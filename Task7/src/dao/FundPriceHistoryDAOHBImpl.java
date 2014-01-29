@@ -57,4 +57,25 @@ public class FundPriceHistoryDAOHBImpl implements FundPriceHistoryDAO {
         return fundPriceHistory;
 	}
 
+	@Override
+	public long getLatestPrice(int fund_id) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from FundPriceHistory where fund_id = :id");
+		query.setParameter("id", fund_id);
+		long price = 0;
+
+        List <FundPriceHistory> list = query.list();
+        java.util.Iterator<FundPriceHistory> iter = list.iterator();
+        if (iter.hasNext()) {
+        	price = iter.next().getPrice();
+        } else {
+        	price = -1;
+        }
+
+        session.getTransaction().commit();
+        
+        return price;
+	}
+
 }

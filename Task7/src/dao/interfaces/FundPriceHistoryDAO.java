@@ -11,4 +11,6 @@ public interface FundPriceHistoryDAO {
 
 	FundPriceHistory readByIdDate(int fund_id, Date date);
 
+	long getLatestPrice(int fund_id);
+
 }

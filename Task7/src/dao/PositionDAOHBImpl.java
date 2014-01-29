@@ -91,6 +91,21 @@ public class PositionDAOHBImpl implements PositionDAO {
 		
 	}
 
+	@Override
+	public List<Position> getAllPositions(int customer_id) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Position where customer_id = :customer_id");
+		query.setParameter("customer_id", customer_id);
+		List<Position> positions = query.list();
+
+
+
+        session.getTransaction().commit();
+        
+        return positions;
+	}
+
 	
 
 }

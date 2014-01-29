@@ -1,5 +1,6 @@
 package dao.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import databean.Transaction;
@@ -19,5 +20,13 @@ public interface TransactionDAO {
 	List<Transaction> getPendingList();
 
 	void update(Transaction pendingItem);
+	
+	Date getLastTransitionDay();
+
+	List<Transaction> getPending(int customer_id);
+
+	Transaction getLastTransaction(int customer_id);
+
+	List<Transaction> getAll(int customer_id);
 
 }

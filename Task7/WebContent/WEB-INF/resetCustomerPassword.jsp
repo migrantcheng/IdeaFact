@@ -42,19 +42,20 @@
 		  
     		  <form class="form-horizontal" method="POST">
       		    <dl class="dl-horizontal" style="font-weight:normal">
-            		<dt>UserName:</dt>
-            		<dd>${customer.username}</dd>
+            		<dt style="font-weight:normal;">UserName</dt>
+            		<dd>${customer_username}</dd>
+            		<input type="hidden" name="username" value="${customer_username}">
           		</dl>
     		    <div class="control-group">
     		      <label class="control-label" for="newPwd">New Password</label>
     		      <div class="controls">
-    		        <input type="password" id="newPwd" placeholder="New Password" name="newPwd">
+    		        <input type="password" id="newPwd" name="newPwd">
     		      </div>
     		    </div>
     		    <div class="control-group">
     		      <label class="control-label" for="confirmPwd">Confirm Password</label>
     		      <div class="controls">
-    		        <input type="password" id="confirmPwd" placeholder="Confirm Password" name="confirmPwd">
+    		        <input type="password" id="confirmPwd"  name="confirmPwd">
     		      </div>
     		    </div>
     		    <div class="control-group">

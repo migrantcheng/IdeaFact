@@ -44,7 +44,7 @@
            <td width="543">Username:</td>
            </tr>
            <tr>
-           <td><input type="text" name="username" id="username"></td>
+           <td><input type="text" name="username" id="username" value="${username}"></td>
            </tr>
            </table>
 

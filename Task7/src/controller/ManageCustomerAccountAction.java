@@ -1,6 +1,10 @@
 package controller;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,11 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import dao.Model;
 import dao.interfaces.CustomerDAO;
 import databean.Customer;
+import databean.CustomerData;
 import databean.Fund;
 import formbean.CreateFundForm;
 
 public class ManageCustomerAccountAction extends Action {
 	private CustomerDAO customerDAO;
+	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
+	private DecimalFormat dfNumberFund = new DecimalFormat("#,##0.000");
+	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 	
 	public ManageCustomerAccountAction(Model model){
 		customerDAO = model.getCustomerDAO();
@@ -32,8 +40,22 @@ public class ManageCustomerAccountAction extends Action {
         try {
 	        List<Customer> customers = new ArrayList<Customer>();
 	        customers = customerDAO.getCustomerList();
+	        Iterator<Customer> customerIter = customers.iterator();
+	        List<CustomerData> customerData = new ArrayList<CustomerData>();
+	        while(customerIter.hasNext()){
+	        	Customer customer = customerIter.next();
+	        	CustomerData data = new CustomerData();
+	        	data.setCustomer_id(customer.getCustomer_id());
+	        	data.setUsername(customer.getUsername());
+	        	data.setName(customer.getFirstname()+" "+customer.getLastname());
+	        	data.setCash(dfNumberCash.format((double)customer.getCash()/100));
+	        	data.setAvailable(dfNumberCash.format((double)customer.getAvailable()/100));
+	        	
+	        	data.setLastTransactionDay(sdf.format(new Date()));
+	        	customerData.add(data);
+	        }
 	        
-	        request.setAttribute("customers", customers);
+	        request.setAttribute("customers", customerData);
 	        
 	        return "manageCustomerAccount.jsp";
         }catch (Exception e) {

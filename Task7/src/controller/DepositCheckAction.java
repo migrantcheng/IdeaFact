@@ -41,6 +41,7 @@ public class DepositCheckAction extends Action {
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
+	        	request.setAttribute("username",request.getParameter("customer_username"));
 	            return "depositCheck.jsp";
 	        }
 	

@@ -11,4 +11,6 @@ public interface FundDAO {
 
 	List<Fund> getFundList();
 
+	Fund read(int fund_id);
+
 }

@@ -13,7 +13,9 @@ public class CreateFundForm {
 	public CreateFundForm(HttpServletRequest request){
 		fundName = request.getParameter("fundName");
 		ticker = request.getParameter("ticker");
-		ticker = ticker.toUpperCase();
+		if(ticker!=null){
+			ticker = ticker.toUpperCase();
+		}
 		button = request.getParameter("button");
 	}
 

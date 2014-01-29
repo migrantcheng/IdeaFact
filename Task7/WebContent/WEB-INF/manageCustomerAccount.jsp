@@ -44,22 +44,32 @@
     <thead>
     <tr>
               <th>User</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Cash</th>
-              <th>Available</th>
+              <th>Name</th>
+              <th>Last Transaction</th>
+              <th style="text-align:right;">Cash</th>
+              <th style="text-align:right;">Available</th>
               <th>Operation</th>
     </tr>
     </thead>
     <tbody>
     		<c:forEach var="customer" items="${customers}">
     		<tr>
+    			<input type="hidden" name="customer_id" value="${customer.customer_id}">
     		  <td>${customer.username}</td>
-              <td>${customer.firstname}</td>
-              <td>${customer.lastname}</td> 
-              <td><p class="text-right">${customer.cash/100}</p></td>
-              <td><p class="text-right">${customer.available/100}</p></td>
-              <td><a href="#"><button class="btn btn-info">Reset Passwrod</button></a>&nbsp;<a href="#"><button class="btn btn-primary">View Customer Account</button></a>&nbsp;<a href="#"><button class="btn btn-inverse">View Customer History</button></a></td>
+              <td>${customer.name}</td>
+              <td>${customer.lastTransactionDay}</td>
+              <td><p class="text-right">${customer.cash}</p></td>
+              <td><p class="text-right">${customer.available}</p></td>
+              <td> 
+              <a href="resetPwd.do?customer_username=${customer.username}"><button class="btn btn-info">Password</button></a>&nbsp;
+
+              <a href="myaccount.do?customer_id=${customer.customer_id}"><button class="btn btn-primary">Account</button></a>&nbsp;
+
+              <a href="history.do?customer_id=${customer.customer_id}"><button class="btn btn-inverse">History</button></a>&nbsp;
+
+              <a href="depositCheck.do?customer_username=${customer.username}"><button class="btn btn-inverse">Deposit</button></a>
+
+   			  
    			</tr>
    			</c:forEach>
 

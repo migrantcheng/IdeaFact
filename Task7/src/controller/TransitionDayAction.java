@@ -55,6 +55,11 @@ public class TransitionDayAction extends Action {
         		List<Fund> funds = fundDAO.getFundList();
         		request.setAttribute("funds", funds);
         		
+        		Date date = transactionDAO.getLastTransitionDay();
+        		date.setDate(date.getDate()+1);
+        		String dateStr = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(date);
+        		
+        		request.setAttribute("startDate", dateStr);
         		return "transitionDay.jsp";
         		
         	}else{
@@ -71,8 +76,8 @@ public class TransitionDayAction extends Action {
         			String priceStr = request.getParameter(""+fund.getFund_id());
         			Double price = Double.parseDouble(priceStr);
         			if(!(price>=0.01 && price<=9999.99)){
-        				errors.add("Fund price should be 0.01 ~ 9999.99.");
-        				return "transitionDay.do";
+        				
+        				throw new Exception("Fund price should be 0.01 ~ 9999.99.");
         			}
         		}
         		
@@ -170,8 +175,10 @@ public class TransitionDayAction extends Action {
         	}
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "transitionDay.do";
+        	return "transitionDay.jsp";
 		}
 	}
+	
+	
 
 }
