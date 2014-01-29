@@ -38,6 +38,7 @@ public class resetPwdAction extends Action{
 				return "resetCustomerPassword.jsp";
 			}
 			
+			form.setOldPwd("");
 			errors.addAll(form.getValidationErrors());
 			if (errors.size() != 0) {
 				return "resetCustomerPassword.jsp";

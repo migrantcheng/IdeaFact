@@ -75,7 +75,7 @@ public class TransitionDayAction extends Action {
         		
         		Date lastDate = transactionDAO.getLastTransitionDay();
         		if(lastDate!=null){
-        			if(lastDate.after(date)){
+        			if(lastDate.after(date) || lastDate.getDate()==date.getDate()){
         				throw new Exception("invalid date");
         			}
         		}

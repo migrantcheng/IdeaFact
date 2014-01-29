@@ -55,12 +55,14 @@ public class ManageCustomerAccountAction extends Action {
 	        	data.setCash(dfNumberCash.format((double)customer.getCash()/100));
 	        	data.setAvailable(dfNumberCash.format((double)customer.getAvailable()/100));
 	        	
-	        	Transaction transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
-	        	if(transaction!=null){
-	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
-	        	}else{
-	        		data.setLastTransactionDay("-");
-	        	}
+//	        	Transaction transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
+//	        	if(transaction!=null){
+//	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
+//	        	}else{
+//	        		data.setLastTransactionDay("-");
+//	        	}
+	        	
+	        	data.setLastTransactionDay("-");
 	        	customerData.add(data);
 	        }
 	        
