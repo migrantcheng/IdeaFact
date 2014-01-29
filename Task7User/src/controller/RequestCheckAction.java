@@ -12,7 +12,6 @@ import dao.interfaces.FundDAO;
 import dao.interfaces.FundPriceHistoryDAO;
 import dao.interfaces.TransactionDAO;
 import databean.Customer;
-import databean.Fund;
 import databean.Transaction;
 import formbean.RequestCheckFormBean;
 
@@ -114,16 +113,10 @@ public class RequestCheckAction extends Action {
 	        if (form.getButton().equals("next")) {
 	        	return "requestCheckConfirm.jsp";
 	        }
-	
-	        //deduct balance
-	        errors.addAll(customerDAO.spend((Customer)request.getSession().getAttribute("customer"),form.getAmount()));
 	        
-	        //return errors if balance is not enough
-	        if (errors.size() != 0) {
-	        	return "requestCheck.jsp";
-	        }
 	        
-	        //add transaction to queue
+	        
+	        //deduct balance add transaction to queue
 			Transaction transaction = new Transaction();
 			transaction.setAmount(form.getAmount());
 			transaction.setCustomer_id(((Customer)request.getSession().getAttribute("customer")).getCustomer_id());
@@ -131,7 +124,12 @@ public class RequestCheckAction extends Action {
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type(Transaction.WITHDRAW);
 			transaction.setShares(-1);
-			transactionDAO.create(transaction);
+	        errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
+
+	        //return errors if balance is not enough
+	        if (errors.size() != 0) {
+	        	return "requestCheck.jsp";
+	        }
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");
         	user = customerDAO.read(user.getUsername());

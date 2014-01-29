@@ -53,32 +53,6 @@ public class CustomerDAOHBImpl implements CustomerDAO {
 //		}
 	}
 	
-	public ArrayList<String> spend(Customer customer, long amount) {
-		ArrayList<String> errors = new ArrayList<String>();
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		Query query = session.createQuery("from Customer where username = :username");
-		query.setParameter("username", customer.getUsername());
-
-        List <Customer> list = query.list();
-        java.util.Iterator<Customer> iter = list.iterator();
-        if (iter.hasNext()) {
-        	customer = iter.next();
-        }
-
-        
-		if (customer.getAvailable() < amount) {
-			errors.add("Insufficient fund.");
-		} else {
-			customer.setAvailable(customer.getAvailable() - amount);
-			session.update(customer);
-		}
-		
-        session.getTransaction().commit();
-
-
-		return errors;
-	}
 
 	@Override
 	public void update(Customer customer) {
