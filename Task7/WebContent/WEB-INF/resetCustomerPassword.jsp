@@ -6,9 +6,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="span3">
             <jsp:include page="employeeNav.jsp" />
-        </div><!--/span-->
         <div class="span9">
           <div class="page-header">
             <h1>Reset Password</h1>
@@ -61,7 +59,7 @@
     		    <div class="control-group">
     		      <div class="controls">
     		    
-    		        <button type="submit" class="btn" name="button" value="submit">Reset Password</button>
+    		        <button type="submit" class="btn btn-primary" name="button" value="submit">Reset Password</button>
     		      </div>
     		    </div>
     		  </form>

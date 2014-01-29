@@ -4,9 +4,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="span3">
             <jsp:include page="employeeNav.jsp" />
-        </div><!--/span-->
         <div class="span9">
           <div class="page-header">
             <h1>View Customer Account</h1>
@@ -67,9 +65,8 @@
 		        <tr>
 		          <th>Ticker</th>
 		          <th>Fund Name</th>
-		          <th>Amount of Position</th>
-		          <th>Value</th>
-		          <th>Sell</th>
+		          <th style="text-align:right;">Amount of Position</th>
+		          <th style="text-align:right;">Value</th>
 		        </tr>
 		      </thead>
 		      <tbody>
@@ -81,9 +78,8 @@
 		      <tr>
 		        <td>${position.fund.symbol}</td>
 		        <td>${position.fund.name}</td>
-		        <td>${position.shares}</td>
-		        <td>$${position.latestPrice}</td>
-		        <td><button type="submit" class="btn btn-primary" name="button" value="query">Sell Fund</button></td>
+		        <td style="text-align:right;">${position.shares}</td>
+		        <td style="text-align:right;">$${position.latestPrice}</td>
 		      </tr>
 		      </form>
 		      </c:forEach>
@@ -100,9 +96,9 @@
                 <th>Date</th>
                 <th>Operation</th>
                 <th>Fund Name</th>
-                <th>Number of Shares</th>
-                <th>Share Prices</th>
-                <th>Dollar Amount</th>
+                <th style="text-align:right;">Number of Shares</th>
+                <th style="text-align:right;">Share Prices</th>
+                <th style="text-align:right;">Dollar Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -112,9 +108,9 @@
               <td>${transaction.stringDate}</td>
               <td>${transaction.operation}</td>
               <td>${transaction.fund.name}</td>
-              <td>${transaction.stringShares}</td>
-              <td>${transaction.stringUnitPrice}</td>
-              <td>${transaction.stringAmount}</td>
+              <td style="text-align:right;">${transaction.stringShares}</td>
+              <td style="text-align:right;">${transaction.stringUnitPrice}</td>
+              <td style="text-align:right;">${transaction.stringAmount}</td>
             </tr>
             </c:forEach>
             
