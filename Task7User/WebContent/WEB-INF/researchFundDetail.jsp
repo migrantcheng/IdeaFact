@@ -143,6 +143,7 @@
             </tbody>
           </table>
           <div align="center">
+          <div id="chart_div" style="width: 900px; height: 500px;"></div>
           	<a href="buy.do?ticker=${fund.symbol}&amount=10&button=query">
             	<button type="submit" class="btn btn-success" value="query" name="button">Buy</button>
             </a>

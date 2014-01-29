@@ -19,7 +19,7 @@
             <column name="fund_id" />
         </property>
 
-        <property name="execute_date" type="date">
+        <property name="execute_date" type="timestamp">
             <column name="execute_date" />
         </property>
         

@@ -16,15 +16,15 @@
         </property>
         
         <property name="password">
-            <column name="password" length="16"  />
+            <column name="password" length="33"  not-null="true"/>
         </property>
 
         <property name="firstname">
-            <column name="firstname" length="16"  />
+            <column name="firstname" length="30"  />
         </property>
         
         <property name="lastname">
-            <column name="lastname" length="16"  />
+            <column name="lastname" length="30"  />
         </property>
         
         <property name="addr_line1">
@@ -44,7 +44,7 @@
         </property>
         
         <property name="zip">
-            <column name="zip" length="16"  />
+            <column name="zip"  length="5"/>
         </property>
         
         <property name="cash">
