@@ -115,7 +115,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	public Transaction getLastTransaction(int customer_id) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from Transaction where customer_id =:customer_id");
+		Query query = session.createQuery("from Transaction where customer_id =:customer_id order by transaction_id desc");
 		query.setParameter("customer_id", customer_id);
 		Transaction lastTransaction = null;
 
