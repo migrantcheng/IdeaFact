@@ -136,7 +136,7 @@ public class RequestCheckAction extends Action {
         	user = customerDAO.read(user.getUsername());
         	request.getSession().setAttribute("customer", user);
 			
-			request.getSession().setAttribute("messages","Your request for a $" + dfNumberCash.format((double)form.getAmount() / 100) + " check has been successfully placed in queue.");
+			request.getSession().setAttribute("messages","Your request for a check has been successfully placed in queue.");
 	        return "myaccount.do";
         }catch (Exception e) {
         	errors.add(e.getMessage());
