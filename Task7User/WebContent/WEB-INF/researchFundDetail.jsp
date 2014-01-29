@@ -44,11 +44,15 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Date', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
+
+
+          ['Date', 'Price'],
+  		<c:if test="${fn:length(fundPriceList) gt 0}">
+  		<c:forEach var="fundPrice" items="${fundPriceList}">
+          ['${fundPrice.date}', ${fundPrice.price}],
+          </c:forEach>
+          </c:if>
+          ['',  '']
         ]);
 
         var options = {
@@ -121,6 +125,7 @@
             </div>
           </c:if>
 		  
+          <div id="chart_div" style="width: 800px; height: 500px;"></div>
 		<div class="span5 offset1">
           <table class="table table-striped">
             <thead>
@@ -143,7 +148,6 @@
             </tbody>
           </table>
           <div align="center">
-          <div id="chart_div" style="width: 900px; height: 500px;"></div>
           	<a href="buy.do?ticker=${fund.symbol}&amount=10&button=query">
             	<button type="submit" class="btn btn-success" value="query" name="button">Buy</button>
             </a>

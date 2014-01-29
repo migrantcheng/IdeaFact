@@ -42,7 +42,7 @@
           </dl>
           <dl class="dl-horizontal">
             <dt>Address:</dt>
-            <dd>${customer.addr_line1}<br>${customer.addr_line2}<br>${customer.city}<br>${customer.state} ${customer.zip}</dd>
+            <dd>${customer.addr_line1}<c:if test="${fn:length(customer.addr_line2) gt 0}"><br></c:if>${customer.addr_line2}<br>${customer.city}<br>${customer.state} ${customer.zip}</dd>
           </dl>
           <dl class="dl-horizontal">
             <dt>Last Trading Date:</dt>
