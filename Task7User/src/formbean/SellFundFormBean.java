@@ -54,8 +54,8 @@ public class SellFundFormBean {
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
 		
-		if (stringAmount.length() > 15) {
-			errors.add("Limitation of maximum length for amount exceeded (15 digit)");
+		if (stringAmount.length() > 14) {
+			errors.add("Limitation of maximum length for amount exceeded (14 digit)");
 		}
 		
 		if (temp.length > 1 && temp[1].length() > 3) {
@@ -64,6 +64,10 @@ public class SellFundFormBean {
 		
 		if (amount <= 0) {
 			errors.add("Amount is not correct");
+		}
+		
+		if (amount > 1000000000000L) {
+			errors.add("Amount must be between 0.001 and 1000000000.000 (1 billion)");
 		}
 		
 		if (ticker == null || ticker.length() == 0) {

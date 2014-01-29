@@ -65,6 +65,7 @@ public class RequestCheckAction extends Action {
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
+	        	request.setAttribute("messages", "Amount must be between 0.01 and 1000000.00 (one million).");
 	            return "requestCheck.jsp";
 	        }
 	        

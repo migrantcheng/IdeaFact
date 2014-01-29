@@ -158,6 +158,7 @@ public class SellFundAction extends Action {
 	        request.setAttribute("position",position);
 	        
 	        if (form.getButton().equals("query")) {
+	        	request.setAttribute("messages", "Amount must be between 0.001 and 100000000.000 (one billion).");
 	        	return "sellNext.jsp";
 	        }
 	        
