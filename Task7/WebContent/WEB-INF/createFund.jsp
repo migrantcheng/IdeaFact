@@ -37,23 +37,28 @@
             </div>
           </c:if>
           
-           <form method="POST">
-      <table>
-        <tr>
-          <td>Fund Name: </td>
-          <td><input type="text" name="fundName" value="${form.fundName}"/></td>
-         </tr>
-        <tr>
-          <td>Ticker: </td>
-          <td><input type="text" name="ticker" value="${form.ticker}"/></td>
-        </tr>
-        <tr>
-        <td colspan="2" align="center">
-          <input class="btn btn-primary" type="submit" name="button" value="Submit"/>
-        </td>
-      </tr>
-      </table>
-    </form>
+    
+  		  <form class="form-horizontal" method="POST">
+  		    <div class="control-group">
+  		      <label class="control-label">Fund Name</label>
+  		      <div class="controls">
+  		        <input type="text" name="fundName">
+  		      </div>
+  		    </div>
+		    <div class="control-group">
+		      <label class="control-label">Ticker</label>
+		      <div class="controls">
+		        <input type="text" name="ticker">
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <div class="controls">
+		        <button type="submit" class="btn btn-primary" name="button">Submit</button>
+		      </div>
+		    </div>
+		  </form>
+		  
         </div><!--/span-->
       </div><!--/row-->
 
