@@ -59,6 +59,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               <li><a href="#">Hello, ${employee.firstname}</a></li>
+              <li><a href="changeEPwd.do">Change Password</a></li>
               <li><a href="employeeLogout.do">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
