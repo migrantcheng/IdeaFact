@@ -41,9 +41,6 @@ public class CreateCAccountAction extends Action {
 	
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
-	        for (String error : errors) {
-	        	System.out.println(error);
-	        }
 	        if (errors.size() != 0) {
 	        	return "createCustomerAccount.jsp";
 	        }
