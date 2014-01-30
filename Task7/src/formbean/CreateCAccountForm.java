@@ -189,6 +189,22 @@ public class CreateCAccountForm {
 			errors.add("The length of zip should be 5.");
 		}
 		
+		if(!(password.length()>=6 && password.length()<=16)){
+			errors.add("The length of password should be 6 ~ 16.");
+		}
+		
+		if(username.length()>16){
+			errors.add("The length of username should be less than 16.");
+		}
+		
+		if(firstName.length()>30){
+			errors.add("The length of firstname should be less than 30.");
+		}
+		
+		if(lastName.length()>30){
+			errors.add("The length of lastname should be less than 30.");
+		}
+		
 		if (errors.size() > 0) {
 			return errors;
 		}
