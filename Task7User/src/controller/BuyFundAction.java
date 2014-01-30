@@ -56,6 +56,11 @@ public class BuyFundAction extends Action {
             }
         	request.getSession().setAttribute("customer", customer);
             
+        	List<Fund> funds = new ArrayList<Fund>();
+        	synchronized (fundDAO) {
+        		funds = fundDAO.getAllFunds();
+        	}
+        	request.setAttribute("funds", funds);
             available = (double)((Customer)request.getSession().getAttribute("customer")).getAvailable() / 100;
             stringAvailable = dfNumberCash.format(available);
             request.setAttribute("stringAvailable",stringAvailable);
