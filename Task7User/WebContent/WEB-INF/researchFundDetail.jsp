@@ -38,31 +38,7 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="ico/favicon.png">
     
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-
-
-          ['Date', 'Price'],
-  		<c:if test="${fn:length(fundPriceList) gt 0}">
-  		<c:forEach var="fundPrice" items="${fundPriceList}">
-          ['${fundPrice.date}', ${fundPrice.price}],
-          </c:forEach>
-          </c:if>
-          ['',  '']
-        ]);
-
-        var options = {
-          title: 'Fund Performance'
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>                               
+   <script src="js/Charts.js"></script>             
 
   </head>
 
@@ -125,13 +101,30 @@
             </div>
           </c:if>
 		  
-          <div id="chart_div" style="width: 800px; height: 500px;"></div>
+          <canvas id="myChart" width="800" height="400"></canvas>
+		  <script>
+		  var data = {
+					labels : ["January","February","March","April","May","June","July"],
+					datasets : [
+						{
+							fillColor : "rgba(220,220,220,0.5)",
+							strokeColor : "rgba(220,220,220,1)",
+							pointColor : "rgba(220,220,220,1)",
+							pointStrokeColor : "#fff",
+							data : [65,59,90,81,56,55,40]
+						}
+					]
+				}
+		  
+		  var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(data);
+		  </script>
+		 
 		<div class="span5 offset1">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>Date</th>
-                <th width="50%">Price</th>
+                <th style="text-align:right;" width="50%">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -140,7 +133,7 @@
             <c:forEach var="fundPrice" items="${fundPriceList}">
               <tr>
                 <td>${fundPrice.date}</td>
-                <td>${fundPrice.price}</td>
+                <td style="text-align:right;">${fundPrice.price}</td>
               </tr>
             </c:forEach>
             </c:if>

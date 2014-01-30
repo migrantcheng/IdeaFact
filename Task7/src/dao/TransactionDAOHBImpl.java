@@ -19,6 +19,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 
+	
 	@Override
 	public void create(Transaction transaction) {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();

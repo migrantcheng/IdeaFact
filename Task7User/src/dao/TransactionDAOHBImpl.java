@@ -72,6 +72,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 		return errors;
 	}
 	
+	
 	public ArrayList<String> sellFund(Position position, Transaction transaction, long amount) {
 		ArrayList<String> errors = new ArrayList<String>();
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
