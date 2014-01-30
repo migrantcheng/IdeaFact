@@ -1,6 +1,7 @@
 package controller;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -266,6 +267,12 @@ public class TransitionDayAction extends Action {
     			request.setAttribute("messages",messages);
         		return "transitionDaySuccess.jsp";
         	}
+        }catch(ParseException e){
+        	errors.add("Date format wrong. Example format: 12/01/2013");
+        	return "transitionDayFail.jsp";
+        }catch (NumberFormatException e){
+        	errors.add("Close price should be two decimal number.");
+        	return "transitionDayFail.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
         	return "transitionDayFail.jsp";
