@@ -52,7 +52,10 @@ public class DepositCheckAction extends Action {
 	        }
 	
 	        //get customer from db
-	        Customer customer = customerDAO.read(form.getUsername());
+	        Customer customer;
+	        synchronized(customerDAO){
+	        customer = customerDAO.read(form.getUsername());
+	        }
 	        if(customer==null){
 	        	//if not found, return error.jsp
 	        	errors.add("Username not found in DB");
@@ -67,11 +70,15 @@ public class DepositCheckAction extends Action {
 	        transaction.setShares(-1);
 	        transaction.setExecute_date(null);
 	        
+	        synchronized(transactionDAO){
 	        transactionDAO.create(transaction);
+	        }
 	        
 	        //update customer's cash, but not update available until transaction day
 	        customer.setCash(customer.getCash() + form.getAmount());
+	        synchronized(customerDAO){
 	        customerDAO.update(customer);
+	        }
 	
 //			request.setAttribute("messages","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
 			

@@ -46,15 +46,17 @@ public class ChangeEPwdAction extends Action {
 	        }
 	
 			Employee employee = (Employee) request.getSession().getAttribute("employee");
-			employee = employeeDAO.read(employee.getUsername());
+			synchronized(employeeDAO){
+				employee = employeeDAO.read(employee.getUsername());
+			}
 			if(!employee.getPassword().equals(form.getOldPwd())){
 				errors.add("Old Password not correct!");
 				return "changeEmployeePassword.jsp";
 			}
 	
-			// Change the password
-        	employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
-	
+			synchronized(employeeDAO){
+				employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
+			}
 //			request.setAttribute("message","Password changed for "+employee.getUsername());
 			List<String> messages = new ArrayList<String>();
 			messages.add("Password changed for "+employee.getUsername());

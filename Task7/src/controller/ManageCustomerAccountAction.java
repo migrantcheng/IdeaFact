@@ -43,7 +43,9 @@ public class ManageCustomerAccountAction extends Action {
 
         try {
 	        List<Customer> customers = new ArrayList<Customer>();
-	        customers = customerDAO.getCustomerList();
+	        synchronized(customerDAO){
+	        	customers = customerDAO.getCustomerList();
+	        }
 	        Iterator<Customer> customerIter = customers.iterator();
 	        List<CustomerData> customerData = new ArrayList<CustomerData>();
 	        while(customerIter.hasNext()){
@@ -55,14 +57,18 @@ public class ManageCustomerAccountAction extends Action {
 	        	data.setCash(dfNumberCash.format((double)customer.getCash()/100));
 	        	data.setAvailable(dfNumberCash.format((double)customer.getAvailable()/100));
 	        	
-//	        	Transaction transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
-//	        	if(transaction!=null){
-//	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
-//	        	}else{
-//	        		data.setLastTransactionDay("-");
-//	        	}
 	        	
-	        	data.setLastTransactionDay("-");
+	        	Transaction transaction;
+	        	synchronized(transactionDAO){
+	        		transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
+	        	}
+	        	if(transaction!=null){
+	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
+	        	}else{
+	        		data.setLastTransactionDay("-");
+	        	}
+	        	
+//	        	data.setLastTransactionDay("-");
 	        	customerData.add(data);
 	        }
 	        

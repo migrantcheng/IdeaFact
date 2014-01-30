@@ -51,7 +51,10 @@ public class ELoginAction extends Action {
 	        }
 
 	        // Look up the user
-	        Employee employee = employeeDAO.read(form.getUsername());
+	        Employee employee;
+	        synchronized(employeeDAO){
+	        	employee = employeeDAO.read(form.getUsername());
+	        }
 	        
 	        if (employee == null) {
 	            errors.add("Username not found");

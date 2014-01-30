@@ -45,9 +45,12 @@ public class resetPwdAction extends Action{
 			}
 			
 			String username = request.getParameter("username");
-			Customer customer = customerDAO.read(username);
+			Customer customer;
+			synchronized(customerDAO){
+			customer = customerDAO.read(username);
 			customer.setPassword(form.getNewPassword());
 			customerDAO.update(customer);
+			}
 			
 //			Employee employee = (Employee) request.getSession().getAttribute("employee");
 //			employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
