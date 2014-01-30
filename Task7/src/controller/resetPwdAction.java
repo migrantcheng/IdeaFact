@@ -32,9 +32,9 @@ public class resetPwdAction extends Action{
 		
 		try {
 			ChangePwdFormBean form = new ChangePwdFormBean(request);
+			request.setAttribute("customer_username",request.getParameter("customer_username"));
 			
 			if (!form.isPresent()) {
-				request.setAttribute("customer_username",request.getParameter("customer_username"));
 				return "resetCustomerPassword.jsp";
 			}
 			
@@ -56,7 +56,7 @@ public class resetPwdAction extends Action{
 //			employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
 			
 			request.setAttribute("message", "Password reset for " + customer.getUsername());
-			return "manageCustomerAccount.jsp";
+			return "manageCustomerAccount.do";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
 			return "resetCustomerPassword.jsp";
