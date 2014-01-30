@@ -125,9 +125,15 @@ public class TransactionHistoryAction extends Action {
         try {
         	String idStr = request.getParameter("customer_id");
         	int customer_id = Integer.parseInt(idStr);
-            Customer customer = customerDAO.readById(customer_id);
+            Customer customer;
+            synchronized(customerDAO){
+            customer = customerDAO.readById(customer_id);
+            }
 	        // get transaction history list from database
-	        List<Transaction> transactions = transactionDAO.getAll(customer.getCustomer_id());
+	        List<Transaction> transactions;
+	        synchronized(transactionDAO){
+	        	transactions = transactionDAO.getAll(customer.getCustomer_id());
+	        }
 	        
 	        
 	        // store all position information along with other information;
@@ -137,7 +143,9 @@ public class TransactionHistoryAction extends Action {
 	        Fund tempFund;
 	        while (iter.hasNext()) {
 	        	tempTransaction = iter.next();
-	        	tempFund = fundDAO.read(tempTransaction.getFund_id());
+	        	synchronized(fundDAO){
+	        		tempFund = fundDAO.read(tempTransaction.getFund_id());
+	        	}
 	        	// store transaction and fund pairs in list
 	        	transactionList.add(new TransactionList(tempTransaction,tempFund));
 	        }

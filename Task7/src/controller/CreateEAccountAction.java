@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import dao.interfaces.CustomerDAO;
 import dao.interfaces.EmployeeDAO;
 import dao.Model;
+import databean.Customer;
 import databean.Employee;
 import formbean.ChangePwdFormBean;
 import formbean.CreateEAccountForm;
@@ -48,8 +49,17 @@ public class CreateEAccountAction extends Action {
 	        if (errors.size() != 0) {
 	        	return "createEmployeeAccount.jsp";
 	        }
+	        Employee e = null;
+	        Customer c = null;
+	        synchronized(employeeDAO){
+	        	e = employeeDAO.read(form.getUsername());
+	        }
 	        
-	        if(employeeDAO.read(form.getUsername())!=null || customerDAO.read(form.getUsername())!=null){
+	        synchronized(customerDAO){
+	        	c = customerDAO.read(form.getUsername());
+	        }
+	        
+	        if(e!=null || c!=null){
 	        	errors.add("Username exists, please choose another one!");
 	        	return "createEmployeeAccount.jsp";
 	        }
@@ -60,8 +70,9 @@ public class CreateEAccountAction extends Action {
 			employee.setFirstname(form.getFirstName());
 			employee.setLastname(form.getLastName());
 	
-			
+			synchronized(employeeDAO){
         	employeeDAO.createAccount(employee);
+			}
 	
 //			request.setAttribute("messages","Created Account for "+employee.getUsername());
 			

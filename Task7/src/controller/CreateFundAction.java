@@ -50,8 +50,9 @@ public class CreateFundAction extends Action {
 	        Fund fund = new Fund();
 	        fund.setName(form.getFundName());
 	        fund.setSymbol(form.getTicker());
-	        
+	        synchronized(fundDAO){
 	        fundDAO.createFund(fund);
+	        }
 	
 //			request.setAttribute("messages","Created Fund : "+fund.getName()+" Symbol: "+fund.getSymbol());
 			List<String> messages = new ArrayList<String>();

@@ -62,7 +62,9 @@ public class CreateCAccountAction extends Action {
 			customer.setCash(0);
 			customer.setAvailable(0);
 	
-			customerDAO.create(customer);
+			synchronized(customerDAO){
+				customerDAO.create(customer);
+			}
 	
 			List<String> messages = new ArrayList<String>();
 			messages.add("Created Account for "+customer.getUsername());
