@@ -1,12 +1,3 @@
-/*  
- * 08-600
- * JAVA J2EE Programming
- * Homework #9
- * Haoran Cheng
- * haoranc@andrew.cmu.edu
- * Dec 3, 2013
- *  
- */
 
 package formbean;
 

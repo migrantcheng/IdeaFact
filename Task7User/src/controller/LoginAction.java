@@ -41,7 +41,7 @@ public class LoginAction extends Action {
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
 	            return "login.jsp";
-	        }
+	        } 
 
 	        // Any validation errors?
 	        errors.addAll(form.getValidationErrors());

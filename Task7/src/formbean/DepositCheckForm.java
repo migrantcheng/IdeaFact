@@ -53,8 +53,8 @@ public class DepositCheckForm {
 			errors.add("User Name is required");
 		}
 		
-		if (amount<0 || amount>100000000) {
-			errors.add("Please input valid amount. Amount should be 0.01 ~ one million.");
+		if (amount<=0 || amount>100000000) {
+			errors.add("Please input valid amount. Amount should be 0.01 - 1,000,000.00");
 		}
 
 		return errors;

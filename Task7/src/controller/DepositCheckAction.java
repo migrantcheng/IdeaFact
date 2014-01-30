@@ -60,7 +60,7 @@ public class DepositCheckAction extends Action {
 	        }
 	        if(customer==null){
 	        	//if not found, return error.jsp
-	        	errors.add("Username not found in DB");
+	        	errors.add("Username not found");
 	        	return "depositCheck.jsp";
 	        }
 	        
