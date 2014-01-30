@@ -126,7 +126,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 			tx = session.beginTransaction();
 			Query query ;
 			
-			query = session.createQuery("from Transaction where customer_id =:customer_id and execute_date is NULL order by transaction_id DESC" );
+			query = session.createQuery("select max(a.price_date) from FundPriceHistory a " );
 			Date date = (Date) query.uniqueResult();
 			
 	        tx.commit();
