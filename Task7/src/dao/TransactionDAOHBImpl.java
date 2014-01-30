@@ -126,7 +126,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 			tx = session.beginTransaction();
 			Query query ;
 			
-			query = session.createQuery("select max(a.price_date) from FundPriceHistory a " );
+			query = session.createQuery("from Transaction where customer_id =:customer_id and execute_date is NULL order by transaction_id DESC" );
 			Date date = (Date) query.uniqueResult();
 			
 	        tx.commit();
@@ -157,7 +157,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	public Transaction getLastTransaction(int customer_id) {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from Transaction where customer_id =:customer_id");
+		Query query = session.createQuery("from Transaction where customer_id =:customer_id and execute_date is not NULL order by transaction_id DESC");
 		query.setParameter("customer_id", customer_id);
 		Transaction lastTransaction = null;
 
