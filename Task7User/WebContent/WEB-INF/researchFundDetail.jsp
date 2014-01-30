@@ -104,14 +104,14 @@
           <canvas id="myChart" width="800" height="400"></canvas>
 		  <script>
 		  var data = {
-					labels : ["January","February","March","April","May","June","July"],
+					labels : [<c:forEach var="fundPrice" items="${fundPriceList}">"${fundPrice.date}",</c:forEach>],
 					datasets : [
 						{
 							fillColor : "rgba(220,220,220,0.5)",
 							strokeColor : "rgba(220,220,220,1)",
 							pointColor : "rgba(220,220,220,1)",
 							pointStrokeColor : "#fff",
-							data : [65,59,90,81,56,55,40]
+							data : [<c:forEach var="fundPrice" items="${fundPriceList}">${fundPrice.realPrice},</c:forEach>]
 						}
 					]
 				}

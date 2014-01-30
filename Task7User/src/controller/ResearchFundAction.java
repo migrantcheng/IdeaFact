@@ -43,14 +43,20 @@ public class ResearchFundAction extends Action {
 	public class FundPriceList {
     	public String date;
     	public String price;
+    	public double realPrice;
     	
     	public FundPriceList(FundPriceHistory fundPriceHistory) {
     		date = sdf.format(fundPriceHistory.getPrice_date());
     		price = dfNumberCash.format((double)fundPriceHistory.getPrice() / 100);
+    		realPrice = (double)fundPriceHistory.getPrice() / 100;
     	}
-    	
+
     	public String getDate() {
     		return date;
+    	}
+    	
+    	public double getRealPrice() {
+    		return realPrice;
     	}
     	
     	public String getPrice() {
