@@ -118,6 +118,9 @@ public class TransitionDayAction extends Action {
         		while(iter.hasNext()){
         			Fund fund = iter.next();
         			String priceStr = request.getParameter(""+fund.getFund_id());
+        			if(priceStr==null){
+        				throw new Exception("Fund list not updated. Please refresh and try again.");
+        			}
         			Double price = Double.parseDouble(priceStr);
         			if(!(price>=0.01 && price<=9999.99)){
         				
