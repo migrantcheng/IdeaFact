@@ -39,11 +39,11 @@ public class DepositCheckAction extends Action {
         try {
 	        // Load the form parameters into a form bean
 	        DepositCheckForm form = new DepositCheckForm(request);
-	        
+
+        	request.setAttribute("username",request.getParameter("customer_username"));
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
-	        	request.setAttribute("username",request.getParameter("customer_username"));
 	            return "depositCheck.jsp";
 	        }
 	

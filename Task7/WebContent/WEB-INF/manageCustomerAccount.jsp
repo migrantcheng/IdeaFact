@@ -61,11 +61,11 @@
               <td><p class="text-right">${customer.cash}</p></td>
               <td><p class="text-right">${customer.available}</p></td>
               <td> 
-              <a href="resetPwd.do?customer_username=${customer.username}"><button class="btn btn-info">Password</button></a>&nbsp;
+              <a href="resetPwd.do?customer_username=${customer.username}"><button class="btn btn-success">Password</button></a>&nbsp;
 
-              <a href="myaccount.do?customer_id=${customer.customer_id}"><button class="btn btn-primary">Account</button></a>&nbsp;
+              <a href="myaccount.do?customer_id=${customer.customer_id}"><button class="btn btn-info">Account</button></a>&nbsp;
 
-              <a href="history.do?customer_id=${customer.customer_id}"><button class="btn btn-inverse">History</button></a>&nbsp;
+              <a href="history.do?customer_id=${customer.customer_id}"><button class="btn btn-primary">History</button></a>&nbsp;
 
               <a href="depositCheck.do?customer_username=${customer.username}"><button class="btn btn-inverse">Deposit</button></a>
 

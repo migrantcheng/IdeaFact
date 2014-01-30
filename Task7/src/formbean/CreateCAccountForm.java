@@ -158,19 +158,19 @@ public class CreateCAccountForm {
 		}
 		
 		if (username == null || username.length() == 0) {
-			errors.add("username is required");
+			errors.add("Username is required");
 		}
 		
 		if (firstName == null || firstName.length() == 0) {
-			errors.add("firstName is required");
+			errors.add("First name is required");
 		}
 		
 		if (lastName == null || lastName.length() == 0) {
-			errors.add("lastName is required");
+			errors.add("Last name is required");
 		}
 		
 		if (addr_line1 == null || addr_line1.length() == 0) {
-			errors.add("address is required");
+			errors.add("Address line 1 is required");
 		}
 		
 		if (city == null || city.length() == 0) {

@@ -89,11 +89,11 @@ public class CreateEAccountForm {
 		}
 		
 		if (firstName == null || firstName.length() == 0) {
-			errors.add("FirstName is required");
+			errors.add("First name is required");
 		}
 		
 		if (lastName == null || lastName.length() == 0) {
-			errors.add("LastName is required");
+			errors.add("Last name is required");
 		}
 		
 		if(!(password.length()>=6 && password.length()<=16)){
