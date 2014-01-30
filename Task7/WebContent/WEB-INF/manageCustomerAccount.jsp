@@ -58,8 +58,8 @@
     		  <td>${customer.username}</td>
               <td>${customer.name}</td>
               <td>${customer.lastTransactionDay}</td>
-              <td><p class="text-right">${customer.cash}</p></td>
-              <td><p class="text-right">${customer.available}</p></td>
+              <td><p class="text-right">$${customer.cash}</p></td>
+              <td><p class="text-right">$${customer.available}</p></td>
               <td> 
               <a href="resetPwd.do?customer_username=${customer.username}"><button class="btn btn-success">Password</button></a>&nbsp;
 
