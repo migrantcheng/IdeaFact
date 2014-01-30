@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,8 +46,10 @@ public class ResearchFundAction extends Action {
     	public String date;
     	public String price;
     	public double realPrice;
+    	public long timestamp;
     	
     	public FundPriceList(FundPriceHistory fundPriceHistory) {
+    		timestamp = fundPriceHistory.getPrice_date().getTime();
     		date = sdf.format(fundPriceHistory.getPrice_date());
     		price = dfNumberCash.format((double)fundPriceHistory.getPrice() / 100);
     		realPrice = (double)fundPriceHistory.getPrice() / 100;
@@ -53,6 +57,10 @@ public class ResearchFundAction extends Action {
 
     	public String getDate() {
     		return date;
+    	}
+    	
+    	public long getTimestamp() {
+    		return timestamp;
     	}
     	
     	public double getRealPrice() {

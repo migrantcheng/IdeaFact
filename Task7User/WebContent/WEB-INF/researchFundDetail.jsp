@@ -31,13 +31,14 @@
         }
       }
     </style>
+    <script src="js/jquery.js"></script>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="ico/favicon.png">
-    
+    <script src="js/highstock.js"></script>
    <script src="js/Charts.js"></script>             
 
   </head>
@@ -100,46 +101,42 @@
               </div>
             </div>
           </c:if>
-		  
-          <canvas id="myChart" width="800" height="400"></canvas>
+		  <div id="container" style="width:100%; height:400px;"></div>
 		  <script>
-		  var data = {
-					labels : [<c:forEach var="fundPrice" items="${fundPriceList}">"${fundPrice.date}",</c:forEach>],
-					datasets : [
-						{
-							fillColor : "rgba(200,200,250,0.5)",
-							strokeColor : "rgba(200,200,250,1)",
-							pointColor : "rgba(200,200,250,1)",
-							pointStrokeColor : "#fff",
-							data : [<c:forEach var="fundPrice" items="${fundPriceList}">${fundPrice.realPrice},</c:forEach>]
-						}
-					]
-				}
-		  
-		  var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(data);
+		  $(function() {
+
+				$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
+					// Create the chart
+					$('#container').highcharts('StockChart', {
+						
+
+						rangeSelector : {
+							selected : 1
+						},
+
+						title : {
+							text : '${fund.name} Fund Price History'
+						},
+						
+						series : [{
+							name : 'AAPL',
+							data : [
+									<c:forEach var="fundPrice" items="${fundPriceList}">
+							        [${fundPrice.timestamp},${fundPrice.realPrice}],
+									</c:forEach>
+							       ],
+							tooltip: {
+								valueDecimals: 2
+							}
+						}]
+					});
+				});
+
+			});
+
 		  </script>
 		 
-		<div class="span5 offset1">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th style="text-align:right;" width="50%">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-            <c:if test="${fn:length(fundPriceList) gt 0}">
-            <c:forEach var="fundPrice" items="${fundPriceList}">
-              <tr>
-                <td>${fundPrice.date}</td>
-                <td style="text-align:right;">${fundPrice.price}</td>
-              </tr>
-            </c:forEach>
-            </c:if>
-            
-            </tbody>
-          </table>
+		<div class="span8">
           <div align="center">
           	<a href="buy.do?ticker=${fund.symbol}&amount=10&button=query">
             	<button type="submit" class="btn btn-success" value="query" name="button">Buy</button>
