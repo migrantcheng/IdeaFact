@@ -76,7 +76,10 @@ public class ResearchFundAction extends Action {
         
         try {
 	        // get Fund list from database
-	        List<Fund> funds = fundDAO.getAllFunds();
+        	List<Fund> funds;
+        	synchronized (fundDAO) {
+        		funds = fundDAO.getAllFunds();
+        	}
 	        
 	        // store all position information along with other information;
 	        ArrayList<FundList> fundList = new ArrayList<FundList>();
@@ -85,7 +88,9 @@ public class ResearchFundAction extends Action {
 	        long tempLatestPrice;
 	        while (iter.hasNext()) {
 	        	tempFund = iter.next();
-	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempFund.getFund_id());
+	        	synchronized (fundPriceHistoryDAO) {
+	        		tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempFund.getFund_id());
+	        	}
 	        	String tempPrice = null;
 	        	if (tempLatestPrice <= 0) {
 	        		tempPrice = "-";
@@ -115,7 +120,10 @@ public class ResearchFundAction extends Action {
 	        }
 	        
 	        // Check to make sure parameter is in the right range.
-	        Fund fund = fundDAO.read(id);
+	        Fund fund;
+	        synchronized (fundDAO) {
+	        	fund = fundDAO.read(id);
+	        }
 	        if (fund == null) {
 	        	errors.add("Value of parameter is not correct.");
 	        }

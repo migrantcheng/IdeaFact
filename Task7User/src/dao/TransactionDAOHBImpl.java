@@ -17,12 +17,12 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	private Session session;
 	
 	public TransactionDAOHBImpl(){
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 
 	@Override
 	public void create(Transaction transaction) {
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		org.hibernate.Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -38,7 +38,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	
 	public ArrayList<String> buyFund(Customer customer, Transaction transaction, long amount) {
 		ArrayList<String> errors = new ArrayList<String>();
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		org.hibernate.Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -74,7 +74,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 	
 	public ArrayList<String> sellFund(Position position, Transaction transaction, long amount) {
 		ArrayList<String> errors = new ArrayList<String>();
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		org.hibernate.Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -113,7 +113,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 
 	@Override
 	public Transaction getLastTransaction(int customer_id) {
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Transaction where customer_id =:customer_id and execute_date is not NULL order by transaction_id desc");
 		query.setParameter("customer_id", customer_id);
@@ -130,7 +130,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 
 	@Override
 	public List<Transaction> getAll(int customer_id) {
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Transaction where customer_id = :customer_id order by transaction_id DESC");
 		query.setParameter("customer_id", customer_id);
@@ -145,7 +145,7 @@ public class TransactionDAOHBImpl implements TransactionDAO {
 
 	@Override
 	public List<Transaction> getPending(int customer_id) {
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Transaction where customer_id = :customer_id and execute_date is NULL order by transaction_id DESC");
 		query.setParameter("customer_id", customer_id);

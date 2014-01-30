@@ -50,7 +50,10 @@ public class LoginAction extends Action {
 	        }
 
 	        // Look up the user
-	        Customer user = customerDAO.read(form.getUsername());
+	        Customer user;
+	        synchronized (customerDAO) {
+	        	user = customerDAO.read(form.getUsername());
+	        }
 	        
 	        if (user == null) {
 	            errors.add("Username not found");

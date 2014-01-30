@@ -82,7 +82,9 @@ public class SellFundAction extends Action {
 
         try {
             Customer customer = (Customer) request.getSession().getAttribute("customer");
-        	customer = customerDAO.read(customer.getUsername());
+            synchronized (customerDAO) {
+            	customer = customerDAO.read(customer.getUsername());
+            }
         	request.getSession().setAttribute("customer", customer);
         	
 	        // Load the form parameters into a form bean
@@ -94,7 +96,10 @@ public class SellFundAction extends Action {
 	        request.setAttribute("stringAmount",stringAmount);
 	        
 	        // get position list from database
-	        List<Position> positions = positionDAO.getAllPositions(customer.getCustomer_id());
+	        List<Position> positions;
+	        synchronized (positionDAO) {
+	        	positions = positionDAO.getAllPositions(customer.getCustomer_id());
+	        }
 	        
 	        
 	        // store all position information along with other information;
@@ -105,8 +110,12 @@ public class SellFundAction extends Action {
 	        long tempLatestPrice;
 	        while (iter.hasNext()) {
 	        	tempPosition = iter.next();
-	        	tempFund = fundDAO.read(tempPosition.getFund_id());
-	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
+	        	synchronized (fundDAO) {
+	        		tempFund = fundDAO.read(tempPosition.getFund_id());
+	        	}
+	        	synchronized (fundPriceHistoryDAO) {
+	        		tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
+	        	}
 	        	String latestPrice;
 	        	if (tempLatestPrice == -1) {
 	        		latestPrice = "-";
@@ -130,13 +139,19 @@ public class SellFundAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        
-	        Fund fund = fundDAO.read(form.getTicker());
+	        Fund fund;
+	        synchronized (fundDAO) {
+	        	fund = fundDAO.read(form.getTicker());
+	        }
 	        if (fund == null) {
 	        	errors.add("Ticker does not exist.");
 	        } else {
 	        	request.setAttribute("fund", fund);
 	        	
-	        	long price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
+	        	long price = 0;
+	        	synchronized (fundPriceHistoryDAO) {
+	        		price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
+	        	}
 	        	String latestPrice;
 	        	if (price == -1) {
 	        		latestPrice = "-";
@@ -151,7 +166,10 @@ public class SellFundAction extends Action {
 		        	return "sell.jsp";
 		        }
 	        }
-	        Position position = positionDAO.read(fund.getFund_id(), customer.getCustomer_id());
+	        Position position;
+	        synchronized (positionDAO) {
+	        	position = positionDAO.read(fund.getFund_id(), customer.getCustomer_id());
+	        }
 	        available = (double)(position.getShares()) / 1000;
 	        stringAvailable = dfNumberFund.format(available);
 	        request.setAttribute("stringAvailable",stringAvailable);
@@ -197,7 +215,9 @@ public class SellFundAction extends Action {
 			transaction.setTransaction_type("SELL");
 			transaction.setShares(form.getAmount());
 			
-	        errors.addAll(transactionDAO.sellFund(position, transaction, form.getAmount()));
+			synchronized (transactionDAO) {
+				errors.addAll(transactionDAO.sellFund(position, transaction, form.getAmount()));
+			}
 	        
 	        //return errors if balance is not enough
 	        if (errors.size() != 0) {

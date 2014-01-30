@@ -44,7 +44,6 @@
 	<table class="table table-striped">
       <thead>
         <tr>
-            <hr>
           <th>Ticker</th>
           <th>Fund Name</th>
           <th>Amount of Position</th>

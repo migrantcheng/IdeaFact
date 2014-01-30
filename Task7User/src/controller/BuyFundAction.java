@@ -24,7 +24,6 @@ public class BuyFundAction extends Action {
 	private FundPriceHistoryDAO fundPriceHistoryDAO;
 
 	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
-	private DecimalFormat dfNumberFund = new DecimalFormat("#,##0.000");
 
 	private double available;
 	private double amount;
@@ -107,7 +106,9 @@ public class BuyFundAction extends Action {
 	        if (form.isPresent()) {
 	        	//update customer session
 	        	customer = (Customer) request.getSession().getAttribute("customer");
-	        	customer = customerDAO.read(customer.getUsername());
+	        	synchronized (customerDAO) {
+	        		customer = customerDAO.read(customer.getUsername());
+	        	}
 	        	request.getSession().setAttribute("customer", customer);
 	        	if (form.getButton().equals("next") || form.getButton().equals("buy")) {
 	        		//check for balance
@@ -145,8 +146,9 @@ public class BuyFundAction extends Action {
 			transaction.setTransaction_type("BUY");
 			transaction.setShares(-1);
 			
-	        errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
-
+			synchronized (transactionDAO) {
+				errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
+			}
 			
 	        //return errors if balance is not enough
 	        if (errors.size() != 0) {
@@ -154,7 +156,9 @@ public class BuyFundAction extends Action {
 	        }
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");
-        	user = customerDAO.read(user.getUsername());
+			synchronized (customerDAO) {
+				user = customerDAO.read(user.getUsername());
+			}
         	request.getSession().setAttribute("customer", user);
 			
 			request.getSession().setAttribute("messages","Your transaction for buying " + fund.getName() + " has been successfully placed.");

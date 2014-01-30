@@ -51,7 +51,9 @@ public class RequestCheckAction extends Action {
 
         try {
             Customer customer = (Customer) request.getSession().getAttribute("customer");
-        	customer = customerDAO.read(customer.getUsername());
+            synchronized (customerDAO) {
+            	customer = customerDAO.read(customer.getUsername());
+            }
         	request.getSession().setAttribute("customer", customer);
             
             available = (double)((Customer)request.getSession().getAttribute("customer")).getAvailable() / 100;
@@ -91,7 +93,9 @@ public class RequestCheckAction extends Action {
 	        if (form.isPresent()) {
 	        	//update customer session
 	        	customer = (Customer) request.getSession().getAttribute("customer");
-	        	customer = customerDAO.read(customer.getUsername());
+	        	synchronized (customerDAO) {
+	        		customer = customerDAO.read(customer.getUsername());
+	        	}
 	        	request.getSession().setAttribute("customer", customer);
 	        	if (form.getButton().equals("next") || form.getButton().equals("buy")) {
 	        		//check for balance
@@ -125,15 +129,19 @@ public class RequestCheckAction extends Action {
 			transaction.setExecute_date(null);
 			transaction.setTransaction_type(Transaction.WITHDRAW);
 			transaction.setShares(-1);
-	        errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
-
+			synchronized (transactionDAO) {
+				errors.addAll(transactionDAO.buyFund((Customer)request.getSession().getAttribute("customer"), transaction, form.getAmount()));
+			}
+	        
 	        //return errors if balance is not enough
 	        if (errors.size() != 0) {
 	        	return "requestCheck.jsp";
 	        }
 			
 			Customer user = (Customer) request.getSession().getAttribute("customer");
-        	user = customerDAO.read(user.getUsername());
+			synchronized (customerDAO) {
+				user = customerDAO.read(user.getUsername());
+			}
         	request.getSession().setAttribute("customer", user);
 			
 			request.getSession().setAttribute("messages","Your request for a check has been successfully placed in queue.");

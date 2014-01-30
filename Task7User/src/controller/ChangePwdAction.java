@@ -46,7 +46,9 @@ public class ChangePwdAction extends Action {
 	        }
 	
 			Customer customer = (Customer) request.getSession().getAttribute("customer");
-			customer = customerDAO.read(customer.getUsername());
+			synchronized (customerDAO) {
+				customer = customerDAO.read(customer.getUsername());
+			}
 			if(!customer.getPassword().equals(form.getOldPwd())){
 				errors.add("Old Password is not correct!");
 				return "changeCustomerPassword.jsp";
@@ -54,7 +56,9 @@ public class ChangePwdAction extends Action {
 	
 			// Change the password
 			customer.setPassword(form.getNewPassword());
-			customerDAO.update(customer);
+			synchronized (customerDAO) {
+				customerDAO.update(customer);
+			}
 	
 			request.getSession().setAttribute("messages","Password changed for "+customer.getUsername());
 	        return "myaccount.do";

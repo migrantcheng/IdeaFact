@@ -16,11 +16,11 @@ public class CustomerDAOHBImpl implements CustomerDAO {
 	private Session session;
 	
 	public CustomerDAOHBImpl(){
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	}
 	
 	public Customer read(String username){
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Customer where username = :username");
 		query.setParameter("username", username);
@@ -39,7 +39,7 @@ public class CustomerDAOHBImpl implements CustomerDAO {
 
 	@Override
 	public void create(Customer customer) {
-//		session = HibernateUtil.getSessionFactory().openSession();
+//		session = HibernateUtil.getSessionFactory().getCurrentSession();
 //		Transaction tx = null;
 //		try {
 //			tx = session.beginTransaction();
@@ -56,7 +56,7 @@ public class CustomerDAOHBImpl implements CustomerDAO {
 
 	@Override
 	public void update(Customer customer) {
-		session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 	      Transaction tx = null;
 	      try{
 	         tx = session.beginTransaction();

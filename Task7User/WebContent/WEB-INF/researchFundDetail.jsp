@@ -56,7 +56,7 @@
         ]);
 
         var options = {
-          title: 'Company Performance'
+          title: 'Fund Performance'
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

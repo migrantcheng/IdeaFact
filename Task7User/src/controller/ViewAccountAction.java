@@ -165,7 +165,9 @@ public class ViewAccountAction extends Action {
         	request.setAttribute("messages", messages);
         	request.getSession().setAttribute("messages", null);
             Customer customer = (Customer) request.getSession().getAttribute("customer");
-        	customer = customerDAO.read(customer.getUsername());
+            synchronized (customerDAO) {
+            	customer = customerDAO.read(customer.getUsername());
+            }
         	request.getSession().setAttribute("customer", customer);
         	
 	        // Calculate and store cash and available balance
@@ -177,7 +179,10 @@ public class ViewAccountAction extends Action {
 	        request.setAttribute("stringAvailable",stringAvailable);
 	        
 	        // get position list from database
-	        List<Position> positions = positionDAO.getAllPositions(customer.getCustomer_id());
+	        List<Position> positions;
+	        synchronized (positionDAO) {
+	        	positions = positionDAO.getAllPositions(customer.getCustomer_id());
+	        }
 	        
 	        
 	        // store all position information along with other information;
@@ -188,8 +193,12 @@ public class ViewAccountAction extends Action {
 	        long tempLatestPrice;
 	        while (iter.hasNext()) {
 	        	tempPosition = iter.next();
-	        	tempFund = fundDAO.read(tempPosition.getFund_id());
-	        	tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
+	        	synchronized (fundDAO) {
+	        		tempFund = fundDAO.read(tempPosition.getFund_id());
+	        	}
+	        	synchronized (fundPriceHistoryDAO) {
+	        		tempLatestPrice = fundPriceHistoryDAO.getLatestPrice(tempPosition.getFund_id());
+	        	}
 	        	// calculate latest price to be total value
 	        	String tempValue = null;
 	        	if (tempLatestPrice < 0) {
@@ -205,8 +214,10 @@ public class ViewAccountAction extends Action {
 	        request.setAttribute("positionList", positionList);
 	        
 	     // get transaction history list from database
-	        List<Transaction> transactions = transactionDAO.getPending(customer.getCustomer_id());
-
+	        List<Transaction> transactions;
+	        synchronized (transactionDAO) {
+	        	transactions = transactionDAO.getPending(customer.getCustomer_id());
+	        }
 	        
 	        // store all position information along with other information;
 	        ArrayList<TransactionList> transactionList = new ArrayList<TransactionList>();
@@ -215,7 +226,9 @@ public class ViewAccountAction extends Action {
 	        Fund tempFund2 = null;
 	        while (iter2.hasNext()) {
 	        	tempTransaction = iter2.next();
-	        	tempFund2 = fundDAO.read(tempTransaction.getFund_id());
+	        	synchronized (fundDAO) {
+	        		tempFund2 = fundDAO.read(tempTransaction.getFund_id());
+	        	}
 	        	// store transaction and fund pairs in list
 	        	transactionList.add(new TransactionList(tempTransaction,tempFund2));
 	        }
@@ -223,7 +236,10 @@ public class ViewAccountAction extends Action {
 	        request.setAttribute("transactionList", transactionList);
 	        
 	        // get last transaction day
-	        Transaction lastTransaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
+	        Transaction lastTransaction;
+	        synchronized (transactionDAO) {
+	        	lastTransaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
+	        }
 	        String lastTransactionDate = "N/A";
 	        if (lastTransaction != null && lastTransaction.getExecute_date() != null) {
 	        	lastTransactionDate = sdf.format(lastTransaction.getExecute_date());
