@@ -79,10 +79,10 @@ public class CreateEAccountAction extends Action {
 			List<String> messages = new ArrayList<String>();
 			messages.add("Created Account for "+employee.getUsername());
 			request.setAttribute("messages",messages);
-			return "createEAccount.do";
+			return "createEmployeeAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "createEAccount.do";
+        	return "createEmployeeAccount.jsp";
 		}
 	}
 

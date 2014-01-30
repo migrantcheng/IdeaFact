@@ -63,7 +63,7 @@ public class ManageCustomerAccountAction extends Action {
 	        		transaction = transactionDAO.getLastTransaction(customer.getCustomer_id());
 	        	}
 	        	if(transaction!=null){
-	        	data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
+	        		data.setLastTransactionDay(sdf.format(transaction.getExecute_date()));
 	        	}else{
 	        		data.setLastTransactionDay("-");
 	        	}
@@ -77,7 +77,7 @@ public class ManageCustomerAccountAction extends Action {
 	        return "manageCustomerAccount.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
-        	return "manageCustomerAccount.do";
+        	return "manageCustomerAccount.jsp";
 		}
 	}
 
