@@ -121,7 +121,11 @@
   		    <div class="control-group">
   		      <label class="control-label" for="tags">Ticker</label>
   		      <div class="controls">
-  		        <input type="text" id="tags" placeholder="Enter ticker to query" name="ticker">
+  		      	<select class="form-control" name="ticker">
+					<c:forEach var="fund" items="${funds}">
+						<option value="${fund.symbol}">${fund.symbol}&nbsp;&nbsp;-&nbsp;&nbsp;${fund.name}</option>
+					</c:forEach>
+				</select>
   		        <input type="hidden" id="amount" name="amount" value="10">
   		      </div>
   		    </div>

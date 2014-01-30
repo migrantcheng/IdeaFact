@@ -9,7 +9,6 @@ import org.hibernate.Transaction;
 
 import dao.interfaces.CustomerDAO;
 import databean.Customer;
-import databean.Employee;
 
 public class CustomerDAOHBImpl implements CustomerDAO {
 private Session session;

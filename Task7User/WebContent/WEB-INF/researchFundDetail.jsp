@@ -107,9 +107,9 @@
 					labels : [<c:forEach var="fundPrice" items="${fundPriceList}">"${fundPrice.date}",</c:forEach>],
 					datasets : [
 						{
-							fillColor : "rgba(220,220,220,0.5)",
-							strokeColor : "rgba(220,220,220,1)",
-							pointColor : "rgba(220,220,220,1)",
+							fillColor : "rgba(200,200,250,0.5)",
+							strokeColor : "rgba(200,200,250,1)",
+							pointColor : "rgba(200,200,250,1)",
 							pointStrokeColor : "#fff",
 							data : [<c:forEach var="fundPrice" items="${fundPriceList}">${fundPrice.realPrice},</c:forEach>]
 						}
