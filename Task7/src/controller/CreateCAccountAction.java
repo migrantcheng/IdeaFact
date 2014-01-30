@@ -7,15 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import dao.Model;
 import dao.interfaces.CustomerDAO;
+import dao.interfaces.EmployeeDAO;
 import databean.Customer;
+import databean.Employee;
 import formbean.CreateCAccountForm;
 
 public class CreateCAccountAction extends Action {
 	
 	private CustomerDAO customerDAO;
+	private EmployeeDAO employeeDAO;
 	
 	public CreateCAccountAction(Model model){
 		customerDAO = model.getCustomerDAO();
+		employeeDAO = model.getEmployeeDAO();
 	}
 
 	@Override
@@ -42,6 +46,21 @@ public class CreateCAccountAction extends Action {
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
 	        if (errors.size() != 0) {
+	        	return "createCustomerAccount.jsp";
+	        }
+	        
+	        Employee e = null;
+	        Customer c = null;
+	        synchronized(employeeDAO){
+	        	e = employeeDAO.read(form.getUsername());
+	        }
+	        
+	        synchronized(customerDAO){
+	        	c = customerDAO.read(form.getUsername());
+	        }
+	        
+	        if(e!=null || c!=null){
+	        	errors.add("Username exists, please choose another one!");
 	        	return "createCustomerAccount.jsp";
 	        }
 	

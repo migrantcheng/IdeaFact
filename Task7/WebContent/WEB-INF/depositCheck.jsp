@@ -38,7 +38,7 @@
             </div>
           </c:if>
            
-          <form type="POST">
+          <form method="POST">
            <table width="298" border="0">
            <tr>
            <td width="543">Username:</td>

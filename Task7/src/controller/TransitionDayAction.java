@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +18,7 @@ import dao.interfaces.PositionDAO;
 import dao.interfaces.TransactionDAO;
 import databean.Customer;
 import databean.Fund;
+import databean.FundData;
 import databean.FundPriceHistory;
 import databean.Position;
 import databean.Transaction;
@@ -30,6 +32,7 @@ public class TransitionDayAction extends Action {
 	private PositionDAO positionDAO;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
 	
 	public TransitionDayAction(Model model){
 		fundDAO = model.getFundDAO();
@@ -58,7 +61,28 @@ public class TransitionDayAction extends Action {
         		synchronized (fundDAO) {
         			funds = fundDAO.getFundList();
         		}
-        		request.setAttribute("funds", funds);
+        		List<FundData> dataList = new ArrayList<FundData>();
+        		if(funds!=null){
+        			Iterator<Fund> fundIter = funds.iterator();
+        			while(fundIter.hasNext()){
+        				Fund tmp = fundIter.next();
+        				FundData data = new FundData();
+        				data.setFund_id(tmp.getFund_id());
+        				data.setName(tmp.getName());
+        				data.setSymbol(tmp.getSymbol());
+        				long latestPrice;
+        				synchronized(fundPriceHistoryDAO){
+        					latestPrice = fundPriceHistoryDAO.getLatestPrice(tmp.getFund_id());
+        				}
+        				if(latestPrice==-1){
+        					data.setPrice("-");
+        				}else{
+        					data.setPrice(dfNumberCash.format(((double)latestPrice)/100));
+        				}
+        				dataList.add(data);
+        			}
+        		}
+        		request.setAttribute("funds", dataList);
         		Date date;
         		synchronized (transactionDAO) {
         			date = transactionDAO.getLastTransitionDay();
