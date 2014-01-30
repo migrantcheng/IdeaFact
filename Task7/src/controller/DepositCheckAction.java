@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import formbean.DepositCheckForm;
 public class DepositCheckAction extends Action {
 	private TransactionDAO transactionDAO;
 	private CustomerDAO customerDAO;
+	private DecimalFormat dfNumberCash = new DecimalFormat("#,##0.00");
 	
 	public DepositCheckAction(Model model){
 		transactionDAO = model.getTransactionDAO();
@@ -83,7 +85,7 @@ public class DepositCheckAction extends Action {
 //			request.setAttribute("messages","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
 			
 			List<String> messages = new ArrayList<String>();
-			messages.add("Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
+			messages.add("Deposited Check amount : "+dfNumberCash.format(((double)form.getAmount())/100)+" for customer: "+form.getUsername());
 			request.setAttribute("messages",messages);
 			return "depositCheck.jsp";
         }catch (Exception e) {

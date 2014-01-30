@@ -14,7 +14,7 @@ public class DepositCheckForm {
 		username = request.getParameter("username");
 		String amountStr = request.getParameter("amount");
 		try{
-			amount = (long)Double.parseDouble(amountStr)*100;
+			amount = (long)(Double.parseDouble(amountStr)*100);
 		}catch(Exception e){
 			amount = -1;
 		}
