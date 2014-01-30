@@ -51,7 +51,9 @@ public class BuyFundAction extends Action {
 
         try {
             Customer customer = (Customer) request.getSession().getAttribute("customer");
-        	customer = customerDAO.read(customer.getUsername());
+            synchronized (customerDAO) {
+            	customer = customerDAO.read(customer.getUsername());
+            }
         	request.getSession().setAttribute("customer", customer);
             
             available = (double)((Customer)request.getSession().getAttribute("customer")).getAvailable() / 100;
@@ -74,14 +76,19 @@ public class BuyFundAction extends Action {
 	        
 	        // Check for any validation errors
 	        errors.addAll(form.getValidationErrors());
-	        
-	        Fund fund = fundDAO.read(form.getTicker());
+	        Fund fund;
+	        synchronized (fundDAO) {
+	        	fund = fundDAO.read(form.getTicker());
+	        }
 	        if (fund == null) {
 	        	errors.add("Ticker does not exist.");
 	        } else {
 	        	request.setAttribute("fund", fund);
 	        	
-	        	long price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
+	        	long price = 0;
+	        	synchronized (fundPriceHistoryDAO) {
+	        		price = fundPriceHistoryDAO.getLatestPrice(fund.getFund_id());
+	        	}
 	        	String latestPrice;
 	        	if (price == -1) {
 	        		latestPrice = "N/A";
