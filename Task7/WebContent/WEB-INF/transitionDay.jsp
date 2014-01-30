@@ -60,8 +60,8 @@
     		<tr>
     		  <td>${fund.symbol}</td>
               <td>${fund.name}</td>
-              <td style="text-align:right;">${fund.price}</td>
-              <td>$<input type="text" name="${fund.fund_id}" id="price"></td> 
+              <td style="text-align:right;">$${fund.price}</td>
+              <td>$ <input type="text" name="${fund.fund_id}" id="price"></td> 
               </tr>
    			</c:forEach>
   
