@@ -67,8 +67,8 @@
 		        <tr>
 		          <th>Ticker</th>
 		          <th>Fund Name</th>
-		          <th>Amount of Position</th>
-		          <th>Value</th>
+		          <th style="text-align:right;">Amount of Position</th>
+		          <th style="text-align:right;">Value</th>
 		          <th>Sell</th>
 		        </tr>
 		      </thead>
@@ -81,8 +81,8 @@
 		      <tr>
 		        <td>${position.fund.symbol}</td>
 		        <td>${position.fund.name}</td>
-		        <td>${position.shares}</td>
-		        <td>$${position.latestPrice}</td>
+		        <td style="text-align:right;">${position.shares}</td>
+		        <td style="text-align:right;">$${position.latestPrice}</td>
 		        <td><button type="submit" class="btn btn-primary" name="button" value="query">Sell Fund</button></td>
 		      </tr>
 		      </form>
