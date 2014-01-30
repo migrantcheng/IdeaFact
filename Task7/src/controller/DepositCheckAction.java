@@ -77,9 +77,11 @@ public class DepositCheckAction extends Action {
 	        }
 	        
 	        //update customer's cash, but not update available until transaction day
-	        customer.setCash(customer.getCash() + form.getAmount());
+	        
 	        synchronized(customerDAO){
-	        customerDAO.update(customer);
+	        	customer = customerDAO.read(form.getUsername());
+	        	customer.setCash(customer.getCash() + form.getAmount());
+	        	customerDAO.update(customer);
 	        }
 	
 //			request.setAttribute("messages","Deposited Check amount : "+form.getAmount()/100+" for customer: "+form.getUsername());
