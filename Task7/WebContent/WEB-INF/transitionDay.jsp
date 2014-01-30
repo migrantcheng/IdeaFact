@@ -50,6 +50,7 @@
     <tr>
               <th>Ticker</th>
               <th>Fund Name</th>
+              <th style="text-align:right;">Latest Price</th>
               <th>Closing Price</th>
               
     </tr>
@@ -59,6 +60,7 @@
     		<tr>
     		  <td>${fund.symbol}</td>
               <td>${fund.name}</td>
+              <td style="text-align:right;">${fund.price}</td>
               <td>$<input type="text" name="${fund.fund_id}" id="price"></td> 
               </tr>
    			</c:forEach>
