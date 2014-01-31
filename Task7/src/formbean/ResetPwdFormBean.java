@@ -17,8 +17,17 @@ public class ResetPwdFormBean {
 	
 	public ResetPwdFormBean(HttpServletRequest request) {
 		oldPwd = request.getParameter("oldPwd");
+		if(oldPwd!=null){
+			oldPwd = oldPwd.trim();
+		}
 		newPassword = request.getParameter("newPwd");
+		if(newPassword!=null){
+			newPassword = newPassword.trim();
+		}
 		confirmPassword = request.getParameter("confirmPwd");
+		if(confirmPassword!=null){
+			confirmPassword = confirmPassword.trim();
+		}
 		button = request.getParameter("button");
 	}
 	public String getConfirmPassword() {

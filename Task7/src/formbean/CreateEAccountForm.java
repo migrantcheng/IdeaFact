@@ -15,13 +15,32 @@ public class CreateEAccountForm {
 	private String lastName;
 	private String button;
 	
+	private StringValidator validator;
+	
 	public CreateEAccountForm(HttpServletRequest request){
 		username = request.getParameter("username");
+		if(username!=null){
+			username = username.trim();
+		}
 		password = request.getParameter("password");
+		if(password!=null){
+			password = password.trim();
+		}
 		confirmPassword = request.getParameter("confirmPassword");
+		if(confirmPassword!=null){
+			confirmPassword = confirmPassword.trim();
+		}
 		firstName = request.getParameter("firstName");
+		if(firstName!=null){
+			firstName = firstName.trim();
+		}
 		lastName = request.getParameter("lastName");
+		if(lastName!=null){
+			lastName = lastName.trim();
+		}
 		button = request.getParameter("button");
+		
+		validator = new StringValidator();
 		
 	}
 
@@ -115,6 +134,18 @@ public class CreateEAccountForm {
 		
 		if(lastName.length()>30){
 			errors.add("The length of lastname should be less than 30.");
+		}
+		
+		if(!validator.validate(username)){
+			errors.add("The username contains invalid chacter.");
+		}
+		
+		if(!validator.validate(firstName)){
+			errors.add("The First Name contains invalid chacter.");
+		}
+		
+		if(!validator.validate(lastName)){
+			errors.add("The Last Name contains invalid chacter.");
 		}
 		
 		if (!password.equals(confirmPassword)) {

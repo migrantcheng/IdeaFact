@@ -12,6 +12,9 @@ public class DepositCheckForm {
 	
 	public DepositCheckForm(HttpServletRequest request){
 		username = request.getParameter("username");
+		if(username!=null){
+			username = username.trim();
+		}
 		String amountStr = request.getParameter("amount");
 		try{
 			amount = (long)(Double.parseDouble(amountStr)*100);

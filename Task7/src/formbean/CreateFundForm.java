@@ -9,14 +9,22 @@ public class CreateFundForm {
 	private String fundName;
 	private String ticker;
 	private String button;
+
+	private StringValidator validator;
 	
 	public CreateFundForm(HttpServletRequest request){
 		fundName = request.getParameter("fundName");
+		if(fundName!=null){
+			fundName = fundName.trim();
+		}
 		ticker = request.getParameter("ticker");
 		if(ticker!=null){
+			ticker = ticker.trim();
 			ticker = ticker.toUpperCase();
 		}
 		button = request.getParameter("button");
+		
+		validator = new StringValidator();
 	}
 
 	public String getFundName() {
@@ -64,6 +72,14 @@ public class CreateFundForm {
 		
 		if(ticker.length()!=4){
 			errors.add("The length of ticker should be 4!");
+		}
+		
+		if(!validator.validate(fundName)){
+			errors.add("The Fund Name contains invalid chacter.");
+		}
+		
+		if(!validator.validate(ticker)){
+			errors.add("The Ticker contains invalid chacter.");
 		}
 
 		return errors;

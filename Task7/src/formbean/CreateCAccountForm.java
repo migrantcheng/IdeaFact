@@ -20,18 +20,52 @@ public class CreateCAccountForm {
 	private String zip;
 	private String button;
 	
+	private StringValidator validator;
+	
 	public CreateCAccountForm(HttpServletRequest request){
 		username = request.getParameter("username");
+		if(username!=null){
+			username = username.trim();
+		}
 		password = request.getParameter("password");
+		if(password!=null){
+			password = password.trim();
+		}
 		confirmPassword = request.getParameter("confirmPassword");
+		if(confirmPassword!=null){
+			confirmPassword = confirmPassword.trim();
+		}
 		firstName = request.getParameter("firstname");
+		if(firstName!=null){
+			firstName = firstName.trim();
+		}
 		lastName = request.getParameter("lastname");
+		if(lastName!=null){
+			lastName = lastName.trim();
+		}
 		addr_line1 = request.getParameter("addrline1");
+		if(addr_line1!=null){
+			addr_line1 = addr_line1.trim();
+		}
 		addr_line2 = request.getParameter("addrline2");
+		if(addr_line2!=null){
+			addr_line2 = addr_line2.trim();
+		}
 		city = request.getParameter("city");
+		if(city!=null){
+			city = city.trim();
+		}
 		state = request.getParameter("state");
+		if(state!=null){
+			state = state.trim();
+		}
 		zip = request.getParameter("zip");
+		if(zip!=null){
+			zip = zip.trim();
+		}
 		button = request.getParameter("button");
+		
+		validator = new StringValidator();
 		
 	}
 
@@ -220,6 +254,9 @@ public class CreateCAccountForm {
 			if (addr_line2.length() > 50) {
 				errors.add("The length of address line 2 should be less than 50.");
 			}
+			if(!validator.validate(addr_line2)){
+				errors.add("The address line 2 contains invalid chacter.");
+			}
 		}
 		
 		if(city.length()>50){
@@ -228,6 +265,30 @@ public class CreateCAccountForm {
 		
 		if (zip.length()!=5) {
 			errors.add("The length of zip should be 5.");
+		}
+		
+
+		if(!validator.validate(username)){
+			errors.add("The Username contains invalid chacter.");
+		}
+
+		if(!validator.validate(firstName)){
+			errors.add("The First Name contains invalid chacter.");
+		}
+
+		if(!validator.validate(lastName)){
+			errors.add("The Last Name contains invalid chacter.");
+		}
+		
+
+		if(!validator.validate(addr_line1)){
+			errors.add("The address line 1 contains invalid chacter.");
+		}
+		if(!validator.validate(city)){
+			errors.add("City contains invalid chacter.");
+		}
+		if(!validator.validate(zip)){
+			errors.add("Zip contains invalid chacter.");
 		}
 		
 		password = HibernateUtil.getMD5(password);
