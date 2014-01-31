@@ -38,7 +38,7 @@
               </div>
             </div>
           </c:if>
-          <a href="javascript:history.go(-1)"><button class="btn inline">Return</button></a>
+          <a href="transitionDay.do"><button class="btn inline">Return</button></a>
 
 
         </div><!--/span-->
