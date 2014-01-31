@@ -11,6 +11,7 @@ import dao.interfaces.EmployeeDAO;
 import databean.Customer;
 import databean.Employee;
 import formbean.ChangePwdFormBean;
+import formbean.ResetPwdFormBean;
 
 public class resetPwdAction extends Action{
 	private EmployeeDAO employeeDAO;
@@ -31,7 +32,7 @@ public class resetPwdAction extends Action{
 		request.setAttribute("errors", errors);
 		
 		try {
-			ChangePwdFormBean form = new ChangePwdFormBean(request);
+			ResetPwdFormBean form = new ResetPwdFormBean(request);
 			request.setAttribute("customer_username",request.getParameter("customer_username"));
 			
 			if (!form.isPresent()) {
@@ -48,6 +49,9 @@ public class resetPwdAction extends Action{
 			Customer customer;
 			synchronized(customerDAO){
 			customer = customerDAO.read(username);
+			if(customer==null){
+				throw new Exception("Username not found!");
+			}
 			customer.setPassword(form.getNewPassword());
 			customerDAO.update(customer);
 			}
