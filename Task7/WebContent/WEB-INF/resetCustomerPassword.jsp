@@ -40,7 +40,7 @@
 		  
     		  <form class="form-horizontal" method="POST">
       		    <dl class="dl-horizontal" style="font-weight:normal">
-            		<dt style="font-weight:normal;">UserName</dt>
+            		<dt style="font-weight:normal;">Username</dt>
             		<dd>${customer_username}</dd>
             		<input type="hidden" name="username" value="${customer_username}">
           		</dl>
