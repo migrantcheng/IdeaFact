@@ -59,8 +59,11 @@ public class resetPwdAction extends Action{
 //			Employee employee = (Employee) request.getSession().getAttribute("employee");
 //			employeeDAO.updatePassword(employee.getUsername(), form.getNewPassword());
 			
-			request.setAttribute("message", "Password reset for " + customer.getUsername());
-			return "manageCustomerAccount.do";
+			
+			List<String> messages = new ArrayList<String>();
+			messages.add("Password reset for " + customer.getUsername());
+			request.setAttribute("messages",messages);
+			return "resetCustomerPassword.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
 			return "resetCustomerPassword.jsp";
