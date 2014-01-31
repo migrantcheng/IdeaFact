@@ -41,7 +41,7 @@
   		    <div class="control-group">
   		      <label class="control-label">Username</label>
   		      <div class="controls">
-  		        <input type="text" name="username" maxlength="16">
+  		        <input type="text" name="username" maxlength="16" value="${form.username}">
   		      </div>
   		    </div>
 		    <div class="control-group">
@@ -59,13 +59,13 @@
 		    <div class="control-group">
 		      <label class="control-label">First Name</label>
 		      <div class="controls">
-		        <input type="text" name="firstName" maxlength="30">
+		        <input type="text" name="firstName" maxlength="30" value="${form.firstName}">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Last Name</label>
 		      <div class="controls">
-		        <input type="text" name="lastName" maxlength="30">
+		        <input type="text" name="lastName" maxlength="30" value="${form.lastName}">
 		      </div>
 		    </div>
 		    

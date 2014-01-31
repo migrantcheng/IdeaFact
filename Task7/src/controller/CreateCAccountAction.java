@@ -36,6 +36,7 @@ public class CreateCAccountAction extends Action {
         try {
 	        // Load the form parameters into a form bean
 	        CreateCAccountForm form = new CreateCAccountForm(request);
+	        request.setAttribute("form", form);
 	        
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).

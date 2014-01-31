@@ -37,6 +37,7 @@ public class CreateEAccountAction extends Action {
         try {
 	        // Load the form parameters into a form bean
 	        CreateEAccountForm form = new CreateEAccountForm(request);
+	        request.setAttribute("form", form);
 	        
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).

@@ -255,7 +255,7 @@ public class CreateCAccountForm {
 				errors.add("The length of address line 2 should be less than 50.");
 			}
 			if(!validator.validate(addr_line2)){
-				errors.add("The address line 2 contains invalid chacter.");
+				errors.add("The address line 2 contains invalid character.");
 			}
 		}
 		
@@ -269,26 +269,26 @@ public class CreateCAccountForm {
 		
 
 		if(!validator.validate(username)){
-			errors.add("The Username contains invalid chacter.");
+			errors.add("The Username contains invalid character.");
 		}
 
 		if(!validator.validate(firstName)){
-			errors.add("The First Name contains invalid chacter.");
+			errors.add("The First Name contains invalid character.");
 		}
 
 		if(!validator.validate(lastName)){
-			errors.add("The Last Name contains invalid chacter.");
+			errors.add("The Last Name contains invalid character.");
 		}
 		
 
 		if(!validator.validate(addr_line1)){
-			errors.add("The address line 1 contains invalid chacter.");
+			errors.add("The address line 1 contains invalid character.");
 		}
 		if(!validator.validate(city)){
-			errors.add("City contains invalid chacter.");
+			errors.add("City contains invalid character.");
 		}
 		if(!validator.validate(zip)){
-			errors.add("Zip contains invalid chacter.");
+			errors.add("Zip contains invalid character.");
 		}
 		
 		password = HibernateUtil.getMD5(password);

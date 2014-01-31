@@ -42,43 +42,43 @@
   		    <div class="control-group">
   		      <label class="control-label">Username</label>
   		      <div class="controls">
-  		        <input type="text" name="username" maxlength="16">
+  		        <input type="text" name="username" maxlength="16" value="${form.username}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">First Name</label>
   		      <div class="controls">
-  		        <input type="text" name="firstname" maxlength="30">
+  		        <input type="text" name="firstname" maxlength="30" value="${form.firstName}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Last Name</label>
   		      <div class="controls">
-  		        <input type="text" name="lastname" maxlength="30">
+  		        <input type="text" name="lastname" maxlength="30" value="${form.lastName}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Address Line 1</label>
   		      <div class="controls">
-  		        <input type="text" name="addrline1" maxlength="50">
+  		        <input type="text" name="addrline1" maxlength="50" value="${form.addr_line1}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Address Line 2</label>
   		      <div class="controls">
-  		        <input type="text" name="addrline2" maxlength="50">
+  		        <input type="text" name="addrline2" maxlength="50" value="${form.addr_line2}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">City</label>
   		      <div class="controls">
-  		        <input type="text" name="city" maxlength="50">
+  		        <input type="text" name="city" maxlength="50" value="${form.city}">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">State</label>
   		      <div class="controls">
-  		        <select class="form-control" name="state">
+  		        <select class="form-control" name="state" value="${form.state}">
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -136,7 +136,7 @@
   		    <div class="control-group">
   		      <label class="control-label">Zip</label>
   		      <div class="controls">
-  		        <input type="text" name="zip" maxlength="5">
+  		        <input type="text" name="zip" maxlength="5" value="${form.zip}">
   		      </div>
   		    </div>
 		    <div class="control-group">

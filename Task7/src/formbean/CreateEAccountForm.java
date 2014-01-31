@@ -137,15 +137,15 @@ public class CreateEAccountForm {
 		}
 		
 		if(!validator.validate(username)){
-			errors.add("The username contains invalid chacter.");
+			errors.add("The username contains invalid character.");
 		}
 		
 		if(!validator.validate(firstName)){
-			errors.add("The First Name contains invalid chacter.");
+			errors.add("The First Name contains invalid character.");
 		}
 		
 		if(!validator.validate(lastName)){
-			errors.add("The Last Name contains invalid chacter.");
+			errors.add("The Last Name contains invalid character.");
 		}
 		
 		if (!password.equals(confirmPassword)) {
