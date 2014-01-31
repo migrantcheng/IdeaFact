@@ -42,13 +42,13 @@
   		    <div class="control-group">
   		      <label class="control-label">Fund Name</label>
   		      <div class="controls">
-  		        <input type="text" name="fundName">
+  		        <input type="text" name="fundName" maxlength="25">
   		      </div>
   		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Ticker</label>
 		      <div class="controls">
-		        <input type="text" name="ticker" placeholder="4 characters long">
+		        <input type="text" name="ticker" placeholder="4 characters long" maxlength="4">
 		      </div>
 		    </div>
 		    
