@@ -47,7 +47,7 @@
     		    <div class="control-group">
     		      <label class="control-label" for="newPwd">New Password</label>
     		      <div class="controls">
-    		        <input type="password" id="newPwd" name="newPwd">
+    		        <input type="password" id="newPwd" placeholder="Password should be 6 - 16 characters long" name="newPwd">
     		      </div>
     		    </div>
     		    <div class="control-group">
