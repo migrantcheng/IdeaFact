@@ -54,6 +54,14 @@ public class CreateFundAction extends Action {
 	        	errors.add("Fund Ticker exists, please choose another ticker!");
 	        	return "createFund.jsp";
 	        }
+	        
+	        synchronized(fundDAO){
+	        	temp = fundDAO.readByName(form.getFundName());
+	        }
+	        if(temp!=null){
+	        	errors.add("Fund Name exists, please choose another Fund Name!");
+	        	return "createFund.jsp";
+	        }
 	
 	        Fund fund = new Fund();
 	        fund.setName(form.getFundName());

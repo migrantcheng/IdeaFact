@@ -15,4 +15,6 @@ public interface FundDAO {
 
 	Fund readByTicker(String ticker);
 
+	Fund readByName(String fundName);
+
 }

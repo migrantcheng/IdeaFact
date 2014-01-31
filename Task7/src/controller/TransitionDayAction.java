@@ -108,7 +108,7 @@ public class TransitionDayAction extends Action {
         		}
         		if(lastDate!=null){
         			if(lastDate.after(date) || lastDate.getDate()==date.getDate()){
-        				throw new Exception("invalid date");
+        				throw new Exception("Date should be later than last transition Day: "+sdf.format(lastDate));
         			}
         		}
         		List<Fund> fundList;
