@@ -31,6 +31,7 @@ public class TransactionHistoryAction extends Action {
     	public String stringShares;
     	public String stringDate;
     	public Fund fund;
+    	public String fundName;
     	public String stringAmount;
     	public String stringUnitPrice;
     	
@@ -48,6 +49,12 @@ public class TransactionHistoryAction extends Action {
     			operation = "Request Check";
     		} else {
     			operation = "N/A";
+    		}
+    		
+    		if (fund != null) {
+    			fundName = fund.getName();
+    		} else {
+    			fundName = "-";
     		}
     		
     		if (transaction.getShares() <= 0) {
@@ -78,6 +85,10 @@ public class TransactionHistoryAction extends Action {
 
     	public String getOperation() {
     		return operation;
+    	}
+    	
+    	public String getFundName() {
+    		return fundName;
     	}
 
     	public String getStringShares() {

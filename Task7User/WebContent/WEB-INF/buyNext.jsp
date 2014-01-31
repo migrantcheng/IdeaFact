@@ -67,7 +67,7 @@
 		    <div class="control-group">
 		      <label class="control-label" for="amount">Amount of Money</label>
 		      <div class="controls">
-		        <input type="text" id="amount" placeholder="minimum amount is 10.00" name="amount">
+		        $<input type="text" id="amount" placeholder="minimum amount is 10.00" name="amount">
 		      </div>
 		    </div>
 		    <div class="control-group">

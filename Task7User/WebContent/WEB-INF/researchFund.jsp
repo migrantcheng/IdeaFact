@@ -41,7 +41,7 @@
     	  <table class="table table-striped" id="historyTable">
             <thead>
               <tr>
-                <th>Ticker</th>
+                <th>Ticker&nbsp;&nbsp;</th>
                 <th>Fund Name</th>
                 <th style="text-align:right;">Latest Price&nbsp;&nbsp;</th>
                 <th>Detail</th>

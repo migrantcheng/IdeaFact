@@ -33,6 +33,7 @@ public class TransactionHistoryAction extends Action {
     	public String stringShares;
     	public String stringDate;
     	public Fund fund;
+    	public String fundName;
     	public String stringAmount;
     	public String stringUnitPrice;
     	
@@ -52,6 +53,12 @@ public class TransactionHistoryAction extends Action {
     			operation = "N/A";
     		}
     		
+    		if (fund != null) {
+    			fundName = fund.getName();
+    		} else {
+    			fundName = "-";
+    		}
+    		
     		if (transaction.getShares() <= 0) {
     			stringShares = "-";
     		} else {
@@ -67,19 +74,23 @@ public class TransactionHistoryAction extends Action {
     		if (transaction.getAmount() <= 0) {
     			stringAmount = "-";
     		} else {
-    			stringAmount = dfNumberCash.format((double)transaction.getAmount()/100);
+    			stringAmount = "$" + dfNumberCash.format((double)transaction.getAmount()/100);
     		}
     		
     		if (transaction.getAmount() <= 0 || transaction.getShares() <= 0) {
     			stringUnitPrice = "-";
     		} else {
 	    		unitPrice = (double)transaction.getShareprice()/100;
-	    		stringUnitPrice = dfNumberCash.format(unitPrice);
+	    		stringUnitPrice = "$" + dfNumberCash.format(unitPrice);
     		}
     	}
 
     	public String getOperation() {
     		return operation;
+    	}
+    	
+    	public String getFundName() {
+    		return fundName;
     	}
 
     	public String getStringShares() {

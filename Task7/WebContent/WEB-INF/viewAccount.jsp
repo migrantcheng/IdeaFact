@@ -107,10 +107,10 @@
             <tr>
               <td>${transaction.stringDate}</td>
               <td>${transaction.operation}</td>
-              <td>${transaction.fund.name}</td>
+              <td>${transaction.fundName}</td>
               <td style="text-align:right;">${transaction.stringShares}</td>
-              <td style="text-align:right;">$${transaction.stringUnitPrice}</td>
-              <td style="text-align:right;">$${transaction.stringAmount}</td>
+              <td style="text-align:right;">${transaction.stringUnitPrice}</td>
+              <td style="text-align:right;">${transaction.stringAmount}</td>
             </tr>
             </c:forEach>
             
