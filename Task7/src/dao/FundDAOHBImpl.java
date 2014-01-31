@@ -83,4 +83,22 @@ public class FundDAOHBImpl implements FundDAO {
         return fund;
 	}
 
+	@Override
+	public Fund readByName(String fundName) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Fund where name = :name");
+		query.setParameter("name", fundName);
+		Fund fund = null;
+        List <Fund> list = query.list();
+        java.util.Iterator<Fund> iter = list.iterator();
+        if (iter.hasNext()) {
+        	fund = iter.next();
+        }
+
+        session.getTransaction().commit();
+        
+        return fund;
+	}
+
 }
