@@ -73,7 +73,7 @@
 		    <div class="control-group">
 		      <div class="controls">
 		        <button type="submit" class="btn btn-primary" name="button" value="next">Next</button>
-		        <a href="research.do">
+		        <a href="javascript:history.go(-1);">
 		        	<button type="button" class="btn" name="button">Cancel</button>
 		        </a>
 		      </div>
