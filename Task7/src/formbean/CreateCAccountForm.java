@@ -254,9 +254,6 @@ public class CreateCAccountForm {
 			if (addr_line2.length() > 50) {
 				errors.add("The length of address line 2 should be less than 50.");
 			}
-			if(!validator.validate(addr_line2)){
-				errors.add("The address line 2 contains invalid character.");
-			}
 		}
 		
 		if(city.length()>50){
@@ -281,9 +278,6 @@ public class CreateCAccountForm {
 		}
 		
 
-		if(!validator.validate(addr_line1)){
-			errors.add("The address line 1 contains invalid character.");
-		}
 		if(!validator.validate(city)){
 			errors.add("City contains invalid character.");
 		}
