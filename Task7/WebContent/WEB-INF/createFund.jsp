@@ -48,7 +48,7 @@
 		    <div class="control-group">
 		      <label class="control-label">Ticker</label>
 		      <div class="controls">
-		        <input type="text" name="ticker">
+		        <input type="text" name="ticker" placeholder="4 characters long">
 		      </div>
 		    </div>
 		    
