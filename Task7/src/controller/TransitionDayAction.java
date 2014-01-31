@@ -271,7 +271,7 @@ public class TransitionDayAction extends Action {
         	errors.add("Date format wrong. Example format: 12/01/2013");
         	return "transitionDayFail.jsp";
         }catch (NumberFormatException e){
-        	errors.add("Close price should be two decimal number.");
+        	errors.add("Closing price should be two decimal number.");
         	return "transitionDayFail.jsp";
         }catch (Exception e) {
         	errors.add(e.getMessage());
