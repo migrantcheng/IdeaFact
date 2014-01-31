@@ -54,6 +54,14 @@ public class CreateFundForm {
 			errors.add("Fund Ticker is required");
 		}
 		
+		if(!errors.isEmpty()){
+			return errors;
+		}
+		
+		if(fundName.length()>100){
+			errors.add("The length of fund Name should be less than 100.");
+		}
+		
 		if(ticker.length()!=4){
 			errors.add("The length of ticker should be 4!");
 		}
