@@ -50,6 +50,10 @@ public class ChangePwdFormBean {
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
 
+		if (oldPwd == null || oldPwd.length() == 0) {
+			errors.add("Old Password is required");
+		}
+		
 		if (newPassword == null || newPassword.length() == 0) {
 			errors.add("New Password is required");
 		}
