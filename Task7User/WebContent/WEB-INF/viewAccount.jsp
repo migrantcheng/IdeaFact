@@ -69,7 +69,7 @@
 		          <th>Fund Name</th>
 		          <th style="text-align:right;">Amount of Position</th>
 		          <th style="text-align:right;">Value</th>
-		          <th>Sell</th>
+		          <th style="text-align:right;">Sell</th>
 		        </tr>
 		      </thead>
 		      <tbody>
@@ -83,7 +83,7 @@
 		        <td>${position.fund.name}</td>
 		        <td style="text-align:right;">${position.shares}</td>
 		        <td style="text-align:right;">$${position.latestPrice}</td>
-		        <td><button type="submit" class="btn btn-primary" name="button" value="query">Sell Fund</button></td>
+		        <td style="text-align:right;"><button type="submit" class="btn btn-primary" name="button" value="query">Sell Fund</button></td>
 		      </tr>
 		      </form>
 		      </c:forEach>
