@@ -128,7 +128,7 @@
     		  <td>${fund.symbol}</td>
               <td>${fund.name}</td>
               <td style="text-align:right;">$${fund.price}</td>
-              <td>$ <input type="text" name="${fund.fund_id}" id="price"></td> 
+              <td>$ <input type="text" name="${fund.fund_id}" id="price" placeholder="0.01 - 9999.99"  maxlength="7"></td> 
               </tr>
    			</c:forEach>
   

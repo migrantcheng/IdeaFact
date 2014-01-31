@@ -47,13 +47,13 @@
     		    <div class="control-group">
     		      <label class="control-label" for="newPwd">New Password</label>
     		      <div class="controls">
-    		        <input type="password" id="newPwd" placeholder="6 - 16 characters long" name="newPwd">
+    		        <input type="password" id="newPwd" placeholder="6 - 16 characters long" name="newPwd" maxlength="16">
     		      </div>
     		    </div>
     		    <div class="control-group">
     		      <label class="control-label" for="confirmPwd">Confirm Password</label>
     		      <div class="controls">
-    		        <input type="password" id="confirmPwd"  name="confirmPwd">
+    		        <input type="password" id="confirmPwd"  name="confirmPwd" maxlength="16">
     		      </div>
     		    </div>
     		    <div class="control-group">

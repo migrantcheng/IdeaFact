@@ -47,7 +47,7 @@
 		    <div class="control-group">
 		      <label class="control-label" for="amount">Amount of Check</label>
 		      <div class="controls">
-		        $<input type="text" id="amount" placeholder="e.g. 13.55" name="amount">
+		        $<input type="text" id="amount" placeholder="e.g. 13.55" name="amount" maxlength="16">
 		      </div>
 		    </div>
 		    <div class="control-group">

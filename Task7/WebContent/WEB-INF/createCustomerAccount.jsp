@@ -42,37 +42,37 @@
   		    <div class="control-group">
   		      <label class="control-label">Username</label>
   		      <div class="controls">
-  		        <input type="text" name="username">
+  		        <input type="text" name="username" maxlength="16">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">First Name</label>
   		      <div class="controls">
-  		        <input type="text" name="firstname">
+  		        <input type="text" name="firstname" maxlength="30">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Last Name</label>
   		      <div class="controls">
-  		        <input type="text" name="lastname">
+  		        <input type="text" name="lastname" maxlength="30">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Address Line 1</label>
   		      <div class="controls">
-  		        <input type="text" name="addrline1">
+  		        <input type="text" name="addrline1" maxlength="50">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">Address Line 2</label>
   		      <div class="controls">
-  		        <input type="text" name="addrline2">
+  		        <input type="text" name="addrline2" maxlength="50">
   		      </div>
   		    </div>
   		    <div class="control-group">
   		      <label class="control-label">City</label>
   		      <div class="controls">
-  		        <input type="text" name="city">
+  		        <input type="text" name="city" maxlength="50">
   		      </div>
   		    </div>
   		    <div class="control-group">
@@ -136,19 +136,19 @@
   		    <div class="control-group">
   		      <label class="control-label">Zip</label>
   		      <div class="controls">
-  		        <input type="text" name="zip">
+  		        <input type="text" name="zip" maxlength="5">
   		      </div>
   		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Password</label>
 		      <div class="controls">
-		        <input type="password" name="password">
+		        <input type="password" name="password" maxlength="16">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Confirm Password</label>
 		      <div class="controls">
-		        <input type="password" name="confirmPassword">
+		        <input type="password" name="confirmPassword" maxlength="16">
 		      </div>
 		    </div>
 		    

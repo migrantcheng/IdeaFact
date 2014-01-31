@@ -41,31 +41,31 @@
   		    <div class="control-group">
   		      <label class="control-label">Username</label>
   		      <div class="controls">
-  		        <input type="text" name="username">
+  		        <input type="text" name="username" maxlength="16">
   		      </div>
   		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Password</label>
 		      <div class="controls">
-		        <input type="password" name="password">
+		        <input type="password" name="password" maxlength="16">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Confirm Password</label>
 		      <div class="controls">
-		        <input type="password" name="confirmPassword">
+		        <input type="password" name="confirmPassword" maxlength="16">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label">First Name</label>
 		      <div class="controls">
-		        <input type="text" name="firstName">
+		        <input type="text" name="firstName" maxlength="30">
 		      </div>
 		    </div>
 		    <div class="control-group">
 		      <label class="control-label">Last Name</label>
 		      <div class="controls">
-		        <input type="text" name="lastName">
+		        <input type="text" name="lastName" maxlength="30">
 		      </div>
 		    </div>
 		    

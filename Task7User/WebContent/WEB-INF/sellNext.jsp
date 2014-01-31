@@ -67,7 +67,7 @@
 		    <div class="control-group">
 		      <label class="control-label" for="amount">Amount of Shares</label>
 		      <div class="controls">
-		        <input type="text" id="amount" placeholder="e.g. 10.505" name="amount">
+		        <input type="text" id="amount" placeholder="e.g. 10.505" name="amount" maxlength="10">
 		      </div>
 		    </div>
 		    <div class="control-group">

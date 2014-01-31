@@ -54,7 +54,7 @@
            <td width="327">Deposit Amount:</td>
            </tr>
            <tr>
-           <td><input type="text" name="amount" id="amount" ></td>
+           <td><input type="text" name="amount" id="amount"  maxlength="10"></td>
            </tr>
            </table>
            <p>
