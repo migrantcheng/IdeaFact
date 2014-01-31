@@ -74,9 +74,9 @@ public class CreateFundForm {
 			errors.add("The length of ticker should be 4!");
 		}
 		
-		if(!validator.validate(fundName)){
-			errors.add("The Fund Name contains invalid chacter.");
-		}
+//		if(!validator.validate(fundName)){
+//			errors.add("The Fund Name contains invalid chacter.");
+//		}
 		
 		if(!validator.validate(ticker)){
 			errors.add("The Ticker contains invalid chacter.");
