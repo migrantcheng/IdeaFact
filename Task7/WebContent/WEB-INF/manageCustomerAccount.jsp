@@ -46,8 +46,8 @@
               <th>User</th>
               <th>Name</th>
               <th>Last Transaction</th>
-              <th style="text-align:right;">Cash</th>
-              <th style="text-align:right;">Available</th>
+              <th style="text-align:right;">Cash&nbsp;&nbsp;</th>
+              <th style="text-align:right;">Available&nbsp;&nbsp;</th>
               <th>Operation</th>
     </tr>
     </thead>

@@ -42,9 +42,9 @@
                 <th>Date</th>
                 <th>Operation</th>
                 <th>Fund Name</th>
-                <th style="text-align:right;">Number of Shares</th>
-                <th style="text-align:right;">Share Prices</th>
-                <th style="text-align:right;">Dollar Amount</th>
+                <th style="text-align:right;">Number of Shares&nbsp;&nbsp;</th>
+                <th style="text-align:right;">Share Prices&nbsp;&nbsp;</th>
+                <th style="text-align:right;">Dollar Amount&nbsp;&nbsp;</th>
               </tr>
             </thead>
             <tbody>
