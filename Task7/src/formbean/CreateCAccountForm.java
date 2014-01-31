@@ -185,9 +185,13 @@ public class CreateCAccountForm {
 			errors.add("Zip is required");
 		}
 		
-		if (zip.length()!=5) {
-			errors.add("The length of zip should be 5.");
+		
+		
+		if (errors.size() > 0) {
+			return errors;
 		}
+		
+
 		
 		if(!(password.length()>=6 && password.length()<=16)){
 			errors.add("The length of password should be 6 ~ 16.");
@@ -205,12 +209,25 @@ public class CreateCAccountForm {
 			errors.add("The length of lastname should be less than 30.");
 		}
 		
-		if (errors.size() > 0) {
-			return errors;
-		}
-		
 		if (!password.equals(confirmPassword)) {
 			errors.add("Passwords do not match");
+		}
+		
+		if(addr_line1.length()>50){
+			errors.add("The length of address line 1 should be less than 50.");
+		}
+		if (addr_line2 != null) {
+			if (addr_line2.length() > 50) {
+				errors.add("The length of address line 2 should be less than 50.");
+			}
+		}
+		
+		if(city.length()>50){
+			errors.add("The length of city should be less than 50.");
+		}
+		
+		if (zip.length()!=5) {
+			errors.add("The length of zip should be 5.");
 		}
 		
 		password = HibernateUtil.getMD5(password);
