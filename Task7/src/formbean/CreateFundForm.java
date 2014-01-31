@@ -58,8 +58,8 @@ public class CreateFundForm {
 			return errors;
 		}
 		
-		if(fundName.length()>100){
-			errors.add("The length of fund Name should be less than 100.");
+		if(fundName.length()>25){
+			errors.add("The length of fund Name should be less than 25.");
 		}
 		
 		if(ticker.length()!=4){
