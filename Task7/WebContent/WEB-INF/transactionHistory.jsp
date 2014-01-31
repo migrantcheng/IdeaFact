@@ -36,8 +36,8 @@
             </div>
           </c:if>
 		  
-          <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="historyTable">
-  <thead>
+          <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="historyTable">
+  			<thead>
               <tr>
                 <th>Date</th>
                 <th>Operation</th>
@@ -47,8 +47,8 @@
                 <th style="text-align:right;">Dollar Amount&nbsp;&nbsp;</th>
               </tr>
             </thead>
-            <tbody>
             
+            <tbody>
             <c:forEach var="transaction" items="${transactionList}">
             <tr>
               <td>${transaction.stringDate}</td>
@@ -59,8 +59,7 @@
               <td style="text-align:right;">${transaction.stringAmount}</td>
             </tr>
             </c:forEach>
-            
-            <tbody>
+            </tbody>
           </table>
 		  
         </div><!--/span-->

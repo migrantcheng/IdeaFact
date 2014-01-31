@@ -40,12 +40,12 @@
           <div class="panel panel-default">
 
   <!-- Table -->
-  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="manageTable">
+  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="manageTable">
     <thead>
     <tr>
               <th>User</th>
               <th>Name</th>
-              <th>Last Transaction</th>
+              <th>Last Transaction&nbsp;&nbsp;</th>
               <th style="text-align:right;">Cash&nbsp;&nbsp;</th>
               <th style="text-align:right;">Available&nbsp;&nbsp;</th>
               <th>Operation</th>
