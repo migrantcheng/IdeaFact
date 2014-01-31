@@ -65,14 +65,14 @@ public class TransactionHistoryAction extends Action {
     		if (transaction.getAmount() <= 0) {
     			stringAmount = "-";
     		} else {
-    			stringAmount = dfNumberCash.format((double)transaction.getAmount()/100);
+    			stringAmount = "$" + dfNumberCash.format((double)transaction.getAmount()/100);
     		}
     		
     		if (transaction.getAmount() <= 0 || transaction.getShares() <= 0) {
     			stringUnitPrice = "-";
     		} else {
 	    		unitPrice = (double)transaction.getShareprice()/100;
-	    		stringUnitPrice = dfNumberCash.format(unitPrice);
+	    		stringUnitPrice = "$" + dfNumberCash.format(unitPrice);
     		}
     	}
 

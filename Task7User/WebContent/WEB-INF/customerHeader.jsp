@@ -29,6 +29,8 @@
         }
       }
     </style>
+  	<script src="js/jquery.dataTables.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/jquery.js"></script>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">

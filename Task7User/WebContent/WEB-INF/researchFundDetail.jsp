@@ -138,9 +138,7 @@
 		 
 		<div class="span8">
           <div align="center">
-          	<a href="buy.do?ticker=${fund.symbol}&amount=10&button=query">
-            	<button type="submit" class="btn btn-success" value="query" name="button">Buy</button>
-            </a>
+            <a href="buy.do?ticker=${fund.symbol}&amount=10&button=query" type="submit" class="btn btn-success" value="query" name="button">Buy</a>
             <a href="research.do"><button class="btn inline">Return</button></a>
           </div>
         </div>

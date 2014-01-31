@@ -109,7 +109,7 @@ public class ResearchFundAction extends Action {
 	        	if (tempLatestPrice <= 0) {
 	        		tempPrice = "-";
 	        	} else {
-	        		tempPrice = dfNumberCash.format((double)tempLatestPrice/100);
+	        		tempPrice = "$" + dfNumberCash.format((double)tempLatestPrice/100);
 	        	}
 	        	fundList.add(new FundList(tempFund,tempPrice));
 	        }
