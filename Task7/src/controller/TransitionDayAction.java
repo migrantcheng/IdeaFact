@@ -78,7 +78,7 @@ public class TransitionDayAction extends Action {
         				if(latestPrice==-1){
         					data.setPrice("-");
         				}else{
-        					data.setPrice(dfNumberCash.format(((double)latestPrice)/100));
+        					data.setPrice("$" + dfNumberCash.format(((double)latestPrice)/100));
         				}
         				dataList.add(data);
         			}
