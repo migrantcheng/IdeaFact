@@ -26,7 +26,7 @@ public class TwitterUtil {
 	private final static String USER_TIMELINE_URL = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 	private final static String SEARCH_URL = "https://api.twitter.com/1.1/search/tweets.json";
 	
-	public void search(){
+	public void search(String keyword){
 		try {
 			System.out
 					.println("Starting Twitter public stream consumer thread.");
@@ -51,7 +51,7 @@ public class TwitterUtil {
 			request.setConnectionKeepAlive(true);
 			request.addHeader("user-agent", "IdeaFact Task 8");
 //			request.addQuerystringParameter(key, value);
-			request.addQuerystringParameter("q", "steelers");
+			request.addQuerystringParameter("q", keyword);
 			request.addQuerystringParameter("count", "10");
 			// Set keywords
 																// you'd like to
@@ -145,7 +145,7 @@ public class TwitterUtil {
 		TwitterUtil twitter = new TwitterUtil();
 		twitter.getUserTimeline("cmuuitest");
 		System.out.println();
-		twitter.search();
+		twitter.search("Steelers");
 	}
 
 	
