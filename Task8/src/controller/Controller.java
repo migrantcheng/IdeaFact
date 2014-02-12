@@ -19,6 +19,8 @@ public class Controller extends HttpServlet {
 		
 //		Action.add(new TransactionHistoryAction(model));
 		Action.add(new IndexAction());
+		Action.add(new SignInWithTwitterAction());
+		Action.add(new TwitterSignInAction());
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,8 +72,8 @@ public class Controller extends HttpServlet {
 	   		return;
     	}
     	
-    	if (nextPage.endsWith(".com")){
-    		response.sendRedirect("http://"+nextPage);
+    	if (nextPage.contains("api.twitter.com")){
+    		response.sendRedirect(nextPage);
 	   		return;
     	}
     	
