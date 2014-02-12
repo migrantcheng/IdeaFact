@@ -16,7 +16,7 @@ public class IndexAction extends Action {
     		return "search.jsp";
     	}
     	FlickrUtil flickr = new FlickrUtil();
-    	ArrayList<FlickrPhoto> photos = flickr.search(request.getParameter("key"), 10);
+    	ArrayList<FlickrPhoto> photos = flickr.search(request.getParameter("key"), 27);
         request.setAttribute("photos", photos);
        	return "index.jsp";
     }

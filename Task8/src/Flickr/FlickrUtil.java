@@ -45,6 +45,7 @@ public class FlickrUtil {
 			// see: http://www.flickr.com/services/api/flickr.photos.search.htm
 			// keyword: sort
 			request.addQuerystringParameter("sort", "relevance"); 
+			request.addQuerystringParameter("extras", "url_o"); 
 			request.addQuerystringParameter("nojsoncallback", "1");
 			
 			Response response = request.send();
