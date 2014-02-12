@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Parallax707</title>
+        <title>IdeaFact Task8</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -111,7 +111,7 @@
                 <!-- ib-main-wrapper --> 
             </div>
                 </div>
-        <div id="navbar" class="navbar navbar-static-top">
+        <!-- <div id="navbar" class="navbar navbar-static-top">
                     <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="index.html">Parallax<span>707</span> </a>
                             <div class="nav-collapse collapse pull-right">
@@ -144,7 +144,7 @@
                             </li>
                                 </ul>
                     </div>
-                            <!--/.nav-collapse --> 
+                            /.nav-collapse 
                         </div>
             </div>
                 </div>
@@ -235,7 +235,7 @@
                         </div>
             </div>
                 </div>
-        <!--#About-->
+        #About
         <div id="intro" class="Parallax">
                     <div class="ParallaxText">
                 <h2>WORD <span>OF</span> THE <span>WISE</span></h2>
@@ -246,7 +246,7 @@
                 <p>- Jason Adams -</p>
             </div>
                 </div>
-        <!--#intro-->
+        #intro
         <div id="Services">
                     <div class="container-fluid clearfix Services">
                 <div class="container clearfix TitleSection">
@@ -402,7 +402,7 @@
                         </div>
             </div>
                 </div>
-        <!--#Services-->
+        #Services
         <div id="second" class="Parallax">
                     <div class="ParallaxText">
                 <h2>WORD <span>OF</span> THE <span>WISE</span></h2>
@@ -413,7 +413,7 @@
                 <p>- Jason Adams -</p>
             </div>
                 </div>
-        <!--#second-->
+        #second
         <div id="Portfolio">
                     <div class="container-fluid clearfix Portfolio">
                 <div class="container clearfix TitleSection">
@@ -434,7 +434,7 @@
                             <div class="row-fluid">
                         <div class="span12"> 
                                     
-                                    <!-- Portfolio 4 Column start -->
+                                    Portfolio 4 Column start
                                     <div class="image_grid portfolio_4col lightbox">
                                 <ul id="list" class="portfolio_list da-thumbs clearfix">
                                             <li class="span3">
@@ -501,14 +501,14 @@
                                     </li>
                                         </ul>
                             </div>
-                                    <!-- Portfolio 4 Column End --> 
+                                    Portfolio 4 Column End 
                                     
                                 </div>
                     </div>
                         </div>
             </div>
                 </div>
-        <!--#Portfolio-->
+        #Portfolio
         <div id="third" class="Parallax">
                     <div class="container clearfix TitleSection">
                 <header class="page-head">
@@ -517,7 +517,7 @@
                 <div class="row-fluid">
                             <div class="span12"> 
                         
-                        <!-- Elastislide Carousel -->
+                        Elastislide Carousel
                         <div id="carousel" class="clients-wrapper">
                                     <div class="client-carousel">
                                 <ul>
@@ -549,13 +549,13 @@
                                         </ul>
                             </div>
                                 </div>
-                        <!-- End Elastislide Carousel --> 
+                        End Elastislide Carousel 
                         
                     </div>
                         </div>
             </div>
                 </div>
-        <!--#third-->
+        #third
         <div id="LargeSlider">
                     <div class="container-fluid clearfix LargeSlider">
                 <div class="container clearfix TitleSection">
@@ -568,7 +568,7 @@
                         <div class="span12">
                                     <div id="rg-gallery" class="rg-gallery">
                                 <div class="rg-thumbs"> 
-                                            <!-- Elastislide Carousel Thumbnail Viewer -->
+                                            Elastislide Carousel Thumbnail Viewer
                                             <div class="es-carousel-wrapper">
                                         <div class="es-nav"> <span class="es-nav-prev">Previous</span> <span class="es-nav-next">Next</span> </div>
                                         <div class="es-carousel">
@@ -600,15 +600,15 @@
                                             </ul>
                                                 </div>
                                     </div>
-                                            <!-- End Elastislide Carousel Thumbnail Viewer --> 
+                                            End Elastislide Carousel Thumbnail Viewer 
                                         </div>
-                                <!-- rg-thumbs --> 
+                                rg-thumbs 
                             </div>
                                 </div>
                     </div>
                         </div>
             </div>
-                </div>
+                </div> -->
         <!--#LargeSlider-->
         <div id="fourth" class="Parallax">
                     <div class="container clearfix TitleSection">
@@ -693,7 +693,7 @@
                 <div class="container-fluid">
                             <div class="span12" style="margin-top:20px">
                         <iframe width="100%" height="374" frameborder="0" scrolling="no" marginheight="0"
-                                    marginwidth="0" src="https://maps.google.com.eg/maps?f=q&amp;source=s_q&amp;hl=ar&amp;geocode=&amp;q=%D8%B1%D8%B4%D8%AF%D9%8A,+%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9&amp;aq=1&amp;oq=%D8%B1%D8%B4%D8%AF%D9%89+%D8%A7%D9%84%D8%A7%D8%B3%D9%83&amp;sll=26.9061,30.876198&amp;sspn=8.889374,21.643066&amp;ie=UTF8&amp;hq=&amp;hnear=%D8%B1%D8%B4%D8%AF%D9%8A&amp;t=m&amp;ll=31.239591,29.949589&amp;spn=0.036693,0.171661&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                                    marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=ar&amp;geocode=&amp;q=%D8%B1%D8%B4%D8%AF%D9%8A,+%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9&amp;aq=1&amp;oq=%D8%B1%D8%B4%D8%AF%D9%89+%D8%A7%D9%84%D8%A7%D8%B3%D9%83&amp;sll=26.9061,30.876198&amp;sspn=8.889374,21.643066&amp;ie=UTF8&amp;hq=&amp;hnear=%D8%B1%D8%B4%D8%AF%D9%8A&amp;t=m&amp;ll=31.239591,29.949589&amp;spn=0.036693,0.171661&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
                         <br />
                     </div>
                         </div>
@@ -725,8 +725,7 @@
                         <li> <a class="Wordpress" rel="tooltip" href="#" data-original-title="Wordpress">Wordpress</a> </li>
                         <li> <a class="Picasa" rel="tooltip" href="#" data-original-title="Picasa">Picasa</a> </li>
                     </ul>
-                            <a href="#welcome" class="brand">Parallax<span>707</span> </a>
-                            <p>All rights reserved. Theme by &copy; <a href="mailto:ahmedeabbas@yahoo.com">Coyier</a> </p>
+                            <a href="#welcome" class="brand">IdeaFact</a>
                         </footer>
             </div>
                 </div>

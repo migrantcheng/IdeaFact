@@ -24,7 +24,7 @@ public class FlickrUtil {
 		
 	}
 	
-	public ArrayList<FlickrPhoto> search(String key, int perPage) {
+	public ArrayList<FlickrPhoto> search(String key, int perPage, int page) {
 		if (key == null || key.length() == 0) {
 			return null;
 		}
@@ -41,6 +41,7 @@ public class FlickrUtil {
 			request.addQuerystringParameter("format", FORMAT);
 			request.addQuerystringParameter("text", key);
 			request.addQuerystringParameter("safe_search", "1");
+			request.addQuerystringParameter("page", Integer.toString(page));
 			// sort param can be set to different values
 			// see: http://www.flickr.com/services/api/flickr.photos.search.htm
 			// keyword: sort
@@ -175,9 +176,19 @@ public class FlickrUtil {
 		}
 	}
 	
+	public static boolean isInteger(String s) {
+	    try { 
+	        Integer.parseInt(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    }
+	    // only got here if we didn't return false
+	    return true;
+	}
+	
 	public static void main(String[] args) {
 		FlickrUtil flickr = new FlickrUtil();
 //		flickr.searchByGeo(40.4439, -79.9561, 10, 10);
-		flickr.search("steelers", 10);
+		flickr.search("steelers", 10, 1);
 	}
 }
