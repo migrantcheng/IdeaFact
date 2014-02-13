@@ -1,10 +1,12 @@
 package controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 
+import databean.User;
 import Twitter.TwitterUtil;
 
 public class SignInWithTwitterAction extends Action {
@@ -26,9 +28,17 @@ public class SignInWithTwitterAction extends Action {
 		Verifier verifier = new Verifier(request.getParameter("oauth_verifier"));
 		
 		TwitterUtil twitter = new TwitterUtil();
-		twitter.getAccessToken(requestToken, verifier);
+		Token accessToken = twitter.getAccessToken(requestToken, verifier);
 		
-		return "index.jsp";
+		User user = new User();
+		user.setUsername("DummyUser");
+		user.setAccessToken(accessToken.getToken());
+		user.setAccessTokenSecret(accessToken.getSecret());
+		
+		HttpSession session = request.getSession();
+        session.setAttribute("user",user);
+		
+		return "index.do";
 	}
 
 }

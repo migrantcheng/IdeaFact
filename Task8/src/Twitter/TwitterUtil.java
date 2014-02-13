@@ -22,8 +22,8 @@ public class TwitterUtil {
 	
 	private final static String CONSUMER_KEY = "JB903vkzwl7bOqWFjtooA";
 	private final static String COMSUMER_SECRET = "u1sQpBvqpbazSMdWAWmaD5sXO3a3wnNUYcl3FNIqE";
-	private final static String ACCESS_TOKEN = "2329310366-9EWyzVn75vEyEFM2YE45AArhOpjv1vfluIQGoyS";
-	private final static String ACCESS_TOKEN_SECRET = "5ZKDQMLhLWUQH77NAWeWiNIkzwvJJoGmDDRx8WJpVMBy9";
+	private final static String ACCESS_TOKEN = "2329310366-CkB8831CFX4GzCSemQXQaDMhZXgIRSy5TILpPGA";
+	private final static String ACCESS_TOKEN_SECRET = "0PeboKQzQ92z3Vz8XMIQTiYe07DcAgy0gRGGdnawrQYj4";
 	
 	private final static String USER_TIMELINE_URL = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 	private final static String SEARCH_URL = "https://api.twitter.com/1.1/search/tweets.json";
@@ -156,7 +156,7 @@ public class TwitterUtil {
 					.provider(TwitterApi.SSL.class)
 					.apiKey(CONSUMER_KEY)
 					.apiSecret(COMSUMER_SECRET)
-					.callback("http://128.237.216.188:8080/Task8/signInWithTwitter.do")
+					.callback("http://127.0.0.1:8080/Task8/signInWithTwitter.do")
 					.build();
 			
 			Scanner in = new Scanner(System.in);
@@ -182,7 +182,7 @@ public class TwitterUtil {
 		return null;
 	}
 	
-	public void getAccessToken(Token requestToken, Verifier verifier){
+	public Token getAccessToken(Token requestToken, Verifier verifier){
 		
 		System.out
 		.println("Starting Twitter request access token");
@@ -192,7 +192,7 @@ public class TwitterUtil {
 		.provider(TwitterApi.SSL.class)
 		.apiKey(CONSUMER_KEY)
 		.apiSecret(COMSUMER_SECRET)
-		.callback("http://128.237.216.188:8080/Task8/signInWithTwitter.do")
+		.callback("http://127.0.0.1:8080/Task8/signInWithTwitter.do")
 		.build();
 
 
@@ -209,29 +209,31 @@ public class TwitterUtil {
 	    System.out.println("(if your curious it looks like this: " + accessToken + " )");
 	    System.out.println();
 
-	    // Now let's go and ask for a protected resource!
-	    System.out.println("Now we're going to access a protected resource...");
-	    OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
-	    request.addBodyParameter("status", "this is sparta! *");
-	    service.signRequest(accessToken, request);
-	    Response response = request.send();
-	    System.out.println("Got it! Lets see what we found...");
-	    System.out.println();
-	    System.out.println(response.getBody());
-
-	    System.out.println();
-	    System.out.println("Thats it man! Go and build something awesome with Scribe! :)");
+//	    // Now let's go and ask for a protected resource!
+//	    System.out.println("Now we're going to access a protected resource...");
+//	    OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
+//	    request.addBodyParameter("status", "this is sparta! *");
+//	    service.signRequest(accessToken, request);
+//	    Response response = request.send();
+//	    System.out.println("Got it! Lets see what we found...");
+//	    System.out.println();
+//	    System.out.println(response.getBody());
+//
+//	    System.out.println();
+//	    System.out.println("Thats it man! Go and build something awesome with Scribe! :)");
+//	    
+////	    128.237.216.188:8080/Task8/twitterSignIn.do
 	    
-//	    128.237.216.188:8080/Task8/twitterSignIn.do
+	    return accessToken;
 		
 	}
 	
 	public static void main(String[] args){
 		TwitterUtil twitter = new TwitterUtil();
-//		twitter.getUserTimeline("cmuuitest");
+		twitter.getUserTimeline("cmuuitest");
 		System.out.println();
 //		twitter.search("Steelers");
-		twitter.requestToken();
+//		twitter.requestToken();
 	}
 
 	

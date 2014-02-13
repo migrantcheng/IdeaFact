@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import databean.User;
+
 
 @SuppressWarnings("serial")
 public class Controller extends HttpServlet {
@@ -21,6 +23,7 @@ public class Controller extends HttpServlet {
 		Action.add(new IndexAction());
 		Action.add(new SignInWithTwitterAction());
 		Action.add(new TwitterSignInAction());
+		Action.add(new LoginAction());
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,13 +40,19 @@ public class Controller extends HttpServlet {
         String      servletPath = request.getServletPath();
 //        Customer    user = (Customer) session.getAttribute("customer");
 //        Employee employee = (Employee) session.getAttribute("employee");
+        User user = (User) session.getAttribute("user");
+        
         String      action = getActionName(servletPath);
 
         // System.out.println("servletPath="+servletPath+" requestURI="+request.getRequestURI()+"  user="+user);
 
-        if (action.equals("register.do") || action.equals("employeeLogin.do") || action.equals("click.do")) {
+        if (action.equals("register.do") || action.equals("signInWithTwitter.do") || action.equals("twitterSignIn.do") || action.equals("click.do")) {
         	// Allow these actions without logging in
 			return Action.perform(action,request);
+        }
+        
+        if(user == null){
+        	return Action.perform("login.do", request);
         }
         
         
