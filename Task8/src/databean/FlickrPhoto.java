@@ -20,7 +20,7 @@ public class FlickrPhoto {
 			+ "/" + photo.get("id") + "_" + photo.get("secret") + ".jpg";
 		}
 		urlm = "http://farm" + photo.get("farm") + ".staticflickr.com/" + photo.get("server") 
-				+ "/" + photo.get("id") + "_" + photo.get("secret") + "_q.jpg";
+				+ "/" + photo.get("id") + "_" + photo.get("secret") + "_n.jpg";
 		pageLink = "http://www.flickr.com/photos/" + photo.get("owner") + "/" + photo.get("id") + "/";
 		title = (String)photo.get("title");
 		id = (String)photo.get("id");
