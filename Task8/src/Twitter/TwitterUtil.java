@@ -87,6 +87,59 @@ public class TwitterUtil {
 		}
 	}
 	
+	public void countOfSearch(String keyword){
+		try {
+			System.out
+					.println("Starting Twitter public stream consumer thread.");
+
+			// Enter your consumer key and secret below
+			OAuthService service = new ServiceBuilder()
+					.provider(TwitterApi.class)
+					.apiKey(CONSUMER_KEY)
+					.apiSecret(COMSUMER_SECRET)
+					.build();
+
+			// Set your access token
+			Token accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+
+			// Let's generate the request
+			System.out.println("Connecting to Twitter Public Stream");
+			OAuthRequest request = new OAuthRequest(Verb.GET,
+					SEARCH_URL);
+//			request.
+			request.addHeader("version", "HTTP/1.1");
+			request.addHeader("host", "api.twitter.com");
+			request.setConnectionKeepAlive(true);
+			request.addHeader("user-agent", "IdeaFact Task 8");
+//			request.addQuerystringParameter(key, value);
+			request.addQuerystringParameter("q", keyword);
+			request.addQuerystringParameter("count", "100");
+			// Set keywords
+																// you'd like to
+																// track here
+			service.signRequest(accessToken, request);
+			Response response = request.send();
+
+			// Create a reader to read Twitter's stream
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getStream()));
+			
+
+			StringBuffer sb = new StringBuffer();
+			String line;
+			while ((line = reader.readLine()) != null) {
+//				System.out.println(line);
+				sb.append(line);
+			}
+			
+			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
+			JSONArray array=(JSONArray) json.get("statuses");
+			System.out.println("Count for "+ keyword + " is: " + array.size());
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
 	public void getUserTimeline(String screenName){
 		try {
 			System.out
@@ -267,7 +320,7 @@ public class TwitterUtil {
 			StringBuffer sb = new StringBuffer();
 			String line;
 			while ((line = reader.readLine()) != null) {
-				System.out.println(line);
+//				System.out.println(line);
 				sb.append(line);
 			}
 			
@@ -279,10 +332,20 @@ public class TwitterUtil {
 		return twitterId;
 	}
 	
+	
+	
 	public static void main(String[] args){
 		TwitterUtil twitter = new TwitterUtil();
 //		twitter.getUserTimeline("cmuuitest");
-		System.out.println(twitter.update(new Token("", ""), "test updating twitter"));
+//		System.out.println(twitter.update(new Token("", ""), "test updating twitter"));
+		twitter.countOfSearch("Rabbit Beach");
+		twitter.countOfSearch("Grace Bay");
+		twitter.countOfSearch("White haven Beach");
+		twitter.countOfSearch("Baia do Sancho");
+		twitter.countOfSearch("Flamenco Beach");
+		twitter.countOfSearch("Lopes Mendes Beach");
+//		twitter.countOfSearch("#");
+//		twitter.countOfSearch("#");
 		System.out.println();
 //		twitter.search("Steelers");
 //		twitter.requestToken();
