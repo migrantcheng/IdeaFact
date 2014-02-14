@@ -14,7 +14,7 @@ public class CategoryAction extends Action {
     public String perform(HttpServletRequest request) {
     	int category = 0;
     	try {
-    		category = Integer.parseInt((String)request.getAttribute("cat"));
+    		category = Integer.parseInt((String)request.getParameter("cat"));
     	} catch (Exception e) {
     		return "index.do";
     	}

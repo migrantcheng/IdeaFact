@@ -26,20 +26,17 @@
 		<div class="span10">
 			<div id="content">	
 				<!-- box 1 -->
-				<c:forEach var="photo" items="${photoList}">
+				<c:forEach var="photo" items="${photos}">
 				<div class="boxportfolio4 cat2 cat3">
 					<div class="boxcontainer">
-						<img src="${photo.photo.urlm}" alt="">
+						<img src="${photo.urlm}" alt="">
 						<div class="roll">
 							<div class="wrapcaption">
-								<a href="category.do?cat=${photo.category}"><i class="icon-link captionicons"></i></a>
-								<a data-gal="prettyPhoto[gallery1]" href="${photo.photo.url}" title=""><i class="icon-zoom-in captionicons"></i></a>
+								<a href="detail.do?id=${photo.id}"><i class="icon-link captionicons"></i></a>
+								<a data-gal="prettyPhoto[gallery1]" href="${photo.url}" title="La Chaux De Fonds"><i class="icon-zoom-in captionicons"></i></a>
 							</div>
 						</div>
-						<h1><a href="category.do?cat=${photo.category}">${photo.catName}</a></h1>
-						<p>
-							 ${photo.photo.title}
-						</p>
+						<h1><a href="detail.do?id=${photo.id}">${photo.title}</a></h1>
 					</div>
 				</div>
 				</c:forEach>
@@ -49,6 +46,10 @@
 		<!-- twitter stream -->
 		<div class="span2">
 		</div>
+	</div>
+	
+	<div class="row">
+	PageNav
 	</div>
 <!-- MASONRY ITEMS END -->
 </div>

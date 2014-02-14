@@ -18,9 +18,9 @@ public class Controller extends HttpServlet {
 
 	public void init() throws ServletException{
 //		Model model = new Model();
-		
-//		Action.add(new TransactionHistoryAction(model));
+
 		Action.add(new IndexAction());
+		Action.add(new CategoryAction());
 		Action.add(new SignInWithTwitterAction());
 		Action.add(new TwitterSignInAction());
 		Action.add(new LoginAction());

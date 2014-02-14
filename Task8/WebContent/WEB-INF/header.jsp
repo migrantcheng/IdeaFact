@@ -43,7 +43,7 @@
 			<a class="brand" href="index.html">IdeaFact.</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li class="active"><a href="index.html">Home</a></li>
+					<li class="active"><a href="index.do">Home</a></li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Pages <b class="caret"></b></a>
 					<ul class="dropdown-menu">
