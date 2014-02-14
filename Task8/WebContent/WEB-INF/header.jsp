@@ -40,7 +40,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="index.html">IdeaFact.</a>
+			<a class="brand" href="index.do">IdeaFact.</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li class="active"><a href="index.do">Home</a></li>
