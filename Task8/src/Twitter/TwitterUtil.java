@@ -29,6 +29,7 @@ public class TwitterUtil {
 	private final static String SEARCH_URL = "https://api.twitter.com/1.1/search/tweets.json";
 	private final static String REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token";
 	private static final String PROTECTED_RESOURCE_URL = "https://api.twitter.com/1.1/account/verify_credentials.json";
+	private final static String UPDATE_URL = "https://api.twitter.com/1.1/statuses/update.json";
 	
 	public void search(String keyword){
 		try {
@@ -62,8 +63,6 @@ public class TwitterUtil {
 																// track here
 			service.signRequest(accessToken, request);
 			Response response = request.send();
-
-			
 
 			// Create a reader to read Twitter's stream
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
@@ -228,9 +227,62 @@ public class TwitterUtil {
 		
 	}
 	
+	public String update(Token accessToken, String status){
+		
+		String twitterId = "";
+		try {
+			System.out
+					.println("Starting Twitter update thread.");
+
+			// Enter your consumer key and secret below
+			OAuthService service = new ServiceBuilder()
+					.provider(TwitterApi.SSL.class)
+					.apiKey(CONSUMER_KEY)
+					.apiSecret(COMSUMER_SECRET)
+					.build();
+
+			accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+			
+			// Let's generate the request
+			System.out.println("Connecting to Twitter Public Stream");
+			OAuthRequest request = new OAuthRequest(Verb.POST,
+					UPDATE_URL);
+//			request.
+			request.addHeader("version", "HTTP/1.1");
+			request.addHeader("host", "api.twitter.com");
+			request.setConnectionKeepAlive(true);
+			request.addHeader("user-agent", "IdeaFact Task 8");
+//			request.addQuerystringParameter(key, value);
+			request.addQuerystringParameter("status", status);
+			service.signRequest(accessToken, request);
+			Response response = request.send();
+
+			
+
+			// Create a reader to read Twitter's stream
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getStream()));
+			
+
+			StringBuffer sb = new StringBuffer();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				sb.append(line);
+			}
+			
+			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
+			twitterId = (String)json.get("id_str");
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return twitterId;
+	}
+	
 	public static void main(String[] args){
 		TwitterUtil twitter = new TwitterUtil();
-		twitter.getUserTimeline("cmuuitest");
+//		twitter.getUserTimeline("cmuuitest");
+		System.out.println(twitter.update(new Token("", ""), "test updating twitter"));
 		System.out.println();
 //		twitter.search("Steelers");
 //		twitter.requestToken();
