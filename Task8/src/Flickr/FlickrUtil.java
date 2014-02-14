@@ -189,6 +189,6 @@ public class FlickrUtil {
 	public static void main(String[] args) {
 		FlickrUtil flickr = new FlickrUtil();
 //		flickr.searchByGeo(40.4439, -79.9561, 10, 10);
-		flickr.search("steelers", 10, 1);
+		flickr.search("cancun beach", 10, 1);
 	}
 }

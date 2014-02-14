@@ -241,7 +241,7 @@ public class TwitterUtil {
 					.apiSecret(COMSUMER_SECRET)
 					.build();
 
-			accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+//			accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 			
 			// Let's generate the request
 			System.out.println("Connecting to Twitter Public Stream");

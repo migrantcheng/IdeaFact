@@ -759,7 +759,7 @@
 
 <!--jquery-classybox LightBox--> 
 <script>
-        \$(".lightbox span.zoom a").ClassyBox({
+        $(".lightbox span.zoom a").ClassyBox({
         widthWindow:  900
         });  
         </script>
