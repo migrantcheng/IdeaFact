@@ -23,7 +23,7 @@
 	<!-- MASONRY ITEMS START
 	================================================== -->
 	<div class="row">
-		<div class="span10">
+		<div class="span9">
 			<div id="content">	
 				<!-- box 1 -->
 				<c:forEach var="photo" items="${photos}">
@@ -44,7 +44,11 @@
 		</div>
 		
 		<!-- twitter stream -->
-		<div class="span2">
+		<div class="span3">
+		<a class="twitter-timeline" href="https://twitter.com/search?q=%23beach" data-widget-id="434323333358682112">Tweets about "#beach"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+		
 		</div>
 	</div>
 	
