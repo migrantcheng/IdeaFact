@@ -40,5 +40,10 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/bootstrap.js"></script>
+<script src="js/twitter-bootstrap-hover-dropdown.js"></script>
+<script src="js/common.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
 </body>
 </html>

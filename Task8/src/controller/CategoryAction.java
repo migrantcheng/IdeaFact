@@ -28,14 +28,12 @@ public class CategoryAction extends Action {
     	} catch (Exception e) {
     		/* ignore */
     	}
-    	FlickrUtil flickr = new FlickrUtil();
-		int value = 1;
     	if (request.getParameter("page") != null && FlickrUtil.isInteger(request.getParameter("page"))) {
     		page = Integer.parseInt(request.getParameter("page"));
     	}
     	
     	ArrayList<FlickrPhoto> photos = new ArrayList<FlickrPhoto>();
-    	photos.addAll(flickr.search(places[category], 30, page));
+    	photos.addAll(FlickrUtil.search(places[category], 30, page));
     	
     	//test update twitter
 //    	HttpSession session     = request.getSession(true);
@@ -46,6 +44,7 @@ public class CategoryAction extends Action {
     	//end test update twitter
     	
         request.setAttribute("photos", photos);
+        request.setAttribute("category", places[category]);
        	return "category.jsp";
     }
 }

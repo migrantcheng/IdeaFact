@@ -4,45 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.scribe.model.Token;
-
+import Flickr.FlickrThread;
 import Flickr.FlickrUtil;
-import Twitter.TwitterUtil;
-import databean.FlickrPhoto;
-import databean.User;
+import Flickr.PhotoList;
 
 public class IndexAction extends Action {
-	public static class Photo {
-		FlickrPhoto photo;
-		int category;
-		String catName;
-		
-		Photo(FlickrPhoto photo, int category, String catName) {
-			this.photo = photo;
-			this.category = category;
-			this.catName = catName;
-		}
-		
-		public FlickrPhoto getPhoto() {
-			return photo;
-		}
-		
-		public int getCategory() {
-			return category;
-		}
-		
-		public String getCatName() {
-			return catName;
-		}
-	}
 	
 	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "Hanauma Bay Nature Preserve"};
 	public String getName() { return "index.do"; }
     
     public String perform(HttpServletRequest request) {
-    	FlickrUtil flickr = new FlickrUtil();
 		Random rand = new Random(System.currentTimeMillis()); 
 		int value = 1;
     	int page = 1;
@@ -51,14 +23,12 @@ public class IndexAction extends Action {
     	}
     	
     	
-    	ArrayList<FlickrPhoto> photos = new ArrayList<FlickrPhoto>();
+    	ArrayList<PhotoList> photoList = new ArrayList<PhotoList>();
+    	Thread[] threads = new FlickrThread[places.length];
     	for (int i = 0; i < places.length; i++) {
     		value = rand.nextInt(10) + 1;
-    		photos.addAll(flickr.search(places[i], 1, value));
-    	}
-    	ArrayList<Photo> photoList = new ArrayList<Photo>();
-    	for (int i = 0; i < photos.size(); i++) {
-    		photoList.add(new Photo(photos.get(i), i, places[i]));
+    		threads[i] = new FlickrThread(photoList, value, page, places[i], i);
+    		threads[i].start();
     	}
     	
     	//test update twitter
@@ -68,7 +38,9 @@ public class IndexAction extends Action {
 //    		new TwitterUtil().update(new Token(user.getAccessToken(), user.getAccessTokenSecret()), "search for keywork: " + request.getParameter("key") + " from IdeaFact");
 //    	}
     	//end test update twitter
-    	
+    	while (photoList.size() < places.length) {
+    		System.out.println(photoList.size());
+    	}
         request.setAttribute("photoList", photoList);
        	return "index.jsp";
     }

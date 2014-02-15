@@ -24,7 +24,7 @@ public class FlickrUtil {
 		
 	}
 	
-	public ArrayList<FlickrPhoto> search(String key, int perPage, int page) {
+	public static ArrayList<FlickrPhoto> search(String key, int perPage, int page) {
 		if (key == null || key.length() == 0) {
 			return null;
 		}
@@ -80,7 +80,7 @@ public class FlickrUtil {
 		return null;
 	}
 	
-	public ArrayList<FlickrPhoto> searchByGeo(double lat, double lon, double radius, int perPage) {
+	public static ArrayList<FlickrPhoto> searchByGeo(double lat, double lon, double radius, int perPage) {
 		try {
 			OAuthRequest request = new OAuthRequest(Verb.GET, BASE_URL);
 			request.addHeader("version", "HTTP/1.1");
