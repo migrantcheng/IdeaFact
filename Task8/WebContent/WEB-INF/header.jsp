@@ -43,43 +43,13 @@
 			<a class="brand" href="index.do">IdeaFact.</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li class="active"><a href="index.do">Home</a></li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Pages <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li class="nav-header">General</li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="singleproject.html">Single Project</a></li>
-						<li><a href="faq.html">FAQ</a></li>
-						<li><a href="testimonials.html">Testimonials</a></li>
-						<li class="divider"></li>
-						<li class="nav-header">Portfolio Fixed</li>
-						<li><a href="portfolio2.html">Two Columns</a></li>
-						<li><a href="portfolio3.html">Three Columns</a></li>
-						<li><a href="portfolio4.html">Four Columns</a></li>
-						<li class="divider"></li>
-						<li class="nav-header">Masonry</li>
-						<li><a href="masonry2.html">Two Columns</a></li>
-						<li><a href="masonry3.html">Three Columns</a></li>
-						<li><a href="masonry4.html">Four Columns</a></li>
-						<li class="divider"></li>
-						<li class="nav-header">Blog</li>
-						<li><a href="blogindex.html">Index</a></li>
-						<li><a href="blogsingle.html">Single Post</a></li>
-						<li><a href="404.html">404</a></li>
-					</ul>
-					</li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Features <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="columns.html">Columns</a></li>
-						<li><a href="team.html">Team Styles</a></li>						
-						<li><a href="elements.html">More Elements</a></li>
-						<li><a href="icons.html">Icons</a></li>
-					</ul>
-					</li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="index.do">Home</a></li>
+					<li><a href="index.do">Search</a></li>
+					<%if (session.getAttribute("user") != null) { %>
+					<li><a href="#">Hello, ${user.username}</a></li>
+					<%} else { %>
+					<li><a href="signInWithTwitter.do">Sign in with twitter</a></li>
+					<%}%>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

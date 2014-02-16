@@ -3,6 +3,7 @@ package controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 
@@ -29,9 +30,10 @@ public class SignInWithTwitterAction extends Action {
 		
 		TwitterUtil twitter = new TwitterUtil();
 		Token accessToken = twitter.getAccessToken(requestToken, verifier);
-		
+		String[] response = accessToken.getRawResponse().split("=");
+		String userName = response[response.length - 1];
 		User user = new User();
-		user.setUsername("DummyUser");
+		user.setUsername(userName);
 		user.setAccessToken(accessToken.getToken());
 		user.setAccessTokenSecret(accessToken.getSecret());
 		
