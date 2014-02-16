@@ -60,14 +60,14 @@
             <!-- Page description -->
             <div class="row-fluid">
                 <div class="page-description span6">
-                    <p>Where's in your mind?</p>
+                    <p>Where's your next destination?</p>
                 </div>
             </div>
 
             <!-- Search form -->
             <div class="row-fluid">
                 <div class="subscription-form span12">
-                    <form class="form-inline" method="post">
+                    <form class="form-inline" method="post" action="list.do">
                         <input type="text" name="key" placeholder="Enter keyword...">
                         <button type="submit" class="btn" name="button" value="signin">Search</button>
                     </form>

@@ -7,13 +7,13 @@
 <div class="container">
 	<div class="row">
 		
-        <div class="span8">
+        <div class="span8" style="margin-top:20px;">
 
-                <br>
-                <br>
-                    <img src="http://placehold.it/900x300" class="img-responsive">
+			<div class="row" style="text-align:center;">
+                    <img src="${photo.url}" class="img-responsive" style="max-width:900px;">
                 
-                <p class="lead">Photo Title
+            </div>
+                <p class="lead" style="text-align:center;">${photo.title}
                 </p>
                 
 			<hr>

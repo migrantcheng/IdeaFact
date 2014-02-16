@@ -48,7 +48,7 @@
 					<%if (session.getAttribute("user") != null) { %>
 					<li><a href="#">Hello, ${user.username}</a></li>
 					<%} else { %>
-					<li><a href="signInWithTwitter.do">Sign in with twitter</a></li>
+					<li><a href="twitterSignIn.do">Sign in with twitter</a></li>
 					<%}%>
 				</ul>
 			</div>

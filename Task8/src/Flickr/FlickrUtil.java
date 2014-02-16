@@ -80,6 +80,68 @@ public class FlickrUtil {
 		return null;
 	}
 	
+	public static FlickrPhoto getById(String id) {
+		if (id == null || id.length() == 0) {
+			return new FlickrPhoto();
+		}
+		try {
+			OAuthRequest request = new OAuthRequest(Verb.GET, BASE_URL);
+			request.addHeader("version", "HTTP/1.1");
+			request.addHeader("host", "api.flickr.com");
+			request.setConnectionKeepAlive(true);
+			request.addHeader("user-agent", "IdeaFact Task 8");
+//			request.addQuerystringParameter(key, value);
+			request.addQuerystringParameter("method", "flickr.photos.getInfo");
+			request.addQuerystringParameter("api_key", API_KEY);
+			request.addQuerystringParameter("format", FORMAT);
+			request.addQuerystringParameter("photo_id", id);
+			// sort param can be set to different values
+			// see: http://www.flickr.com/services/api/flickr.photos.search.htm
+			// keyword: sort
+			request.addQuerystringParameter("nojsoncallback", "1");
+			
+			Response response = request.send();
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getStream()));
+
+			StringBuffer sb = new StringBuffer();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				sb.append(line);
+			}
+			
+			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
+			if (json.get("stat") == "fail") {
+				throw new RuntimeException((String)json.get("message"));
+			}
+			FlickrPhoto result = new FlickrPhoto();
+			JSONObject photo = (JSONObject)json.get("photo");
+			JSONObject owner = (JSONObject)photo.get("owner");
+			JSONObject title = (JSONObject)photo.get("title");
+			JSONObject location = (JSONObject)photo.get("location");
+			JSONObject urls = (JSONObject)photo.get("urls");
+			JSONObject url = (JSONObject)((JSONArray)urls.get("url")).get(0);
+			
+			result.setId((String)photo.get("id"));
+			try {
+				result.setLat((double)(location.get("latitude")));
+				result.setLon((double)(location.get("longitude")));
+			} catch (Exception e) {
+				/* ignore */
+			}
+			result.setTitle((String)title.get("_content"));
+			result.setPageLink((String)url.get("_content"));
+			result.setUrl("http://farm" + photo.get("farm") + ".staticflickr.com/" + photo.get("server") 
+					+ "/" + photo.get("id") + "_" + photo.get("secret") + ".jpg");
+			return result;
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static ArrayList<FlickrPhoto> searchByGeo(double lat, double lon, double radius, int perPage) {
 		try {
 			OAuthRequest request = new OAuthRequest(Verb.GET, BASE_URL);

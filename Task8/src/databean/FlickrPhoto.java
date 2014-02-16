@@ -13,6 +13,13 @@ public class FlickrPhoto {
 	private double lat = 0;
 	private String id;
 	
+	public FlickrPhoto() {
+		url = null;
+		urlm = null;
+		pageLink = null;
+		title = null;
+		id = null;
+	}
 	public FlickrPhoto(JSONObject photo) {
 		url = (String)photo.get("url_o");
 		if (url == null) {
@@ -61,5 +68,20 @@ public class FlickrPhoto {
 	
 	public void setLon(double lon) {
 		this.lon = lon;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public void setUrlm(String urlm) {
+		this.urlm = urlm;
+	}
+	public void setPageLink(String pageLink) {
+		this.pageLink = pageLink;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }

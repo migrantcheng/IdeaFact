@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.scribe.model.Token;
 
+import Flickr.FlickrUtil;
 import Twitter.TwitterUtil;
+import databean.FlickrPhoto;
 import databean.Tweet;
 import databean.User;
 
@@ -23,6 +25,10 @@ public class DetailAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		if (request.getParameter("id") == null) {
+			return "index.do";
+		}
+		FlickrPhoto photo = FlickrUtil.getById(request.getParameter("id"));
 		if(request.getParameter("button") != null){
 			User user = (User)request.getSession().getAttribute("user");
 			Token accessToken = new Token(user.getAccessToken(), user.getAccessTokenSecret());
@@ -38,10 +44,10 @@ public class DetailAction extends Action {
 			for(Tweet tweet: retweetList){
 				tweetList.add(tweet);
 			}
-			
 			request.setAttribute("tweetList",tweetList);
 			return "detail.jsp";
 		}
+		request.setAttribute("photo", photo);
 		return "detail.jsp";
 	}
 
