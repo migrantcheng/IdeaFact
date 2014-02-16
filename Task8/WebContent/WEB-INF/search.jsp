@@ -50,7 +50,9 @@
 			<!-- login -->
 			<div class="login">
 			  <a href="twitterSignIn.do">
-				<button type="submit" class="btn1">Login with Twitter</button>
+				<button type="submit" class="btn1">
+					<img src="image/tweets.png" class="tweet"> 
+					Login with Twitter</button>
 			  </a>
 			</div>
 			

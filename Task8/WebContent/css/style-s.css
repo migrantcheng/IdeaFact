@@ -184,15 +184,15 @@ body {
 
 
 .btn1 {
-    width: 160px;
-    height: 48px;
+    width: 180px;
+    height: 46px;
     margin: 0;
     padding: 0;
-    background: #AF80F6;
+    background: #A392E4;
     border: 0;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     font-size: 16px;
-    line-height: 48px;
+    line-height: 30px;
     color: #fff;
     text-shadow: 0 1px 0 rgba(0,0,0,.3);
     -moz-border-radius: 9px;
@@ -246,6 +246,7 @@ body {
 .flickr-feed a:hover {
     opacity: 0.7;
 }
+
 
 
 
