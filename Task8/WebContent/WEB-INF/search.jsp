@@ -2,108 +2,137 @@
     pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>IdeaFact</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 80px;
-        padding-bottom: 40px; 
-        background: url("${photo.url}");
-        background-repeat: no-repeat;
-        background-size: 100%;
-      }
+    <head>
 
-      .title {
-        color: rgba(255,255,255,1);
+        <meta charset="utf-8">
+        <title>IdeaFact</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-        -webkit-text-shadow: 0 2px 2px rgba(0,0,0,.5);
-           -moz-text-shadow: 0 2px 2px rgba(0,0,0,.5);
-                text-shadow: 0 2px 2px rgba(0,0,0,.5);
-      }
-      button {
-        -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.5);
-           -moz-box-shadow: 0 2px 2px rgba(0,0,0,.5);
-                box-shadow: 0 2px 2px rgba(0,0,0,.5);
-      }
-      input {
-        -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.5);
-           -moz-box-shadow: 0 2px 2px rgba(0,0,0,.5);
-                box-shadow: 0 2px 2px rgba(0,0,0,.5);
-      }
-      .form-signin {
-        max-width: 300px;
-        padding: 10px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: rgba(255,255,255,0.7);
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-                box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-      }
-      .form-signin .form-signin-heading {
-        color: rgba(0,0,0,0.75);
-        margin-bottom: 10px;
-      }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-      }
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700'>
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Patua+One'>
+        <link rel="stylesheet" href="css/search/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style-s.css">
 
-    </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-    <![endif]-->
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="ico/favicon.png">
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-    <div class="container" style="margin-top:70px;">
-      <div class="row">
-        <div class="span6 offset3" style="text-align:center">
-         <h1 class="title"><br>What's in your mind?<br>&nbsp;</h1>
+        <div class="page-container container-fluid">
+
+            
+            <!-- Page title -->
+            <div class="row-fluid">
+                <div class="page-title span12">
+                    <br/><h1>IdeaFact</h1>
+                </div>
+            </div>
+			
+			<!-- login -->
+			<div class="login">
+			  <a href="twitterSignIn.do">
+				<button type="submit" class="btn1">Login with Twitter</button>
+			  </a>
+			</div>
+			
+			
+            <!-- Page description -->
+            <div class="row-fluid">
+                <div class="page-description span6">
+                    <p>What's in your mind</p>
+                </div>
+            </div>
+
+            <!-- Search form -->
+            <div class="row-fluid">
+                <div class="subscription-form span12">
+                    <form class="form-inline" method="post">
+                        <input type="text" name="key" placeholder="Enter keyword...">
+                        <button type="submit" class="btn" name="button" value="signin">Search</button>
+                    </form>
+                    <div class="success-message"></div>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+			
+			
+            <!-- Page description -->
+            <div class="row-fluid">
+                <div class="page-description span6" style="
+	margin-top: 100px;">
+                    <p>Top 10s of</p>
+                </div>
+            </div>
+			
+            <!-- hot pic -->
+            <div class="row-fluid">
+				    <ul class="flickr-feed">
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+							<img src="image/beach.jpg" alt="Melbourne Meetup">
+							</a>
+							<br/><span>Beach</span>
+						</li>
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+							<img src="image/nature.jpg" alt="Melbourne Meetup">
+							</a>
+							<br/><span>Nature</span>
+						</li>
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+							<img src="image/sun-island.jpg" alt="Melbourne Meetup">
+							</a>
+							<br/><span>Island</span>
+						</li>
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+							<img src="image/lavender.jpg" alt="Melbourne Meetup">
+							</a>
+							<br/><span>Flower</span>
+						</li>
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12334281344/" target="_blank"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
+						<br/><span>City</span>
+					</li>
+						<li><a href="http://www.flickr.com/photos/we-are-envato/12333834195/" target="_blank"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
+						<br/><span>Sunset</span>
+					</li>
+					<li><a href="http://www.flickr.com/photos/we-are-envato/12333834195/" target="_blank"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
+					<br/><span>Mountain</span>
+				</li>
+					</ul>
+				
+            </div>
+
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="span6 offset3" style="text-align:center">
-	      <form class="form-search" method="POST">
-	        <input type="text" class="input-xlarge" name="key">
-	        <button class="btn btn-primary" type="submit" name="button" value="signin">Search</button>
-	      </form>
-        </div>
-      </div>
+        
 
-    </div> <!-- /container -->
+        <!-- Javascript -->
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.countdown.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/jquery.tweet.js"></script>
+        <script src="js/jflickrfeed.js"></script>
+        <script src="js/backstretch.init.js"></script>
+        <script src="js/scripts.js"></script>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-1.8.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    </body>
 
-  </body>
 </html>
+

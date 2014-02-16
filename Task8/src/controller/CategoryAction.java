@@ -13,7 +13,7 @@ public class CategoryAction extends Action {
     public String perform(HttpServletRequest request) {
     	String keyword = request.getParameter("key");
     	if (keyword == null || keyword.length() == 0) {
-    		return "index.do";
+    		return "search.jsp";
     	}
     	
     	int page = 1;
