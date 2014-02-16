@@ -1,6 +1,11 @@
 package databean;
 
+import org.genericdao.PrimaryKey;
+
+@PrimaryKey("tweetId")
 public class Tweet {
+	private String tweetId;
+	private String photoId;
 	private String username;
 	private String text;
 	private String createdAt;
@@ -29,6 +34,18 @@ public class Tweet {
 	}
 	public void setIsRetweet(String isRetweet) {
 		this.isRetweet = isRetweet;
+	}
+	public String getTweetId() {
+		return tweetId;
+	}
+	public void setTweetId(String tweetId) {
+		this.tweetId = tweetId;
+	}
+	public String getPhotoId() {
+		return photoId;
+	}
+	public void setPhotoId(String photoId) {
+		this.photoId = photoId;
 	}
 	
 }

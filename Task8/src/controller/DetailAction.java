@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import model.Model;
+import model.TweetDAO;
+
 import org.scribe.model.Token;
 
 import Flickr.FlickrUtil;
@@ -17,6 +20,11 @@ public class DetailAction extends Action {
 	
 	private final static String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 	private static SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
+	private TweetDAO tweetDao;
+
+	public DetailAction(Model model) {
+		tweetDao = model.getTweetDao();
+	}
 
 	@Override
 	public String getName() {

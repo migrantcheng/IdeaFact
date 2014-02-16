@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Model;
 import databean.User;
 
 
@@ -17,7 +18,7 @@ import databean.User;
 public class Controller extends HttpServlet {
 
 	public void init() throws ServletException{
-//		Model model = new Model();
+		Model model = new Model(getServletConfig());
 
 		Action.add(new CategoryAction());
 		Action.add(new ListAction());
@@ -25,7 +26,7 @@ public class Controller extends HttpServlet {
 		Action.add(new SignInWithTwitterAction());
 		Action.add(new TwitterSignInAction());
 		Action.add(new LoginAction());
-		Action.add(new DetailAction());
+		Action.add(new DetailAction(model));
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
