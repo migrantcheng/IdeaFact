@@ -11,7 +11,7 @@ import Flickr.PhotoList;
 
 public class IndexAction extends Action {
 	
-	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "Hanauma Bay Nature Preserve"};
+	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"};
 	public String getName() { return "index.do"; }
     
     public String perform(HttpServletRequest request) {

@@ -27,7 +27,7 @@
 			<div id="content">	
 				<!-- box 1 -->
 				<c:forEach var="photo" items="${photos}">
-				<div class="boxportfolio4 cat2 cat3">
+				<div class="boxportfolio4">
 					<div class="boxcontainer">
 						<img src="${photo.urlm}" alt="">
 						<div class="roll">

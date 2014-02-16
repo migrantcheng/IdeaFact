@@ -922,7 +922,7 @@ ul.social-links>li.pinterest-link:hover {
 .boxportfolio4 {
 	float:left;
 	padding-right:20px;
-	width:23.076923076923077%;
+	width:31%;
 	display:inline-block;
 	margin-bottom:20px;
 	position:relative;
@@ -961,7 +961,7 @@ ul.social-links>li.pinterest-link:hover {
 	width:100%;
 	margin:0px auto;
 	height:100%;
-	top:-87.0px;
+	top:0px;
 	display:table-cell;
 	vertical-align:middle;	
 	background: #000;
@@ -1010,6 +1010,11 @@ ul.social-links>li.pinterest-link:hover {
 }
 .boxcontainer img {
 	position:relative;
+	width:100%;
+	height:100%;
+}
+.boxcontainer test {
+	height:100%;
 }
 .wrapcaption {
 	position:absolute;
@@ -1019,7 +1024,7 @@ ul.social-links>li.pinterest-link:hover {
 	margin:0px auto;
 	display:table-cell;
 	vertical-align:middle;
-	top:55%;
+	top:45%;
 }
 .captionicons {
 	font-size:20px;
