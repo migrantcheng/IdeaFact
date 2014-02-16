@@ -3,6 +3,10 @@ package Twitter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
@@ -18,6 +22,8 @@ import org.scribe.model.Verb;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
+import databean.Tweet;
+
 public class TwitterUtil {
 	
 	private final static String CONSUMER_KEY = "JB903vkzwl7bOqWFjtooA";
@@ -30,6 +36,9 @@ public class TwitterUtil {
 	private final static String REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token";
 	private static final String PROTECTED_RESOURCE_URL = "https://api.twitter.com/1.1/account/verify_credentials.json";
 	private final static String UPDATE_URL = "https://api.twitter.com/1.1/statuses/update.json";
+	private final static String STATUSES_SHOW_ID_URL = "https://api.twitter.com/1.1/statuses/show.json";
+	private final static String STATUSES_RETWEETS_ID_URL = "https://api.twitter.com/1.1/statuses/retweets/";
+	
 	
 	public void search(String keyword){
 		try {
@@ -280,7 +289,7 @@ public class TwitterUtil {
 		
 	}
 	
-	public String update(Token accessToken, String status){
+	public static String update(Token accessToken, String status){
 		
 		String twitterId = "";
 		try {
@@ -332,18 +341,136 @@ public class TwitterUtil {
 		return twitterId;
 	}
 	
+	public static Tweet getStatusById(String id){
+		Tweet tweet = new Tweet();
+		try {
+			System.out
+					.println("Starting Twitter public stream consumer thread.");
+
+			// Enter your consumer key and secret below
+			OAuthService service = new ServiceBuilder()
+					.provider(TwitterApi.class)
+					.apiKey(CONSUMER_KEY)
+					.apiSecret(COMSUMER_SECRET)
+					.build();
+
+			// Set your access token
+			Token accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+
+			// Let's generate the request
+			System.out.println("Connecting to Twitter Public Stream");
+			OAuthRequest request = new OAuthRequest(Verb.GET,
+					STATUSES_SHOW_ID_URL);
+//			request.
+			request.addHeader("version", "HTTP/1.1");
+			request.addHeader("host", "api.twitter.com");
+			request.setConnectionKeepAlive(true);
+			request.addHeader("user-agent", "IdeaFact Task 8");
+//			request.addQuerystringParameter(key, value);
+			request.addQuerystringParameter("id", id);
+			service.signRequest(accessToken, request);
+			Response response = request.send();
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getStream()));
+			
+			StringBuffer sb = new StringBuffer();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				sb.append(line);
+			}
+			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
+			tweet.setText((String)json.get("text"));
+			JSONObject user = (JSONObject)json.get("user");
+			tweet.setUsername((String) user.get("name"));
+			String createdAt = (String) json.get("created_at");
+			String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+			SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
+			Date date = sf.parse(createdAt);
+			tweet.setCreatedAt(date.toString());
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return tweet;
+	}
+	
+	public static ArrayList<Tweet> getRetweetsById(String id){
+		ArrayList<Tweet> list = new ArrayList<Tweet>();
+		try {
+			System.out
+					.println("Starting Twitter public stream consumer thread.");
+
+			// Enter your consumer key and secret below
+			OAuthService service = new ServiceBuilder()
+					.provider(TwitterApi.class)
+					.apiKey(CONSUMER_KEY)
+					.apiSecret(COMSUMER_SECRET)
+					.build();
+
+			// Set your access token
+			Token accessToken = new Token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+
+			// Let's generate the request
+			System.out.println("Connecting to Twitter Public Stream");
+			OAuthRequest request = new OAuthRequest(Verb.GET,
+					STATUSES_RETWEETS_ID_URL+id+".json");
+//			request.
+			request.addHeader("version", "HTTP/1.1");
+			request.addHeader("host", "api.twitter.com");
+			request.setConnectionKeepAlive(true);
+			request.addHeader("user-agent", "IdeaFact Task 8");
+			
+			service.signRequest(accessToken, request);
+			Response response = request.send();
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					response.getStream()));
+			
+			StringBuffer sb = new StringBuffer();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				sb.append(line);
+			}
+			JSONArray array=(JSONArray)JSONValue.parse(sb.toString());
+			for (int i = 0; i < array.size(); i++) {
+				JSONObject json = (JSONObject) array.get(i);
+				
+				JSONObject status = (JSONObject)json.get("retweeted_status");
+
+				Tweet tweet = new Tweet();
+				tweet.setText((String) status.get("text"));
+				JSONObject user = (JSONObject) status.get("user");
+				tweet.setUsername((String) user.get("name"));
+				String createdAt = (String) json.get("created_at");
+				String TWITTER = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+				SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
+				Date date = sf.parse(createdAt);
+				tweet.setCreatedAt(date.toString());
+			}
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	
 	
 	public static void main(String[] args){
 		TwitterUtil twitter = new TwitterUtil();
-//		twitter.getUserTimeline("cmuuitest");
+		twitter.getUserTimeline("cmuuitest");
 //		System.out.println(twitter.update(new Token("", ""), "test updating twitter"));
-		twitter.countOfSearch("Rabbit Beach");
-		twitter.countOfSearch("Grace Bay");
-		twitter.countOfSearch("White haven Beach");
-		twitter.countOfSearch("Baia do Sancho");
-		twitter.countOfSearch("Flamenco Beach");
-		twitter.countOfSearch("Lopes Mendes Beach");
+//		twitter.countOfSearch("Rabbit Beach");
+//		twitter.countOfSearch("Grace Bay");
+//		twitter.countOfSearch("White haven Beach");
+//		twitter.countOfSearch("Baia do Sancho");
+//		twitter.countOfSearch("Flamenco Beach");
+//		twitter.countOfSearch("Lopes Mendes Beach");
 //		twitter.countOfSearch("#");
 //		twitter.countOfSearch("#");
 		System.out.println();

@@ -25,6 +25,7 @@ public class Controller extends HttpServlet {
 		Action.add(new SignInWithTwitterAction());
 		Action.add(new TwitterSignInAction());
 		Action.add(new LoginAction());
+		Action.add(new DetailAction());
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
