@@ -19,8 +19,9 @@ public class Controller extends HttpServlet {
 	public void init() throws ServletException{
 //		Model model = new Model();
 
-		Action.add(new IndexAction());
 		Action.add(new CategoryAction());
+		Action.add(new ListAction());
+		Action.add(new IndexAction());
 		Action.add(new SignInWithTwitterAction());
 		Action.add(new TwitterSignInAction());
 		Action.add(new LoginAction());
@@ -46,20 +47,16 @@ public class Controller extends HttpServlet {
 
         // System.out.println("servletPath="+servletPath+" requestURI="+request.getRequestURI()+"  user="+user);
 
-        if (action.equals("register.do") || action.equals("signInWithTwitter.do") || action.equals("twitterSignIn.do") || action.equals("click.do")) {
+        if (action.equals("signInWithTwitter.do") || action.equals("twitterSignIn.do")) {
         	// Allow these actions without logging in
 			return Action.perform(action,request);
         }
         
-        if(user == null){
-        	return Action.perform("login.do", request);
-        }
-        
-        
-//        if (employee == null) {
-//        	// If the user hasn't logged in, direct him to the login page
-//			return Action.perform("employeeLogin.do",request);
+//        if(user == null){
+//        	return Action.perform("login.do", request);
 //        }
+        
+        
         
         return Action.perform(action,request);
     }

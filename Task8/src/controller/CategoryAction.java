@@ -1,33 +1,35 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import Flickr.FlickrThread;
 import Flickr.FlickrUtil;
-import databean.FlickrPhoto;
+import Flickr.PhotoList;
 
 public class CategoryAction extends Action {
+	
+	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
-    	String keyword = request.getParameter("key");
-    	if (keyword == null || keyword.length() == 0) {
-    		return "search.jsp";
-    	}
-    	
+		Random rand = new Random(System.currentTimeMillis()); 
+		int value = 1;
     	int page = 1;
-    	try {
-    		page = Integer.parseInt((String)request.getAttribute("page"));
-    	} catch (Exception e) {
-    		/* ignore */
-    	}
     	if (request.getParameter("page") != null && FlickrUtil.isInteger(request.getParameter("page"))) {
     		page = Integer.parseInt(request.getParameter("page"));
     	}
     	
-    	ArrayList<FlickrPhoto> photos = new ArrayList<FlickrPhoto>();
-    	photos.addAll(FlickrUtil.search(keyword, 30, page));
+    	
+    	ArrayList<PhotoList> photoList = new ArrayList<PhotoList>();
+    	Thread[] threads = new FlickrThread[places.length];
+    	for (int i = 0; i < places.length; i++) {
+    		value = rand.nextInt(10) + 1;
+    		threads[i] = new FlickrThread(photoList, value, page, places[i]);
+    		threads[i].start();
+    	}
     	
     	//test update twitter
 //    	HttpSession session     = request.getSession(true);
@@ -36,9 +38,12 @@ public class CategoryAction extends Action {
 //    		new TwitterUtil().update(new Token(user.getAccessToken(), user.getAccessTokenSecret()), "search for keywork: " + request.getParameter("key") + " from IdeaFact");
 //    	}
     	//end test update twitter
-    	
-        request.setAttribute("photos", photos);
-        request.setAttribute("category", keyword);
-       	return "category.jsp";
+    	try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+        request.setAttribute("photoList", photoList);
+       	return "index.jsp";
     }
 }

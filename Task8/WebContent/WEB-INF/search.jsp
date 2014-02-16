@@ -49,11 +49,18 @@
 			
 			<!-- login -->
 			<div class="login">
+			<%if (session.getAttribute("user") == null) { %>
 			  <a href="twitterSignIn.do">
 				<button type="submit" class="btn1">
 					<img src="image/tweets.png" class="tweet"> 
 					Login with Twitter</button>
 			  </a>
+			<%} else {%>
+				<button class="btn1">
+					<img src="image/tweets.png" class="tweet"> 
+					Hello, ${user.username}
+				</button>
+			<%} %>
 			</div>
 			
 			
@@ -81,19 +88,19 @@
             <div class="row-fluid">
                 <div class="page-description span6" style="
 	margin-top: 100px;">
-                    <p>Top 10s of</p>
+                    <p>Top tens of</p>
                 </div>
             </div>
 			
             <!-- hot pic -->
             <div class="row-fluid">
 				    <ul class="flickr-feed">
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+						<li><a href="category.do">
 							<img src="image/beach.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Beach</span>
 						</li>
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+						<li><a href="category.do">
 							<img src="image/nature.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Nature</span>
