@@ -27,7 +27,7 @@ public class IndexAction extends Action {
     	Thread[] threads = new FlickrThread[places.length];
     	for (int i = 0; i < places.length; i++) {
     		value = rand.nextInt(10) + 1;
-    		threads[i] = new FlickrThread(photoList, value, page, places[i], i);
+    		threads[i] = new FlickrThread(photoList, value, page, places[i]);
     		threads[i].start();
     	}
     	
@@ -38,9 +38,11 @@ public class IndexAction extends Action {
 //    		new TwitterUtil().update(new Token(user.getAccessToken(), user.getAccessTokenSecret()), "search for keywork: " + request.getParameter("key") + " from IdeaFact");
 //    	}
     	//end test update twitter
-    	while (photoList.size() < places.length) {
-    		System.out.println(photoList.size());
-    	}
+    	try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
         request.setAttribute("photoList", photoList);
        	return "index.jsp";
     }

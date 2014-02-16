@@ -8,17 +8,11 @@ import Flickr.FlickrUtil;
 import databean.FlickrPhoto;
 
 public class CategoryAction extends Action {
-	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "Hanauma Bay Nature Preserve"};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
-    	int category = 0;
-    	try {
-    		category = Integer.parseInt((String)request.getParameter("cat"));
-    	} catch (Exception e) {
-    		return "index.do";
-    	}
-    	if (category < 0 || category >= places.length) {
+    	String keyword = request.getParameter("key");
+    	if (keyword == null || keyword.length() == 0) {
     		return "index.do";
     	}
     	
@@ -33,7 +27,7 @@ public class CategoryAction extends Action {
     	}
     	
     	ArrayList<FlickrPhoto> photos = new ArrayList<FlickrPhoto>();
-    	photos.addAll(FlickrUtil.search(places[category], 30, page));
+    	photos.addAll(FlickrUtil.search(keyword, 30, page));
     	
     	//test update twitter
 //    	HttpSession session     = request.getSession(true);
@@ -44,7 +38,7 @@ public class CategoryAction extends Action {
     	//end test update twitter
     	
         request.setAttribute("photos", photos);
-        request.setAttribute("category", places[category]);
+        request.setAttribute("category", keyword);
        	return "category.jsp";
     }
 }

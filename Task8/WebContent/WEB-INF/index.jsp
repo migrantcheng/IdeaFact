@@ -32,11 +32,11 @@
 						<img src="${photo.photo.urlm}" alt="">
 						<div class="roll">
 							<div class="wrapcaption">
-								<a href="category.do?cat=${photo.category}"><i class="icon-link captionicons"></i></a>
+								<a href="category.do?key=${photo.catName}"><i class="icon-link captionicons"></i></a>
 								<a data-gal="prettyPhoto[gallery1]" href="${photo.photo.url}" title=""><i class="icon-zoom-in captionicons"></i></a>
 							</div>
 						</div>
-						<h1><a href="category.do?cat=${photo.category}">${photo.catName}</a></h1>
+						<h1><a href="category.do?key=${photo.catName}">${photo.catName}</a></h1>
 						<p>
 							 ${photo.photo.title}
 						</p>
