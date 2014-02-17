@@ -53,7 +53,6 @@
 	</div>
 	
 	<div class="row">
-	PageNav
 	</div>
 <!-- MASONRY ITEMS END -->
 </div>
