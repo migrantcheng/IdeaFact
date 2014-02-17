@@ -384,7 +384,7 @@ public class TwitterUtil {
 			tweet.setTweetId((String)json.get("id_str"));
 			tweet.setText((String)json.get("text"));
 			JSONObject user = (JSONObject)json.get("user");
-			tweet.setUsername((String) user.get("name"));
+			tweet.setUsername((String) user.get("screen_name"));
 			String createdAt = (String) json.get("created_at");
 			String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 			SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
@@ -438,19 +438,21 @@ public class TwitterUtil {
 			}
 			JSONArray array=(JSONArray)JSONValue.parse(sb.toString());
 			for (int i = 0; i < array.size(); i++) {
-				JSONObject json = (JSONObject) array.get(i);
+				JSONObject status = (JSONObject) array.get(i);
 				
-				JSONObject status = (JSONObject)json.get("retweeted_status");
+//				JSONObject status = (JSONObject)json.get("retweeted_status");
 
 				Tweet tweet = new Tweet();
 				tweet.setText((String) status.get("text"));
 				JSONObject user = (JSONObject) status.get("user");
-				tweet.setUsername((String) user.get("name"));
-				String createdAt = (String) json.get("created_at");
+				tweet.setUsername((String) user.get("screen_name"));
+				String createdAt = (String) status.get("created_at");
 				String TWITTER = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 				SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
 				Date date = sf.parse(createdAt);
 				tweet.setCreatedAt(date.toString());
+				
+				list.add(tweet);
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
