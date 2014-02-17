@@ -17,12 +17,17 @@
                 </p>
                 
 			<hr>
+			<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			
+			<div style="margin:0 auto;padding:0px;width:530px">
 			<c:forEach var="tweet" items="${tweetList}">
-				<h4><i class="fa fa-clock-o"></i> ${tweet.username} Posted on ${tweet.createdAt}</h4>
-                <p><i class="fa fa-clock-o"></i> ${tweet.text}</p>
-                <hr>
+				<blockquote class="twitter-tweet"><p>${tweet.text}</p>&mdash; {tweet.username} (@{tweet.username}) <a href="https://twitter.com/twitterapi/status/${tweet.tweetId}" data-datetime="${tweet.createdAt}">${tweet.createdAt}</a></blockquote>
+				<%-- <h4><i class="fa fa-clock-o"></i> <a href="http://twitter.com/${tweet.username}">@${tweet.username}</a> Posted on ${tweet.createdAt}</h4>
+                <p><i class="fa fa-clock-o"></i> ${tweet.text}</p> --%>
 			</c:forEach>
-                <div>
+			</div>
+                <hr>
+                <div style="margin:0 auto;padding:0px;width:530px">
                 <%if (request.getSession().getAttribute("user") != null) {%>
                     <h4>Tweet a Comment:</h4>
                     <form method="POST">
@@ -51,11 +56,6 @@
                     <!-- /input-group -->
                 </div>
                 
-                <!-- /well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-                </div>
                 <!-- /well -->
                 <div class="well">
                     <div id="piechart" style="width: 350px; height: 350px;"></div>                </div>

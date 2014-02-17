@@ -25,6 +25,7 @@ public class CategoryAction extends Action {
 								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Landscapes\" data-widget-id=\"435510468166156289\">Tweets about \"Landscapes\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
 								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Fantastic+landscape\" data-widget-id=\"435510898103291904\">Tweets about \"Fantastic landscape\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
 								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Historical+place\" data-widget-id=\"435512453766451200\">Tweets about \"Historical place\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>"};
+	private String[] types = {"Beaches", "Islands", "Resorts", "Mountains", "Landscapes", "Places", "Historical Places"};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
@@ -66,6 +67,7 @@ public class CategoryAction extends Action {
 			e.printStackTrace();
 		}
         request.setAttribute("photoList", photoList);
+        request.setAttribute("type", types[cat]);
         request.setAttribute("widget", widgets[cat]);
        	return "index.jsp";
     }

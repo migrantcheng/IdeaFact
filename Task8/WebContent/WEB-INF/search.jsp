@@ -70,8 +70,9 @@
                     <form class="form-inline" method="post" action="list.do">
                         <input type="text" name="key" placeholder="Enter keyword">
                         <button type="submit" class="btn" name="button" value="signin">Search</button>
-                    </form>
+                    </form><span style="color:white;text-shadow: 0 1px 1px rgba(0,0,0,.8);margin-left:10px;font-size:20px;">Top 5 key words</span>
                     <ul class="hot-keyword">
+						
                    	  <c:if test="${fn:length(keys) gt 0}">
 			      		<c:forEach var="key" items="${keys}">
 						<li>
@@ -84,6 +85,11 @@
                     <div class="success-message"></div>
                     <div class="error-message"></div>
                 </div>
+                
+                <!-- <div class="span12" style="padding-left:10px;">
+	                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this page:" data-size="large" data-hashtags="travelling">Share</a>
+                </div>   -->
             </div>
 			
 			
