@@ -40,8 +40,11 @@
 		<!-- twitter stream -->
 	<div class="span4">
                 <div class="well">
-                    <h4>Google Map API</h4>
-                    
+                    <p>Map</p>
+					<div style="width:100%;height:200px;">
+				      <div id="map-canvas">
+				      </div>
+				    </div>
                     <!-- /input-group -->
                 </div>
                 

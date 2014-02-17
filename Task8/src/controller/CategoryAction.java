@@ -11,10 +11,19 @@ import Flickr.PhotoList;
 
 public class CategoryAction extends Action {
 	
-	private String[] places = {"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"};
+	private String[][] places = {{"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"}, {"Ambergris Caye", "St John US Virgin Islands", "Bora Bora", "San Juan Island", "Santorini, Cyclades", "Isla Mujeres", "Moorea Society Islands", "Ko Tao", "Easter Island", "Nosy Be"}};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
+    	int cat = 0;
+    	try {
+    		cat = Integer.parseInt(request.getParameter("cat"));
+    		if (cat >= places.length || cat < 0) {
+    			cat = 0;
+    		}
+    	} catch (Exception e) {
+    		/* ignore */
+    	}
 		Random rand = new Random(System.currentTimeMillis()); 
 		int value = 1;
     	int page = 1;
@@ -25,9 +34,9 @@ public class CategoryAction extends Action {
     	
     	ArrayList<PhotoList> photoList = new ArrayList<PhotoList>();
     	Thread[] threads = new FlickrThread[places.length];
-    	for (int i = 0; i < places.length; i++) {
+    	for (int i = 0; i < places[cat].length; i++) {
     		value = rand.nextInt(10) + 1;
-    		threads[i] = new FlickrThread(photoList, value, page, places[i]);
+    		threads[i] = new FlickrThread(photoList, value, page, places[cat][i]);
     		threads[i].start();
     	}
     	

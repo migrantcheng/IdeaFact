@@ -110,6 +110,9 @@ input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditabl
 	font-weight:normal;
 	font-style:normal;
 }
+#map-canvas { 
+	height: 100%;
+}
 a:focus {
 	outline:none;
 	outline:5px auto -webkit-focus-ring-color;
