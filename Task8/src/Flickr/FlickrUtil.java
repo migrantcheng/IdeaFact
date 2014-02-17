@@ -62,8 +62,8 @@ public class FlickrUtil {
 			}
 			
 			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
-			if (json.get("stat") == "fail") {
-				throw new RuntimeException((String)json.get("message"));
+			if (json.get("stat").equals("fail")) {
+				return new ArrayList<FlickrPhoto>();
 			}
 			JSONArray array = (JSONArray)((JSONObject)json.get("photos")).get("photo");
 			System.out.println(array);
@@ -113,12 +113,11 @@ public class FlickrUtil {
 			}
 			
 			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
-			if (json.get("stat") == "fail") {
-				throw new RuntimeException((String)json.get("message"));
+			if (json.get("stat").equals("fail")) {
+				return new FlickrPhoto();
 			}
 			FlickrPhoto result = new FlickrPhoto();
 			JSONObject photo = (JSONObject)json.get("photo");
-			JSONObject owner = (JSONObject)photo.get("owner");
 			JSONObject title = (JSONObject)photo.get("title");
 			JSONObject location = (JSONObject)photo.get("location");
 			JSONObject urls = (JSONObject)photo.get("urls");
@@ -177,8 +176,8 @@ public class FlickrUtil {
 			}
 			
 			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
-			if (json.get("stat") == "fail") {
-				throw new RuntimeException((String)json.get("message"));
+			if (json.get("stat").equals("fail")) {
+				return new ArrayList<FlickrPhoto>();
 			}
 			JSONArray array = (JSONArray)((JSONObject)json.get("photos")).get("photo");
 			System.out.println(array);
@@ -246,11 +245,5 @@ public class FlickrUtil {
 	    }
 	    // only got here if we didn't return false
 	    return true;
-	}
-	
-	public static void main(String[] args) {
-		FlickrUtil flickr = new FlickrUtil();
-//		flickr.searchByGeo(40.4439, -79.9561, 10, 10);
-		flickr.search("cancun beach", 10, 1);
 	}
 }
