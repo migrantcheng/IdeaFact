@@ -8,6 +8,7 @@ import org.genericdao.DAOException;
 
 public class Model {
 	private TweetDAO tweetDao;
+	private KeywordDAO keywordDAO;
 
 	public Model(ServletConfig config) throws ServletException {
 		try {
@@ -17,6 +18,7 @@ public class Model {
 			ConnectionPool pool = new ConnectionPool(jdbcDriver, jdbcURL);
 			
 			tweetDao = new TweetDAO("tweet", pool);
+			keywordDAO = new KeywordDAO("keyword", pool);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
@@ -26,4 +28,7 @@ public class Model {
 		return tweetDao;
 	}
 	
+	public KeywordDAO getKeywordDao() {
+		return keywordDAO;
+	}
 }

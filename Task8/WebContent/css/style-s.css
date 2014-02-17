@@ -217,7 +217,23 @@ body {
     -ms-transition: all .3s;
 }
 
-
+.hot-keyword {
+	margin: 0;
+	padding-left: 10px;
+	text-align: center;
+}
+.hot-keyword li {
+	float: left;
+	padding: 0 4px 4px 0;
+	margin-right: 10px;
+	margin-left: 0;
+	list-style: none;
+	color: white;
+}
+.hot-keyword li a {
+	color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,.8);
+}
 
 /* ----- hot pic ----- */
 .flickr-feed {

@@ -68,9 +68,19 @@
             <div class="row-fluid">
                 <div class="subscription-form span12">
                     <form class="form-inline" method="post" action="list.do">
-                        <input type="text" name="key" placeholder="Enter keyword...">
+                        <input type="text" name="key" placeholder="Enter keyword">
                         <button type="submit" class="btn" name="button" value="signin">Search</button>
                     </form>
+                    <ul class="hot-keyword">
+                   	  <c:if test="${fn:length(keys) gt 0}">
+			      		<c:forEach var="key" items="${keys}">
+						<li>
+                    		<a href="list.do?key=${key.word}">#${key.word}</a>
+                    	</li>
+			            </c:forEach>
+			       	  </c:if>
+                    	
+                    </ul>
                     <div class="success-message"></div>
                     <div class="error-message"></div>
                 </div>
