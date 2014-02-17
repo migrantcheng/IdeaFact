@@ -98,23 +98,23 @@
 							</a>
 							<br/><span>Nature</span>
 						</li>
-						<li><a href="category.do?cat=2" target="_blank">
+						<li><a href="category.do?cat=2">
 							<img src="image/sun-island.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Island</span>
 						</li>
-						<li><a href="category.do?cat=3" target="_blank">
+						<li><a href="category.do?cat=3">
 							<img src="image/lavender.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Flower</span>
 						</li>
-						<li><a href="category.do?cat=4" target="_blank"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
+						<li><a href="category.do?cat=4"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>City</span>
 					</li>
-						<li><a href="category.do?cat=5" target="_blank"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
+						<li><a href="category.do?cat=5"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>Sunset</span>
 					</li>
-					<li><a href="category.do?cat=6" target="_blank"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
+					<li><a href="category.do?cat=6"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
 					<br/><span>Mountain</span>
 				</li>
 					</ul>
