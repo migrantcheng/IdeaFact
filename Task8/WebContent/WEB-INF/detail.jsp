@@ -52,13 +52,32 @@
                 </div>
                 <!-- /well -->
                 <div class="well">
-                    <h4>Trends</h4>
-                    <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-                </div>
+                    <div id="piechart" style="width: 350px; height: 350px;"></div>                </div>
             </div>
         
 	</div>
 	
 <!-- MASONRY ITEMS END -->
 </div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tweet', 'Hours per Day'],
+          ['Tweets',     11],
+          ['Retweets',      30]
+        ]);
+
+        var options = {
+          title: 'Tweet Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+
 <%@include file="footer.jsp" %>
