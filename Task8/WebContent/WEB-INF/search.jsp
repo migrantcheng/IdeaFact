@@ -108,15 +108,18 @@
 							</a>
 							<br/><span>Flower</span>
 						</li>
-						<li><a href="category.do?cat=4"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
+						<li><a href="category.do?cat=4">
+							<img src="image/s2.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>City</span>
-					</li>
-						<li><a href="category.do?cat=5"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
+						</li>
+						<li><a href="category.do?cat=5">
+							<img src="image/s3.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>Sunset</span>
-					</li>
-					<li><a href="category.do?cat=6"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
-					<br/><span>Mountain</span>
-				</li>
+						</li>
+						<li><a href="category.do?cat=6">
+							<img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
+						<br/><span>Mountain</span>
+						</li>
 					</ul>
 				
             </div>
