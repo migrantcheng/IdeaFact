@@ -104,20 +104,20 @@
 							<br/><span>Resorts</span>
 						</li>
 						
-						<li><a href="category.do?cat=6">
+						<li><a href="category.do?cat=3">
 							<img src="image/mount.png" alt="Melbourne Meetup"></a>
 						<br/><span>Mountains</span>
 						</li>
-						<li><a href="category.do?cat=3">
+						<li><a href="category.do?cat=4">
 							<img src="image/greece.png" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Landscapes</span>
 						</li>
-						<li><a href="category.do?cat=4">
+						<li><a href="category.do?cat=5">
 							<img src="image/aurora.png" alt="Melbourne Meetup"></a>
 						<br/><span>Fantastic Places</span>
 						</li>
-						<li><a href="category.do?cat=5">
+						<li><a href="category.do?cat=6">
 							<img src="image/mosque.png" alt="Melbourne Meetup"></a>
 						<br/><span>Historical Places</span>
 						</li>
