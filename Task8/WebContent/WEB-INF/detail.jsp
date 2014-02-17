@@ -22,8 +22,8 @@
                 <p><i class="fa fa-clock-o"></i> ${tweet.text}</p>
                 <hr>
 			</c:forEach>
-			
                 <div>
+                <%if (request.getSession().getAttribute("user") != null) {%>
                     <h4>Tweet a Comment:</h4>
                     <form method="POST">
                         <div class="form-group">
@@ -31,6 +31,9 @@
                         </div>
                         <button type="submit" class="btn btn-primary" name="button">Tweet</button>
                     </form>
+          		<%} else {%>
+          			<h4>Please <a href="twitterSignIn.do">sign in</a> to tweet a comment.</h4>
+          		<%}%>
                 </div>
 
 

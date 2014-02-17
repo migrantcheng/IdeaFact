@@ -123,10 +123,10 @@
 		
 		<!-- twitter stream -->
 		<div class="span3">
-		<a class="twitter-timeline" href="https://twitter.com/search?q=%23${category}" data-widget-id="434323333358682112">Tweets about "#${category}"</a>
+		<div id="chart_div" style="width: 100%; height: 300px;"></div>
+		<a class="twitter-timeline" href="https://twitter.com/search?q=%23travelling" data-widget-id="435515192969920512">Tweets about "#travelling"</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-		<div id="chart_div" style="width: 100%; height: 300px;"></div>
 		</div>
 	</div>
 	

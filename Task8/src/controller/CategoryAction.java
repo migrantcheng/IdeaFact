@@ -18,6 +18,13 @@ public class CategoryAction extends Action {
 								{"Peru Landscape", "New Zealand Landscape", "Chile Landscape", "Nepal Landscape", "Australia Landscape", "Netherlands Landscape", "Greece Landscape", "Utah Landscape", "Iceland Landscape", "Tanzania Landscape"},
 								{"Aurora borealis", "Yellowstone National Park", "Plateau de Valensole", "Strokkur geyser", "The Wave Coyote Buttes", "Nideck waterfall", "Salar de Uyuni Salt Desert", "Plitvice Lakes National Park", "Mendenhall Glacier", "Antelope Canyon"},
 								{"The Forbidden City", "The Great Pyramid", "Potala Palace", "Christ the Redeemer", "Parthenon", "Taj Mahal", "Alhambra", "Acropolis", "Sultan Ahmed Mosque", "Colosseum"}};
+	private String[] widgets = {"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Beach\" data-widget-id=\"435509508417142784\">Tweets about \"Beach\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Island\" data-widget-id=\"435508252994854912\">Tweets about \"Island\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Resorts\" data-widget-id=\"435509177419436032\">Tweets about \"Resorts\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Mountain+landscape\" data-widget-id=\"435510013407154176\">Tweets about \"Mountain landscape\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Landscapes\" data-widget-id=\"435510468166156289\">Tweets about \"Landscapes\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Fantastic+landscape\" data-widget-id=\"435510898103291904\">Tweets about \"Fantastic landscape\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>",
+								"<a class=\"twitter-timeline\" href=\"https://twitter.com/search?q=Historical+place\" data-widget-id=\"435512453766451200\">Tweets about \"Historical place\"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>"};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
@@ -59,6 +66,7 @@ public class CategoryAction extends Action {
 			e.printStackTrace();
 		}
         request.setAttribute("photoList", photoList);
+        request.setAttribute("widget", widgets[cat]);
        	return "index.jsp";
     }
 }
