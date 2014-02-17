@@ -381,6 +381,7 @@ public class TwitterUtil {
 				sb.append(line);
 			}
 			JSONObject json = (JSONObject)JSONValue.parse(sb.toString());
+			tweet.setTweetId((String)json.get("id_str"));
 			tweet.setText((String)json.get("text"));
 			JSONObject user = (JSONObject)json.get("user");
 			tweet.setUsername((String) user.get("name"));

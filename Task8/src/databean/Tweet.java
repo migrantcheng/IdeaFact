@@ -2,8 +2,9 @@ package databean;
 
 import org.genericdao.PrimaryKey;
 
-@PrimaryKey("tweetId")
+@PrimaryKey("id")
 public class Tweet {
+	private int id;
 	private String tweetId;
 	private String photoId;
 	private String username;
@@ -47,5 +48,12 @@ public class Tweet {
 	public void setPhotoId(String photoId) {
 		this.photoId = photoId;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 }

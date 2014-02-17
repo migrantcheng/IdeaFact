@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import model.Model;
 import model.TweetDAO;
 
+import org.genericdao.RollbackException;
 import org.scribe.model.Token;
 
 import Flickr.FlickrUtil;
@@ -37,6 +38,7 @@ public class DetailAction extends Action {
 			return "index.do";
 		}
 		FlickrPhoto photo = FlickrUtil.getById(request.getParameter("id"));
+		ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
 		if(request.getParameter("button") != null){
 			User user = (User)request.getSession().getAttribute("user");
 			Token accessToken = new Token(user.getAccessToken(), user.getAccessTokenSecret());
@@ -44,17 +46,32 @@ public class DetailAction extends Action {
 			
 			String tweetId = TwitterUtil.update(accessToken, content);
 			System.out.println(tweetId);
+//			
+//			tweetList = new ArrayList<Tweet>();
+//			tweetList.add(TwitterUtil.getStatusById(tweetId));
 			
-			ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
-			tweetList.add(TwitterUtil.getStatusById(tweetId));
-			
-			ArrayList<Tweet> retweetList = TwitterUtil.getRetweetsById("434901229375082496");
-			for(Tweet tweet: retweetList){
-				tweetList.add(tweet);
+			try {
+				Tweet temp = TwitterUtil.getStatusById(tweetId);
+				temp.setPhotoId(request.getParameter("id"));
+				tweetDao.create(temp);
+			} catch (RollbackException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			request.setAttribute("tweetList",tweetList);
-			return "detail.jsp";
+
 		}
+		
+		
+		try {
+			Tweet[] list = tweetDao.getTweetsByPhotoId(request.getParameter("id"));
+			for(int i = 0; i < list.length; i++){
+				tweetList.add(0, list[i]);;
+			}
+		} catch (RollbackException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("tweetList",tweetList);
 		request.setAttribute("photo", photo);
 		return "detail.jsp";
 	}
