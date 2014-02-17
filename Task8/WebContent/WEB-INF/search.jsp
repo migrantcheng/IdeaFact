@@ -91,34 +91,35 @@
 						<li><a href="category.do?cat=0">
 							<img src="image/beach.jpg" alt="Melbourne Meetup">
 							</a>
-							<br/><span>Beach</span>
+							<br/><span>Beaches</span>
 						</li>
 						<li><a href="category.do?cat=1">
-							<img src="image/nature.jpg" alt="Melbourne Meetup">
-							</a>
-							<br/><span>Nature</span>
-						</li>
-						<li><a href="category.do?cat=2">
 							<img src="image/sun-island.jpg" alt="Melbourne Meetup">
 							</a>
-							<br/><span>Island</span>
+							<br/><span>Islands</span>
+						</li>
+						<li><a href="category.do?cat=2">
+							<img src="image/resort.png" alt="Melbourne Meetup">
+							</a>
+							<br/><span>Resorts</span>
+						</li>
+						
+						<li><a href="category.do?cat=6">
+							<img src="image/mount.png" alt="Melbourne Meetup"></a>
+						<br/><span>Mountains</span>
 						</li>
 						<li><a href="category.do?cat=3">
-							<img src="image/lavender.jpg" alt="Melbourne Meetup">
+							<img src="image/greece.png" alt="Melbourne Meetup">
 							</a>
-							<br/><span>Flower</span>
+							<br/><span>Landscapes</span>
 						</li>
 						<li><a href="category.do?cat=4">
-							<img src="image/s2.jpg" alt="Melbourne Meetup"></a>
-						<br/><span>City</span>
+							<img src="image/aurora.png" alt="Melbourne Meetup"></a>
+						<br/><span>Fantastic Places</span>
 						</li>
 						<li><a href="category.do?cat=5">
-							<img src="image/s3.jpg" alt="Melbourne Meetup"></a>
-						<br/><span>Sunset</span>
-						</li>
-						<li><a href="category.do?cat=6">
-							<img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
-						<br/><span>Mountain</span>
+							<img src="image/mosque.png" alt="Melbourne Meetup"></a>
+						<br/><span>Historical Places</span>
 						</li>
 					</ul>
 				
