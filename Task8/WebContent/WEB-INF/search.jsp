@@ -88,33 +88,33 @@
             <!-- hot pic -->
             <div class="row-fluid">
 				    <ul class="flickr-feed">
-						<li><a href="category.do">
+						<li><a href="category.do?cat=0">
 							<img src="image/beach.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Beach</span>
 						</li>
-						<li><a href="category.do">
+						<li><a href="category.do?cat=1">
 							<img src="image/nature.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Nature</span>
 						</li>
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+						<li><a href="category.do?cat=2" target="_blank">
 							<img src="image/sun-island.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Island</span>
 						</li>
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12333892565/" target="_blank">
+						<li><a href="category.do?cat=3" target="_blank">
 							<img src="image/lavender.jpg" alt="Melbourne Meetup">
 							</a>
 							<br/><span>Flower</span>
 						</li>
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12334281344/" target="_blank"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
+						<li><a href="category.do?cat=4" target="_blank"><img src="image/s2.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>City</span>
 					</li>
-						<li><a href="http://www.flickr.com/photos/we-are-envato/12333834195/" target="_blank"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
+						<li><a href="category.do?cat=5" target="_blank"><img src="image/s3.jpg" alt="Melbourne Meetup"></a>
 						<br/><span>Sunset</span>
 					</li>
-					<li><a href="http://www.flickr.com/photos/we-are-envato/12333834195/" target="_blank"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
+					<li><a href="category.do?cat=6" target="_blank"><img src="image/mountain.jpg" alt="Melbourne Meetup"></a>
 					<br/><span>Mountain</span>
 				</li>
 					</ul>

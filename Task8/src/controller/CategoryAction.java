@@ -11,7 +11,11 @@ import Flickr.PhotoList;
 
 public class CategoryAction extends Action {
 	
-	private String[][] places = {{"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"}, {"Ambergris Caye", "St John US Virgin Islands", "Bora Bora", "San Juan Island", "Santorini, Cyclades", "Isla Mujeres", "Moorea Society Islands", "Ko Tao", "Easter Island", "Nosy Be"}};
+	private String[][] places = {{"Ka'anapali Beach", "Siesta Key Public Beach", "Gulf Islands National Seashore", "Fort De Soto Park", "Lanikai Beach", "Wailea Beach", "Assateague Beach", "La Jolla Cove", "Laguna Beach", "St Andrews State Park"}, 
+								{"Ambergris Caye", "St John US Virgin Islands", "Bora Bora", "San Juan Island", "Santorini, Cyclades", "Isla Mujeres", "Moorea Society Islands", "Ko Tao", "Easter Island", "Nosy Be"},
+								{"Iberostar Grand Hotel Paraiso", "Royalton Cayo Santa Maria", "The Beloved Hotel", "Excellence Playa Mujeres", "Le Blanc Spa Resort", "Paradisus Palma Real", "Kurumba Maldives", "Club Med Egypt", "Club Med Palmiye", "Cozumel Palace"},
+								{"Mount Khuiten", "Kilimanjaro", "The Andes", "Mount Everest", "The Matterhorn", "Mount Elbrus", "Iztaccihuatl", "Denali", "Annapurna", "Damavand"},
+								{"Peru Landscape", "New Zealand Landscape", "Chile Landscape", "Nepal Landscape", "Australia Landscape", "Netherlands Landscape", "Greece Landscape", "Utah Landscape", "Iceland Landscape", "Tanzania Landscape"}};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
@@ -33,7 +37,7 @@ public class CategoryAction extends Action {
     	
     	
     	ArrayList<PhotoList> photoList = new ArrayList<PhotoList>();
-    	Thread[] threads = new FlickrThread[places.length];
+    	Thread[] threads = new FlickrThread[places[cat].length];
     	for (int i = 0; i < places[cat].length; i++) {
     		value = rand.nextInt(10) + 1;
     		threads[i] = new FlickrThread(photoList, value, page, places[cat][i]);
