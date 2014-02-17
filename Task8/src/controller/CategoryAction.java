@@ -15,7 +15,9 @@ public class CategoryAction extends Action {
 								{"Ambergris Caye", "St John US Virgin Islands", "Bora Bora", "San Juan Island", "Santorini, Cyclades", "Isla Mujeres", "Moorea Society Islands", "Ko Tao", "Easter Island", "Nosy Be"},
 								{"Iberostar Grand Hotel Paraiso", "Royalton Cayo Santa Maria", "The Beloved Hotel", "Excellence Playa Mujeres", "Le Blanc Spa Resort", "Paradisus Palma Real", "Kurumba Maldives", "Club Med Egypt", "Club Med Palmiye", "Cozumel Palace"},
 								{"Mount Khuiten", "Kilimanjaro", "The Andes", "Mount Everest", "The Matterhorn", "Mount Elbrus", "Iztaccihuatl", "Denali", "Annapurna", "Damavand"},
-								{"Peru Landscape", "New Zealand Landscape", "Chile Landscape", "Nepal Landscape", "Australia Landscape", "Netherlands Landscape", "Greece Landscape", "Utah Landscape", "Iceland Landscape", "Tanzania Landscape"}};
+								{"Peru Landscape", "New Zealand Landscape", "Chile Landscape", "Nepal Landscape", "Australia Landscape", "Netherlands Landscape", "Greece Landscape", "Utah Landscape", "Iceland Landscape", "Tanzania Landscape"},
+								{"Aurora borealis", "Yellowstone National Park", "Plateau de Valensole", "Strokkur geyser", "The Wave Coyote Buttes", "Nideck waterfall", "Salar de Uyuni Salt Desert", "Plitvice Lakes National Park", "Mendenhall Glacier", "Antelope Canyon"},
+								{"The Forbidden City", "The Great Pyramid", "Potala Palace", "Christ the Redeemer", "Parthenon", "Taj Mahal", "Alhambra", "Acropolis", "Sultan Ahmed Mosque", "Colosseum"}};
 	public String getName() { return "category.do"; }
     
     public String perform(HttpServletRequest request) {
