@@ -66,7 +66,9 @@
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li><a href="index.do">Home</a></li>
-					<li><a href="index.do">Search</a></li>
+					<form class="navbar-search pull-left" action="list.do">
+					  <input type="text" class="search-query" placeholder="Search" name="key">
+					</form>
 					<%if (session.getAttribute("user") != null) { %>
 					<li><a href="#">Hello, ${user.username}</a></li>
 					<%} else { %>
