@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%@include file="header.jsp" %>
+<%@include file="mapheader.jsp" %>
 <div class="container">
 	<div class="row">
 		
