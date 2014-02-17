@@ -55,23 +55,33 @@ public class DetailAction extends Action {
 				temp.setPhotoId(request.getParameter("id"));
 				tweetDao.create(temp);
 			} catch (RollbackException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 		}
 		
+		int tweetCount = 0;
+		int retweetCount = 0;
 		
 		try {
 			Tweet[] list = tweetDao.getTweetsByPhotoId(request.getParameter("id"));
+			tweetCount = list.length;
 			for(int i = 0; i < list.length; i++){
-				tweetList.add(0, list[i]);;
+				tweetList.add(0, list[i]);
+				ArrayList<Tweet> retweetList = TwitterUtil.getRetweetsById(list[i].getTweetId());
+				for(int j = 0; j < retweetList.size(); j++){
+					tweetList.add(retweetList.get(j));
+					retweetCount++;
+				}
 			}
 		} catch (RollbackException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("tweetCount", tweetCount);
+		request.setAttribute("retweetCount", retweetCount);
 		
 		request.setAttribute("tweetList",tweetList);
+		
 		request.setAttribute("photo", photo);
 		return "detail.jsp";
 	}

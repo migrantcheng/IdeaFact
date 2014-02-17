@@ -70,8 +70,8 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Tweet', 'Hours per Day'],
-          ['Tweets',     11],
-          ['Retweets',      30]
+          ['Tweets',     ${tweetCount}],
+          ['Retweets',      ${retweetCount}]
         ]);
 
         var options = {
