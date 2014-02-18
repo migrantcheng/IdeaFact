@@ -445,6 +445,7 @@ public class TwitterUtil {
 				Tweet tweet = new Tweet();
 				tweet.setText((String) status.get("text"));
 				JSONObject user = (JSONObject) status.get("user");
+				tweet.setTweetId((String)(((JSONObject)status).get("id_str")));
 				tweet.setUsername((String) user.get("screen_name"));
 				String createdAt = (String) status.get("created_at");
 				String TWITTER = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
