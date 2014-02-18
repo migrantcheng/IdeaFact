@@ -65,6 +65,7 @@ public class ListAction extends Action {
 //    	}
     	//end test update twitter
 
+    	request.setAttribute("key", request.getParameter("key"));
         request.setAttribute("keys", keys);
         request.setAttribute("photos", photos);
         request.setAttribute("category", keyword);

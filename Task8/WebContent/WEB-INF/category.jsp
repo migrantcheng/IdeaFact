@@ -65,6 +65,7 @@
 			<span class="icon-bar"></span>
 			</button>
 			<a class="brand" href="index.do">IdeaFact.</a>
+			<a class="brand" href="#" style="font-size:20px">${key}</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<form class="navbar-search pull-left" action="list.do">
@@ -128,10 +129,11 @@
 		<a class="twitter-timeline" href="https://twitter.com/search?q=%23travelling" data-widget-id="435515192969920512">Tweets about "#travelling"</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this page:" data-size="large" data-hashtags="travelling">Share</a>
-	</div>
+		</div>
 	
-	<div class="row">
-	</div>
+		<div class="row">
+		</div>
 <!-- MASONRY ITEMS END -->
+	</div>
 </div>
 <%@include file="footer.jsp" %>
