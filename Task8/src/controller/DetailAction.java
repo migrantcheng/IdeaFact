@@ -43,6 +43,7 @@ public class DetailAction extends Action {
 			User user = (User)request.getSession().getAttribute("user");
 			Token accessToken = new Token(user.getAccessToken(), user.getAccessTokenSecret());
 			String content = request.getParameter("tweetContent");
+			content = content + " - Sent from IdeaFact http://task8.yiye.im:8080/Task8/detail.do?id=" + request.getParameter("id");
 			
 			String tweetId = TwitterUtil.update(accessToken, content);
 			System.out.println(tweetId);
